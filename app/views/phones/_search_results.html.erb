@@ -1,0 +1,21 @@
+<% if  params[:checkbox] == "all"
+    @phones = Phone.all.order(:brand_name)
+
+  elsif params[:checkbox].present?
+     @phones = Phone.where(:brand_name => params[:checkbox])
+#difference b/n present truthiness
+#change to params[:checkbox]
+   elsif params[:search].present?
+     @phones = Phone.search_algorithm(params[:search])
+   else
+     @phones = Phone.all
+   end %>
+<!--  need to clear results if searched via checkbox +search -->
+<%= "partial search.html.erb" %>
+
+<% @phones.each do |phone| %>
+ <div class = "<%= phone.brand_name + " " + phone.os%> phone-container">
+<%=  phone.phone_name %>
+<%= link_to("View More", phone_path(phone)) %>
+</div>
+<% end %>

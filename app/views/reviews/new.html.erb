@@ -1,0 +1,12 @@
+<h1>Reviews#new</h1>
+<p>Find me in app/views/reviews/new.html.erb</p>
+<%= @phone.brand_name %>
+
+<%= params[:phone_id]%>
+<%= form_for(@review, :remote => true) do |f|%>
+<%= f.label(:title) %>
+<%= f.text_field(:title) %> <br>
+<%= f.label(:review) %>
+<%= f.text_field(:review) %> <br>
+<%= f.submit("Create Review") %>
+<% end %>

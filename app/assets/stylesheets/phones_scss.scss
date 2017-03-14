@@ -1,0 +1,56 @@
+// Place all the styles related to the phones controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+body, html{
+  height:100%;
+}
+
+.checkbox{
+  height:10px;
+}
+
+.checkbox-container{
+  border: solid red;
+}
+
+.filter-container{
+  border: solid 1px black;
+  display:flex;
+  flex-flow: column;
+  height:100vh;
+  width:300px;
+}
+
+label{
+  display:block;
+}
+
+.page-container {
+  border:solid 3px blue;
+  display: flex;
+  flex-flow: row wrap;
+  min-height:100vh;
+  width:100%;
+}
+
+.phone-container{
+  border: solid 2px black;
+  min-height:300px;
+  width: 800px;
+
+
+}
+.phones-container{
+  align-items: center;
+  border: solid 2px green;
+  display: flex;
+  flex-flow: column;
+  height:100%;
+  width:900px;
+}
+
+
+.title-container{
+  border: solid black;
+  height:30px;
+}
