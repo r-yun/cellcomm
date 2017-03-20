@@ -1,10 +1,37 @@
 <% if  params[:checkbox] == "all"
     @phones = Phone.all.order(:brand_name)
 
-  elsif params[:checkbox].present?
-     @phones = Phone.where(:brand_name => params[:checkbox])
-#difference b/n present truthiness
-#change to params[:checkbox]
+   elsif params[:brand_name].present?|| params[:os].present? || params[:price_category].present?
+     params[:brand_name]|| params[:brand_name] = ""
+     params[:os] || params[:os] = ""
+     params[:price_category] || params[:price_category] = ""
+     @phones = Phone.where(["brand_name in (?) AND os in (?) AND price_category in (?)", params[:brand_name], params[:os], params[:price_category]])
+# check if works? may be error page
+# if only one params categ present use or else use Android
+# def existez?(array)
+#   array = [["brand_name", params[:brand_name]], ["os",params[:os]], ["",[params[:price_category]]
+#   array.each do |item|
+#     if item.nil?
+#       array.delete(item)
+#     end
+#   end
+#   # check each item in array if item exists take it out + in(?) (if first), ifrst second (length) (AND os in (?))
+#   #keyvalue pair or 2darray with params and associated database column
+#   array.split
+# "where(" + array_item + "OR"
+# end
+# # run list of all params
+# #     if params.self
+# #     @phones = Phone.where(["  "])
+
+
+
+     # put into array/hashvalue, release contents into sql statement
+   elsif params[:os].present?
+     @phones = Phone.where(:os => params[:os])
+  elsif params[:price_category]
+    @phones = Phone.where(:price_category => params[:price_category])
+
    elsif params[:search].present?
      @phones = Phone.search_algorithm(params[:search])
    else

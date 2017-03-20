@@ -25,8 +25,9 @@ ActiveRecord::Schema.define(version: 20170217072216) do
     t.string   "screen"
     t.string   "os"
     t.string   "price"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.string   "price_category"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
     t.index ["brand_name"], name: "index_phones_on_brand_name", using: :btree
     t.index ["phone_name"], name: "index_phones_on_phone_name", using: :btree
     t.index ["price"], name: "index_phones_on_price", using: :btree

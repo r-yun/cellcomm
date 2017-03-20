@@ -1,18 +1,34 @@
 $(function() {
-
+  var c = document.getElementById("hi")
+  $("#hi").on("click", function(){
+    console.log("works")
+  })
   var checkbox = document.querySelectorAll(".checkbox");
   var phone_containers = document.querySelectorAll(".phone-container")
   // Add an event listener to each of the checkboxes from the class checkbox
   for (var i = 0; i < checkbox.length; i++) {
     checkbox[i].addEventListener("click", checkboxSearchResults);
     checkbox[i].addEventListener("click", ifAllChecked);
+    checkbox[i].addEventListener("click", formSubmit)
   }
 
   for (var i = 0; i < phone_containers.length; i++){
     phone_containers[i].setAttribute("all", "true")
   }
   //setattribute
+
+  function formSubmit(){
+    //  var form = document.getElementById("theform");
+     $(this).submit();
+    console.log("JQuery:" + $(this).parent() + "JavaScript:" + this.parentNode)
+    //this.parentNode.parentNode.submit();
+    }
+
+
+
 });
+
+
 
 //All should be initially checked?
 function ifAllChecked(){
@@ -45,12 +61,13 @@ function checkboxSearchResults(){
     // Grab first class name
     var phones_container = document.getElementsByClassName("phones-container")[0];
     // Generate post request to send params[:brand_name] to controller
+
     $.ajax({
       type: "POST",
       // cache:false? works without?
       cache: false,
       url: "/phones/search_results",
-      data: {"checkbox": class_name},
+      /*data: {"checkbox": class_name},*/
       //What is html + all possible formats
       //zif function is not already there
 
