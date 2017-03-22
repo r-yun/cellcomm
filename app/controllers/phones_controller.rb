@@ -8,6 +8,7 @@ class PhonesController < ApplicationController
   end
 
   def search_results
+    puts "This is path_parameters" + ":#{request.POST}"
     respond_to do |format|
       format.html {render :partial => "search_results.html.erb"}
       format.js {render("search_results.js.erb")

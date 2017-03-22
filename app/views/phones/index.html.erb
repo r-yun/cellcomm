@@ -4,69 +4,73 @@
 <script>
 <%= render("index.js.erb") %>
 </script>
+
 <%= form_tag(search_results_path, :remote => true) do %>
 <%= text_field_tag(:search, params[:search], :placeholder => "Search Posts") %>
 <%= submit_tag("Search") %>
 <% end %>
+
 <div class = "page-container">
   <div class = "filter-container">
 
     <div class = "title-container">
       Manufacturers
     </div>
+<%= image_tag("dtek50.png") %>
+
     <%= form_tag(search_results_path, :id => "theform", :method => "post", :remote => true) do %>
+
     <div class = "checkbox-container">
       <label>
       <%= check_box_tag("all", "true", true, :class => "all brand-all checkbox", :all => "true") %>
       All
      </label>
-
       <% @brand_names.each do |brand| %>
       <label>
         <%= check_box_tag("brand_name[]", "#{brand.brand_name}", false, :class => "#{brand.brand_name} brand checkbox") %>
         <%= brand.brand_name %>
       </label>
       <% end %>
-
     </div>
+
+
     <div class = "title-container">
       Operating System
     </div>
 
     <div class="checkbox-container">
-
       <% @operating_systems.each do |os| %>
       <label>
       <%= check_box_tag("os[]", "#{os.os}", false, :class => "#{os.os} os checkbox") %>
       <%= os.os %>
     </label>
-
     <% end %>
-  </div>
+    </div>
 
   <div class = "title-container">
     Price Range
   </div>
-<div class="checkbox-container">
-  <% @price_categories.each do |price|%>
-  <label>
-      <%= check_box_tag("price_category[]", "#{price.price_category}", false, :class => "#{price.price_category} price-category checkbox") %>
-      <% if price.price_category == "1" %>
-      <%= "500 or less" %>
-      <% elsif price.price_category == "2" %>
-      <%= "501-750" %>
-      <% elsif price.price_category == "3"%>
-      <%= "751-1000" %>
-      <% elsif price.price_category == "4" %>
-      <%= "1000 or greater"%>
-      <% end %>
-      <%= hidden_field_tag(:authenticity_token, form_authenticity_token) %>
-    <% end %>
-  </label>
-</div>
- <% end %>  <!-- form_tag  -->
 
-</div>
+  <div class="checkbox-container">
+    <% @price_categories.each do |price|%>
+    <label>
+        <%= check_box_tag("price_category[]", "#{price.price_category}", false, :class => "#{price.price_category} price-category checkbox") %>
+        <% if price.price_category == "1" %>
+        <%= "500 or less" %>
+        <% elsif price.price_category == "2" %>
+        <%= "501-750" %>
+        <% elsif price.price_category == "3"%>
+        <%= "751-1000" %>
+        <% elsif price.price_category == "4" %>
+        <%= "1000 or greater"%>
+        <% end %>
+        <%= hidden_field_tag(:authenticity_token, form_authenticity_token) %>
+      <% end %>
+    </label>
+  </div>
+   <% end %>  <!-- form_tag  -->
+
+</div> <!--  .filter  -->
 
   <div class = "phones-container">
     <%= render(:partial => "search_results.html.erb")%>

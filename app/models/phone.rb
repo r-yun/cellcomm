@@ -8,4 +8,19 @@ class Phone < ApplicationRecord
     search.split.flat_map{|x|["%" + x + "%"]*2})
   end
 
+  def self.checkbox_search(params_hash)
+
+    params_array = [:brand_name, :os, :price_category]
+    column_array = []
+    key_array = []
+    params_hash.each do |k,v|
+      if params_array.include?(k)
+         column_array << v
+         key_array << k
+         puts column_array + key_array
+      end
+    end
+  return  joined_keys = key_array.join(" in (?) AND ") + ", " + "#{column_array}"
+  end
+
 end

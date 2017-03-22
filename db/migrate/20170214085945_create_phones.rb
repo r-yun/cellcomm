@@ -14,6 +14,7 @@ class CreatePhones < ActiveRecord::Migration[5.0]
       t.string "os"
       t.string "price"
       t.string "price_category"
+      t.string "image_1"
       t.timestamps
     end
     add_index("phones", "brand_name")

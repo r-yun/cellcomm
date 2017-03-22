@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20170217072216) do
     t.string   "os"
     t.string   "price"
     t.string   "price_category"
+    t.string   "image_1"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.index ["brand_name"], name: "index_phones_on_brand_name", using: :btree
