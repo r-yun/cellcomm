@@ -1,18 +1,2 @@
 var phones_container = document.getElementsByClassName("phones-container")[0];
-var phone_container = document.getElementsByClassName("phone-container");
-
-//uncheck all boxes
-
 phones_container.innerHTML = "<%= j render(:partial => 'phones/search_results.html.erb', :layout => false)%>";
-
-
-for (var i = 0; i < phone_container.length; i++) {
-  phone_container[i].setAttribute("search-box", "true")
-}
-
-if (phone_container.length > 0){
-  console.log("true")
-}
-else{
-  phones_container.innerHTML = "<%= j render(:partial => 'phones/error_page.html.erb')%>";
-}

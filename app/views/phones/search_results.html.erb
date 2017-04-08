@@ -1,8 +1,0 @@
-<%= params[:search] %>
-<%= "YdddddsO" %>
-<% @phones.each do |phone| %>
- <div class = "<%= phone.brand_name %> phone-container">
-<%=  phone.phone_name %>
-<%= link_to("View More", phone_path(phone)) %>
-</div>
-<% end %>

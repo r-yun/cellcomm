@@ -1,122 +1,57 @@
 $(function() {
-  var c = document.getElementById("hi")
-  $("#hi").on("click", function(){
-    console.log("works")
-  })
   var checkbox = document.querySelectorAll(".checkbox");
   var phone_containers = document.querySelectorAll(".phone-container")
   // Add an event listener to each of the checkboxes from the class checkbox
   for (var i = 0; i < checkbox.length; i++) {
-    checkbox[i].addEventListener("click", checkboxSearchResults);
-    checkbox[i].addEventListener("click", ifAllChecked);
-    checkbox[i].addEventListener("click", formSubmit)
+    checkbox[i].addEventListener("click", allToggle);
+    checkbox[i].addEventListener("click", atleastOneChecked);
+    checkbox[i].addEventListener("click", formSubmit);
   }
 
-  for (var i = 0; i < phone_containers.length; i++){
-    phone_containers[i].setAttribute("all", "true")
-  }
-  //setattribute
 
-  function formSubmit(){
-    //  var form = document.getElementById("theform");
-     $(this).submit();
-    console.log("JQuery:" + $(this).parent() + "JavaScript:" + this.parentNode)
-    //this.parentNode.parentNode.submit();
-    }
-
-
+  $("#filter_form").submit();
 
 });
 
+function formSubmit(){
+  $(this).submit();
+}
 
-
-//All should be initially checked?
-function ifAllChecked(){
+function allToggle(){
   if(this.checked){
-    var class_name = this.classList[0]
-
+    var class_name = this.classList[0];
     if(class_name == "all"){
-      var brand = document.getElementsByClassName("brand");
+      var brand = document.getElementsByClassName("single");
       for (var i = 0; i < brand.length; i++) {
         brand[i].checked = "";
       }
     }
 
-  else{
-    var all = document.querySelectorAll(".all")
-    console.log(all);
+    else{
+      var all = document.querySelectorAll(".all")
+      for (var i = 0; i < all.length; i++){
+        all[i].checked = "";
+      }
+    }
+
+  }
+}
+
+function atleastOneChecked(){
+  var checkboxes = document.getElementsByClassName("checkbox");
+  var checkboxChecked = false;
+  console.log(checkboxes);
+  for (var i = 0; i < checkboxes.length; i++){
+    if (checkboxes[i].checked){
+      checkboxChecked = true;
+      break;
+    }
+  }
+  if (checkboxChecked == false ){
+    var all = document.querySelectorAll(".all");
     for (var i = 0; i < all.length; i++){
-      all[i].checked = "";
+      all[i].checked = true;
     }
   }
 
 }
-}
-function checkboxSearchResults(){
-  //based on which searchbox get class of checkbox based on check box select class
-  //list 1 2 or 3
-  var class_name = this.classList[0];
-  if (this.checked){
-    this.style.cssText = "height: 100px";
-    // Grab first class name
-    var phones_container = document.getElementsByClassName("phones-container")[0];
-    // Generate post request to send params[:brand_name] to controller
-
-    $.ajax({
-      type: "POST",
-      // cache:false? works without?
-      cache: false,
-      url: "/phones/search_results",
-      /*data: {"checkbox": class_name},*/
-      //What is html + all possible formats
-      //zif function is not already there
-
-      //SEE IF CAN grab value inside checkbox instead of class_name
-      //If checkbox checked append to search query, if not Phone.all.[query]
-      success: function(html){
-        // If length >0 , if less than 1:
-        var phone_container = document.getElementsByClassName("phone-container");
-        // If duplicate class name from all case..
-        //Put in if else
-        if(class_name == "all"){
-          phones_container.innerHTML = html;
-          for (var i = 0; i < phone_container.length; i++) {
-            phone_container[i].setAttribute("all", "true");
-            return;
-
-          }
-        }
-
-        for (var i = 0; i < phone_container.length; i++) {
-          if (phone_container[i].hasAttribute("search-box")||phone_container[i].hasAttribute("all")){
-            phones_container.innerHTML = html;
-            console.log(phone_container + "has search box")
-            return;
-          }
-        }
-        phones_container.innerHTML += html
-
-      }// success property
-    }); //.$ajax
-  }//if
-
-  else {
-    // Find all listing by brand (class_name) and delete them
-    var phone_containers = document.querySelectorAll("." + class_name + ".phone-container");
-    // if classList[0] == this set class_name = x
-
-    var class_name = this.classList[0];
-    var all_containers = document.querySelectorAll(".phone-container");
-    if (class_name == "all"){
-      for (var i = 0; i < all_containers.length; i++) {
-        all_containers[i].parentNode.removeChild(all_containers[i]);
-    }
-    }
-    console.log(class_name);
-    //  .div class_name and checkbox.delete
-    for (var i = 0; i < phone_containers.length; i++) {
-      phone_containers[i].parentNode.removeChild(phone_containers[i])
-    }
-    this.style.cssText = "height: 30px";
-  }// else
-}// checkboxSearchResults function

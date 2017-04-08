@@ -8,7 +8,7 @@
 
 
 <%= @phone.brand_name %> <%= @phone.phone_name %> <br>
-<%= link_to("Add Review", new_review_path(:phone_id => @phone.id), :id => "hi", :remote => true)%>
+<%= link_to("Add Review", new_review_path(:phone_id => @phone.id), :id => "hi")%>
 <br><br><br>
 <%= link_to("search_results", search_results_path(:brand_name => "samsung"), :remote => true, :id => "uz") %>
 <%= check_box_tag("hey", "no value", false, :data => {:remote => true}) %>
