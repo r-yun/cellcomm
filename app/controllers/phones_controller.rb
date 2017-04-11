@@ -3,6 +3,7 @@ class PhonesController < ApplicationController
     @brand_names = Phone.select(:brand_name).distinct.order(:brand_name)
     @operating_systems = Phone.select(:os).distinct
     @price_categories = Phone.select(:price_category).distinct.order(price_category: :asc)
+    @phones = Phone.all.order(:brand_name)
   end
 
   def search_results
@@ -15,9 +16,12 @@ class PhonesController < ApplicationController
     #If searchbox form submitted.
     elsif params[:search].present?
       @phones = Phone.search_algorithm(params[:search])
-
-    else
     end
+
+    respond_to do |format|
+    format.html{ render "index.html.erb"}  
+    format.js { render "search_results.js.erb"}
+  end
 
   end
 

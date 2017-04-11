@@ -7,10 +7,6 @@ $(function() {
     checkbox[i].addEventListener("click", atleastOneChecked);
     checkbox[i].addEventListener("click", formSubmit);
   }
-
-
-  $("#filter_form").submit();
-
 });
 
 function formSubmit(){
@@ -24,18 +20,17 @@ function allToggle(){
       var brand = document.getElementsByClassName("single");
       for (var i = 0; i < brand.length; i++) {
         brand[i].checked = "";
-      }
-    }
+      } // for
+    } // if(class_name == all)
 
-    else{
+    else {
       var all = document.querySelectorAll(".all")
       for (var i = 0; i < all.length; i++){
         all[i].checked = "";
-      }
-    }
-
-  }
-}
+      } // for
+    } // else
+  } // if(this.checked)
+} // allToggle()
 
 function atleastOneChecked(){
   var checkboxes = document.getElementsByClassName("checkbox");
@@ -51,7 +46,6 @@ function atleastOneChecked(){
     var all = document.querySelectorAll(".all");
     for (var i = 0; i < all.length; i++){
       all[i].checked = true;
-    }
-  }
-
-}
+    } // for
+  } // if
+} // atleastOneChecked()
