@@ -1,15 +1,22 @@
-<h1>Phones#show</h1>
-<p>Find me in app/views/phones/show.html.erb</p>
+
+
+<%= stylesheet_link_tag("menu", :media => "all")%>
+<%= stylesheet_link_tag("phone_show", :media => "all") %>
+
 <script>
 <%= render(:partial => "index.js.erb") %>
 </script>
 
-<%= link_to("Back to index", phones_path)%> <br><br>
+<%= render(:partial => "menu.html.erb") %>
+<%= link_to("Back To Products Page >>", phones_path)%> <br><br>
 
-
-<%= @phone.brand_name %> <%= @phone.phone_name %> <br>
-<%= link_to("Add Review", new_review_path(:phone_id => @phone.id), :id => "hi")%>
-<br><br><br>
-<%= link_to("search_results", search_results_path(:brand_name => "samsung"), :remote => true, :id => "uz") %>
-<%= check_box_tag("hey", "no value", false, :data => {:remote => true}) %>
-<div id = "here"> </div>
+<div class="product">
+  <div class = "product_name"><%= @phone.brand_name %> <%= @phone.phone_name %></div>
+  <div class="product_info">
+  <%= image_tag(@phone.image_1, :class => "image-1") %>
+    <div class="rounded">
+    <div class = "price"> Price: <%= "$" + @phone.price.to_s %></div>
+    <div class = "quantity">Quantity: <%= @phone.quantity == 0 ? "Sold out" : @phone.quantity %></div>
+    </div>
+  </div>
+</div>

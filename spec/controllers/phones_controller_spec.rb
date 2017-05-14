@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe PhonesController, type: :controller do
   describe "GET index" do
     before(:example) { get :index }
-    context "index" do
+    context "index testing" do
       it "returns an http status of ok" do
         expect(response).to have_http_status(:ok)
       end

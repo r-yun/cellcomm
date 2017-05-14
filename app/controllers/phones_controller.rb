@@ -19,12 +19,15 @@ class PhonesController < ApplicationController
     end
 
     respond_to do |format|
-    format.html{ render "index.html.erb"}  
-    format.js { render "search_results.js.erb"}
-  end
+      format.html { render "index.html.erb"}
+      format.js { render "search_results.js.erb"}
+    end
 
   end
 
+def test
+
+end
 
   def show
     @phone = Phone.find(params[:id])

@@ -1,0 +1,12 @@
+<nav>
+<%= link_to(image_tag("menu/logo.png", :id => "logo"), phones_path) %>
+<%= form_tag(search_results_path, :remote => true, :id => "search_form") do %>
+<%= text_field_tag(:search_field, params[:search], :placeholder => "Apple, iPhone 7") %>
+
+<%= image_submit_tag("menu/search_button.png", :id => "search_button") %>
+<% end %>
+<div class = "user_info">
+<%= image_tag("menu/emptycart.png", :class => "icon") %>
+<%= image_tag("menu/account.png", :class => "icon") %>
+</div>
+</nav>

@@ -10,23 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170217072216) do
+ActiveRecord::Schema.define(version: 20170514054652) do
+
+  create_table "carts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "phones", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.datetime "release_date"
-    t.string   "ram"
     t.string   "battery"
-    t.string   "weight"
-    t.string   "front_camera"
     t.string   "back_camera"
-    t.string   "storage"
     t.string   "brand_name"
-    t.string   "phone_name"
-    t.string   "screen"
-    t.string   "os"
-    t.string   "price"
-    t.string   "price_category"
+    t.string   "front_camera"
     t.string   "image_1"
+    t.string   "os"
+    t.string   "phone_name"
+    t.integer  "price"
+    t.string   "price_category"
+    t.integer  "quantity"
+    t.string   "ram"
+    t.datetime "release_date"
+    t.string   "screen"
+    t.string   "storage"
+    t.string   "weight"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.index ["brand_name"], name: "index_phones_on_brand_name", using: :btree

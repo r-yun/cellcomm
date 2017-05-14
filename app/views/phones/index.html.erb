@@ -1,27 +1,17 @@
-<h1>Cell Comp</h1>
-
-<%= stylesheet_link_tag("phones", :media => "all") %>
+<%= stylesheet_link_tag("menu", :media => "all") %>
+<%= stylesheet_link_tag("phone_index", :media => "all") %>
 
 <script>
-  <%= render(:partial => "index.js.erb") %>
+  <%= render :partial => "index.js.erb" %>
 </script>
 
+<%= render :partial => "menu.html.erb" %>
 <div class = "page-container">
   <div class = "filter-container">
-    <div class="title-container">
-      Search
-    </div>
-    <div class="checkbox-container">
-      <%= form_tag(search_results_path, :remote => true) do %>
-      <%= text_field_tag(:search, params[:search], :placeholder => "Search Posts") %>
-      <%= submit_tag("Search") %>
-      <% end %>
-    </div>
-
-    <%= render(:partial => "checkbox_form.html.erb") %>
+    <%= render :partial => "checkbox_form.html.erb" %>
   </div> <!--  .filter-container  -->
 
   <div class = "phones-container">
-    <%= render(:partial => "search_results.html.erb")%>
+    <%= render :partial => "search_results.html.erb"%>
   </div>
 </div> <!--  .page-container  -->

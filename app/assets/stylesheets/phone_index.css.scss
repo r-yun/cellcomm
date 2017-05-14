@@ -1,0 +1,200 @@
+@import "variables";
+
+
+
+//CSS reset
+*{
+  margin:0;
+  padding: 0;
+}
+.attr-box{
+  border: solid 1px black;
+  border-radius:4px;
+  font-family: $font_serif1;
+  height: 65px;
+  margin-right:60px;
+  text-align:center;
+  width: 70px;
+}
+
+ .attr-container{
+   display:flex;
+   height:100px;
+   justify-content: center;
+   margin-top:35px;
+   margin-left: -22px;
+   width:400px;
+ }
+.attr-title{
+  font-size:16px;
+  padding-top:2px;
+}
+
+.attr-title-box{
+  background-color: $teal;
+  border-bottom:solid 1px black;
+  border-radius: 4px 4px 0px 0px;
+  height: 20px;
+  width: 70px;
+  z-index:2
+}
+
+.attr-value{
+  font-size: 16px;
+  padding-top: 15px;
+
+}
+
+
+body, html{
+  height: 100%;
+}
+
+
+.checkbox{
+  height: 10px;
+}
+
+.checkbox-container{
+  font-family: $font_serif1;
+  font-size: 18px;
+}
+
+.checkbox-title{
+  font-size: 19px;
+  left: 5px;
+  position: relative;
+  top:10px;
+}
+
+.different-search{
+  font-family:Arial;
+  font-size:23px;
+  margin-top: 4px;
+
+}
+.filter-container{
+  border: solid 1px black;
+  position: fixed;
+  top:108px;
+  width: 350px;
+}
+
+.first{
+top:-50px;
+
+}
+.image-1{
+  height:260px;
+  left:-30px;
+  position: relative;
+  top: 10px;
+  width:250px;
+}
+
+input[type="checkbox"]{
+  bottom: 4px;
+  margin-left: 5px;
+  margin-right: 5px;
+  position: relative;
+  transform: scale(1.2);
+}
+
+label{
+  display: block;
+  margin-left:2px;
+  margin-top:10px;
+}
+
+.page-container {
+  display: flex;
+  flex-flow: row wrap;
+  width: 100%;
+}
+
+.phone-container{
+  border: solid 1.5px black;
+  border-radius: 4px;
+  height: 290px;
+  margin-top:20px;
+  width: 650px;
+}
+
+.phone-container:first-of-type{
+  margin-top:0px;
+}
+
+.phones-container{
+  height: 100%;
+  margin-left: 450px;
+  margin-top:20px;
+  padding-top:120px;
+  width: 800px;
+}
+
+.price{
+  font-family: $font_serif1;
+  font-size: 22px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.quantity {
+  font-family : $font_serif1;
+  font-size: 18px;
+  padding-top:5px;
+  text-align: center;
+}
+
+.phone-container{
+  display: flex;
+}
+.phone-title{
+  display: inline-block;
+  font-family: $font_sans1;
+  font-size: 26px;
+  font-weight: bold;
+  padding-top: 5px;
+}
+
+.phone-info{
+  display:flex;
+  height:300px;
+  flex-flow: column;
+}
+
+.pq-box{
+  border: solid 2px black;
+  border-radius: 4px;
+  height: 65px;
+  margin-left:20px;
+  margin-top:35px;
+  padding-top:20px;
+  width:190px;
+}
+
+.results{
+  font-family:Arial;
+  font-weight: bold;
+  font-size:26px;
+}
+
+
+
+
+.title-container{
+  border-top: solid 1px black;
+  border-bottom: solid 1px black;
+  background-color: $list-color;
+  font-family: $font_sans1;
+  font-weight: bold;
+  height: 43px;
+}
+
+.title-container:first-of-type{
+  border-top:none;
+}
+
+.title-search{
+  border-top: none;
+}

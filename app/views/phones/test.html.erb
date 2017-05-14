@@ -1,0 +1,13 @@
+
+<style>
+#search-button{
+  width:100px;
+  height:100px;
+}
+</style>
+<%= form_tag(search_results_path, :remote => true) do %>
+
+<%= submit_tag("Search", :id => "search-button") %>
+
+
+<% end %>

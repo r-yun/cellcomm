@@ -1,7 +1,7 @@
 <%= form_tag(search_results_path, :id => "filter_form", :method => "post", :remote => true) do %>
 <%= hidden_field_tag(:authenticity_token, form_authenticity_token) %>
 <div class = "title-container">
-  Manufacturers
+  <span class = "checkbox-title"> Manufacturers </span>
 </div>
 
 
@@ -20,7 +20,7 @@
 
 
 <div class = "title-container">
-  Operating System
+  <span class = "checkbox-title"> Operating System </span>
 </div>
 
 <div class="checkbox-container">
@@ -33,7 +33,7 @@
 </div>
 
 <div class = "title-container">
-  Price Range
+  <span class = "checkbox-title"> Price Range </span>
 </div>
 
 <div class="checkbox-container">
@@ -41,13 +41,13 @@
   <label>
     <%= check_box_tag("price_category[]", "#{price.price_category}", false, :class => "single checkbox") %>
     <% if price.price_category == "1" %>
-    <%= "500 or less" %>
+    <%= "$500 or less" %>
     <% elsif price.price_category == "2" %>
-    <%= "501-750" %>
+    <%= "$501-750" %>
     <% elsif price.price_category == "3"%>
-    <%= "751-1000" %>
+    <%= "$751-1000" %>
     <% elsif price.price_category == "4" %>
-    <%= "1000 or greater"%>
+    <%= "$1000 or greater"%>
     <% end %>
   </label>
   <% end %> <!-- @price_categories  -->
