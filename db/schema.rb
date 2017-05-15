@@ -40,16 +40,6 @@ ActiveRecord::Schema.define(version: 20170514054652) do
     t.index ["price"], name: "index_phones_on_price", using: :btree
   end
 
-  create_table "reviews", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "phone_id"
-    t.integer  "review_id"
-    t.string   "title",      null: false
-    t.integer  "rating",     null: false
-    t.string   "review",     null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "last_name"
     t.string   "user_name"

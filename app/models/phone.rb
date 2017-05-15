@@ -1,5 +1,5 @@
 class Phone < ApplicationRecord
-  belongs_to :cart
+  belongs_to :cart, {:optional => true}
   def self.search_algorithm(search)
     unless search.length <= 2
     where([(["phone_name LIKE ? OR brand_name LIKE ?"] * search.split.length).join(' OR ')] +

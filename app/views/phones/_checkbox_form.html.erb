@@ -16,6 +16,8 @@
     <%= brand.brand_name %>
   </label>
   <% end %>
+  <%= hidden_field_tag :executing_action, params[:action] %>
+
 </div>
 
 
@@ -30,6 +32,8 @@
     <%= os.os %>
   </label>
   <% end %>
+  <%= hidden_field_tag :executing_action, params[:action] %>
+
 </div>
 
 <div class = "title-container">
@@ -51,5 +55,7 @@
     <% end %>
   </label>
   <% end %> <!-- @price_categories  -->
+  <%= hidden_field_tag :executing_action, params[:action] %>
+
 </div>
 <% end %>  <!-- form_tag  -->
