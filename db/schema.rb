@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20170514054652) do
     t.string   "battery"
     t.string   "back_camera"
     t.string   "brand_name"
+    t.integer  "cart_id"
     t.string   "front_camera"
     t.string   "image_1"
     t.string   "os"
@@ -41,12 +42,14 @@ ActiveRecord::Schema.define(version: 20170514054652) do
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "cart_id"
+    t.string   "username"
+    t.string   "first_name"
     t.string   "last_name"
-    t.string   "user_name"
     t.string   "email"
-    t.string   "password"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "password_digest"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
 end

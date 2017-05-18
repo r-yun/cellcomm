@@ -1,17 +1,22 @@
-<%= stylesheet_link_tag("menu", :media => "all") %>
 <%= stylesheet_link_tag("phone_index", :media => "all") %>
 
 <script>
   <%= render :partial => "index.js.erb" %>
 </script>
 
-<%= render :partial => "menu.html.erb" %>
 <div class = "page-container">
+
+
   <div class = "filter-container">
     <%= render :partial => "checkbox_form.html.erb" %>
   </div> <!--  .filter-container  -->
 
   <div class = "phones-container">
+    <% if flash[:notice].present? %>
+    <div class = "notice">
+    <%= flash[:notice] %>
+  </div>
+  <%end%>
     <%= render :partial => "search_results.html.erb"%>
   </div>
 </div> <!--  .page-container  -->

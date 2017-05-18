@@ -1,0 +1,13 @@
+<div>
+
+<%= User.find(session[:user_id]).first_name %>'s cart page
+</div>
+
+
+<div>
+<% @user.cart.phones.each do |phone|%>
+<%= phone.phone_name %>
+<% end%>
+ -->
+
+</div>

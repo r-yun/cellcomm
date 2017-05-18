@@ -1,0 +1,222 @@
+/* line 6, /Users/ryun/cell_comp/app/assets/stylesheets/phone_index.css.scss */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* line 10, /Users/ryun/cell_comp/app/assets/stylesheets/phone_index.css.scss */
+.attr-box {
+  border: solid 1px black;
+  border-radius: 4px;
+  font-family: "Palatino";
+  height: 65px;
+  margin-right: 60px;
+  text-align: center;
+  width: 70px;
+}
+
+/* line 20, /Users/ryun/cell_comp/app/assets/stylesheets/phone_index.css.scss */
+.attr-container {
+  display: flex;
+  height: 100px;
+  justify-content: center;
+  margin-top: 35px;
+  margin-left: -22px;
+  width: 400px;
+}
+
+/* line 28, /Users/ryun/cell_comp/app/assets/stylesheets/phone_index.css.scss */
+.attr-title {
+  font-size: 16px;
+  padding-top: 2px;
+}
+
+/* line 33, /Users/ryun/cell_comp/app/assets/stylesheets/phone_index.css.scss */
+.attr-title-box {
+  background-color: #abffc9;
+  border-bottom: solid 1px black;
+  border-radius: 4px 4px 0px 0px;
+  height: 20px;
+  width: 70px;
+  z-index: 2;
+}
+
+/* line 42, /Users/ryun/cell_comp/app/assets/stylesheets/phone_index.css.scss */
+.attr-value {
+  font-size: 16px;
+  padding-top: 15px;
+}
+
+/* line 49, /Users/ryun/cell_comp/app/assets/stylesheets/phone_index.css.scss */
+body, html {
+  height: 100%;
+}
+
+/* line 54, /Users/ryun/cell_comp/app/assets/stylesheets/phone_index.css.scss */
+.checkbox {
+  height: 10px;
+}
+
+/* line 58, /Users/ryun/cell_comp/app/assets/stylesheets/phone_index.css.scss */
+.checkbox-container {
+  font-family: "Palatino";
+  font-size: 18px;
+}
+
+/* line 63, /Users/ryun/cell_comp/app/assets/stylesheets/phone_index.css.scss */
+.checkbox-title {
+  font-size: 19px;
+  left: 5px;
+  position: relative;
+  top: 10px;
+}
+
+/* line 70, /Users/ryun/cell_comp/app/assets/stylesheets/phone_index.css.scss */
+.different-search {
+  font-family: Arial;
+  font-size: 23px;
+  margin-top: 4px;
+}
+
+/* line 76, /Users/ryun/cell_comp/app/assets/stylesheets/phone_index.css.scss */
+.filter-container {
+  border: solid 1px black;
+  position: fixed;
+  top: 108px;
+  width: 350px;
+}
+
+/* line 83, /Users/ryun/cell_comp/app/assets/stylesheets/phone_index.css.scss */
+.first {
+  top: -50px;
+}
+
+/* line 87, /Users/ryun/cell_comp/app/assets/stylesheets/phone_index.css.scss */
+.image-1 {
+  height: 260px;
+  left: -30px;
+  position: relative;
+  top: 10px;
+  width: 250px;
+}
+
+/* line 95, /Users/ryun/cell_comp/app/assets/stylesheets/phone_index.css.scss */
+input[type="checkbox"] {
+  bottom: 4px;
+  margin-left: 5px;
+  margin-right: 5px;
+  position: relative;
+  transform: scale(1.2);
+}
+
+/* line 103, /Users/ryun/cell_comp/app/assets/stylesheets/phone_index.css.scss */
+label {
+  display: block;
+  margin-left: 2px;
+  margin-top: 10px;
+}
+
+/* line 109, /Users/ryun/cell_comp/app/assets/stylesheets/phone_index.css.scss */
+.page-container {
+  display: flex;
+  flex-flow: row wrap;
+  width: 100%;
+}
+
+/* line 115, /Users/ryun/cell_comp/app/assets/stylesheets/phone_index.css.scss */
+.phone-container {
+  border: solid 1.5px black;
+  border-radius: 4px;
+  height: 290px;
+  margin-top: 20px;
+  width: 650px;
+}
+
+/* line 123, /Users/ryun/cell_comp/app/assets/stylesheets/phone_index.css.scss */
+.phone-container:first-of-type {
+  margin-top: 0px;
+}
+
+/* line 127, /Users/ryun/cell_comp/app/assets/stylesheets/phone_index.css.scss */
+.phones-container {
+  height: 100%;
+  margin-left: 450px;
+  margin-top: 20px;
+  padding-top: 120px;
+  width: 800px;
+}
+
+/* line 135, /Users/ryun/cell_comp/app/assets/stylesheets/phone_index.css.scss */
+.price {
+  font-family: "Palatino";
+  font-size: 22px;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* line 142, /Users/ryun/cell_comp/app/assets/stylesheets/phone_index.css.scss */
+.quantity {
+  font-family: "Palatino";
+  font-size: 18px;
+  padding-top: 5px;
+  text-align: center;
+}
+
+/* line 149, /Users/ryun/cell_comp/app/assets/stylesheets/phone_index.css.scss */
+.phone-container {
+  display: flex;
+}
+
+/* line 152, /Users/ryun/cell_comp/app/assets/stylesheets/phone_index.css.scss */
+.phone-title {
+  display: inline-block;
+  font-family: "Arial";
+  font-size: 26px;
+  font-weight: bold;
+  padding-top: 5px;
+}
+
+/* line 160, /Users/ryun/cell_comp/app/assets/stylesheets/phone_index.css.scss */
+.phone-info {
+  display: flex;
+  height: 300px;
+  flex-flow: column;
+}
+
+/* line 166, /Users/ryun/cell_comp/app/assets/stylesheets/phone_index.css.scss */
+.pq-box {
+  border: solid 2px black;
+  border-radius: 4px;
+  height: 65px;
+  margin-left: 20px;
+  margin-top: 35px;
+  padding-top: 20px;
+  width: 190px;
+}
+
+/* line 176, /Users/ryun/cell_comp/app/assets/stylesheets/phone_index.css.scss */
+.results {
+  font-family: Arial;
+  font-weight: bold;
+  font-size: 26px;
+}
+
+/* line 185, /Users/ryun/cell_comp/app/assets/stylesheets/phone_index.css.scss */
+.title-container {
+  border-top: solid 1px black;
+  border-bottom: solid 1px black;
+  background-color: #9ef2c4;
+  font-family: "Arial";
+  font-weight: bold;
+  height: 43px;
+}
+
+/* line 194, /Users/ryun/cell_comp/app/assets/stylesheets/phone_index.css.scss */
+.title-container:first-of-type {
+  border-top: none;
+}
+
+/* line 198, /Users/ryun/cell_comp/app/assets/stylesheets/phone_index.css.scss */
+.title-search {
+  border-top: none;
+}

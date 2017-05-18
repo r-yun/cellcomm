@@ -6,8 +6,28 @@
 
 <%= image_submit_tag("menu/search_button.png", :id => "search_button") %>
 <% end %>
+
+
 <div class = "user_info">
-<%= image_tag("menu/emptycart.png", :class => "icon") %>
-<%= link_to(image_tag("menu/account.png", :class => "icon"), login_page_path) %>
+  <div id="account">
+  <%= link_to(image_tag("menu/account.png", :class => "icon"), login_page_path, :class => "account") %>
+  <div id="dropdown">
+    <%if session[:username] %>
+    You have been logged in as: <%=session[:username] %>
+   <% end %>
+    <%= link_to("Login", login_page_path, :class => "dropdown-link") %>
+    <%= link_to("Register", new_user_path, :class => "dropdown-link") %>
+   <%= link_to("Logout", logout_path, :class => "dropdown-link") %>
+
+  </div>
+
+  </div>
+
+<%= link_to(image_tag("menu/emptycart.png", :class => "icon"), cart_page_path) %>
+
+
+
 </div>
 </nav>
+<div id = "placeholder">
+</div>

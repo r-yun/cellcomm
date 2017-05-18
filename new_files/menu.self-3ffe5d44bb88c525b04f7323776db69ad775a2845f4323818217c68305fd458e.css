@@ -1,0 +1,97 @@
+/* line 7, /Users/ryun/cell_comp/app/assets/stylesheets/menu.css.scss */
+a {
+  color: black;
+  text-decoration: none;
+}
+
+/* line 12, /Users/ryun/cell_comp/app/assets/stylesheets/menu.css.scss */
+nav {
+  background-color: #cfe4ea;
+  border: solid 0.5px black;
+  display: flex;
+  height: 100px;
+  margin-bottom: 100px;
+  padding-left: 20px;
+  padding-top: 8px;
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+}
+
+/* line 25, /Users/ryun/cell_comp/app/assets/stylesheets/menu.css.scss */
+nav ~ * {
+  padding-top: 200px;
+}
+
+/* line 30, /Users/ryun/cell_comp/app/assets/stylesheets/menu.css.scss */
+.icon {
+  height: 120px;
+  margin-right: 30px;
+  width: 90px;
+}
+
+/* line 36, /Users/ryun/cell_comp/app/assets/stylesheets/menu.css.scss */
+#dropdown {
+  border: solid black;
+  display: none;
+  height: 200px;
+  width: 200px;
+}
+
+/* line 42, /Users/ryun/cell_comp/app/assets/stylesheets/menu.css.scss */
+#account:hover > #dropdown {
+  display: block;
+  position: absolute;
+  top: 100px;
+  width: 200px;
+}
+
+/* line 49, /Users/ryun/cell_comp/app/assets/stylesheets/menu.css.scss */
+#account {
+  display: inline-block;
+}
+
+/* line 54, /Users/ryun/cell_comp/app/assets/stylesheets/menu.css.scss */
+.dropdown-link {
+  display: block;
+}
+
+/* line 57, /Users/ryun/cell_comp/app/assets/stylesheets/menu.css.scss */
+#logo {
+  height: 90px;
+  width: 90px;
+}
+
+/* line 62, /Users/ryun/cell_comp/app/assets/stylesheets/menu.css.scss */
+#search_form {
+  margin-left: -10px;
+  margin-right: 20px;
+  padding-top: 10px;
+}
+
+/* line 68, /Users/ryun/cell_comp/app/assets/stylesheets/menu.css.scss */
+#search_button {
+  height: 47.5px;
+  position: relative;
+  top: 19px;
+  left: -5px;
+  width: 50px;
+}
+
+/* line 76, /Users/ryun/cell_comp/app/assets/stylesheets/menu.css.scss */
+#search_field {
+  border: solid 0.5px black;
+  border-radius: 4px;
+  height: 25px;
+  margin-left: 50px;
+  padding-bottom: 10px;
+  padding-left: 3px;
+  padding-top: 10px;
+  width: 450px;
+}
+
+/* line 87, /Users/ryun/cell_comp/app/assets/stylesheets/menu.css.scss */
+.user_info {
+  margin-left: auto;
+  margin-right: 30px;
+}

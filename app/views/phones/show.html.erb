@@ -1,22 +1,92 @@
 
 
-<%= stylesheet_link_tag("menu", :media => "all")%>
 <%= stylesheet_link_tag("phone_show", :media => "all") %>
 
 <script>
 <%= render(:partial => "index.js.erb") %>
 </script>
 
-<%= render(:partial => "menu.html.erb") %>
 <%= link_to("Back To Products Page >>", phones_path)%> <br><br>
 
+<div class = "product_name"><%= @phone.brand_name %> <%= @phone.phone_name %></div>
 <div class="product">
-  <div class = "product_name"><%= @phone.brand_name %> <%= @phone.phone_name %></div>
-  <div class="product_info">
   <%= image_tag(@phone.image_1, :class => "image-1") %>
+
+  <div class="product_info">
     <div class="rounded">
     <div class = "price"> Price: <%= "$" + @phone.price.to_s %></div>
     <div class = "quantity">Quantity: <%= @phone.quantity == 0 ? "Sold out" : @phone.quantity %></div>
     </div>
+
+
+    <%= form_tag(create_cart_path, :method => "post") do |f| %>
+      <%= label_tag("quantity") %>
+      <%= select_tag("quantity", options_for_select(1..@phone.quantity)) %>
+      <%= hidden_field_tag(:phone_id, params[:id]) %>
+      <%= submit_tag("submit")%>
+    <% end %>
+
+
+        <div class="attr-container">
+          <div class="attr-box">
+            <div class = "attr-title-box">
+              <div class = "attr-title">OS</div>
+            </div>
+            <div class = "attr-value">
+                <%= @phone.os %>
+            </div>
+          </div>
+
+          <div class="attr-box">
+            <div class = "attr-title-box">
+              <div class = "attr-title">Screen</div>
+            </div>
+            <div class = "attr-value"> <%= @phone.screen %> </div>
+          </div>
+
+          <div class="attr-box">
+            <div class = "attr-title-box">
+              <div class = "attr-title">RAM</div>
+            </div>
+            <div class = "attr-value"> <%= @phone.ram %> </div>
+          </div>
+        </div>
+    </div>
+
   </div>
-</div>
+
+
+<table>
+  <tr class = "row">
+    <th class = "table-title"> SPECS <th>
+    <th> </th>
+  </tr>
+
+    <tr class = "row">
+      <td class = "table-value"> Screen Size <td class = "table-value"> <%= @phone.screen%> </td>
+    </tr>
+    <tr class = "row">
+      <td class = "table-value"> OS <td class = "table-value">  <%= @phone.os%> </td>
+    </tr>
+    <tr class = "row">
+      <td class = "table-value"> RAM <td class = "table-value"> <%= @phone.ram%> </td>
+    </tr>
+    <tr class = "row">
+      <td class = "table-value"> Front Camera <td class = "table-value">  <%= @phone.front_camera%> </td>
+    </tr>
+    <tr class = "row">
+      <td class = "table-value"> Back Camera <td class = "table-value"> <%= @phone.back_camera%> </td>
+    </tr>
+
+
+    <tr class = "row">
+      <td class = "table-value"> Battery <td class = "table-value">  <%= @phone.battery
+        %> </td>
+    </tr>
+
+    <tr class = "row">
+      <td class = "table-value"> Storage <td class = "table-value"> <%= @phone.storage%> </td>
+    </tr>
+      <td>
+    </tr>
+</table>

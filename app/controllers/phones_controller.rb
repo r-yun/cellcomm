@@ -1,4 +1,6 @@
 class PhonesController < ApplicationController
+
+
   def index
     @brand_names = Phone.select(:brand_name).distinct.order(:brand_name)
     @operating_systems = Phone.select(:os).distinct
@@ -21,16 +23,19 @@ class PhonesController < ApplicationController
     #If searchbox form submitted.
   elsif params[:search_field].present?
       @phones = Phone.search_algorithm(params[:search_field])
-
-        end
+    end
     #if already on controller action index, redirect_to else, nothing?
     #If the all checkbox checked.
 
 unless params[:executing_action] == "index"
   redirect_to(phones_path(:search_field => params[:search_field]))
-
 end
 
+  end
+
+  def show
+    @cart = Cart.new
+    @phone = Phone.find(params[:id])
   end
 
   #
@@ -59,7 +64,5 @@ def test
 
 end
 
-  def show
-    @phone = Phone.find(params[:id])
-  end
+
 end

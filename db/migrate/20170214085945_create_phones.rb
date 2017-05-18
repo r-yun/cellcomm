@@ -4,6 +4,7 @@ class CreatePhones < ActiveRecord::Migration[5.0]
       t.string "battery"
       t.string "back_camera"
       t.string "brand_name"
+      t.integer "cart_id"
       t.string "front_camera"
       t.string "image_1"
       t.string "os"

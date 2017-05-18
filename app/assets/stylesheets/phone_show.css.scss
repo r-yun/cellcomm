@@ -1,10 +1,54 @@
 @import "variables";
 
+nav ~*{
+  padding-top:0px;
+}
 *{
   margin: 0;
   padding:0;
 }
 
+.attr-box{
+  border: solid 1px black;
+  border-radius:4px;
+  font-family: $font_serif1;
+  height: 75px;
+  margin-right:60px;
+  text-align:center;
+  width: 80px;
+}
+
+ .attr-container{
+   display:flex;
+   height:100px;
+   justify-content: center;
+   margin-top:35px;
+   margin-left: -22px;
+   width:400px;
+ }
+.attr-title{
+  font-size:16px;
+  padding-top:2px;
+
+}
+
+.attr-title-box{
+  background-color: $teal;
+  border-bottom:solid 1px black;
+  border-radius: 4px 4px 0px 0px;
+  height: 20px;
+  width: 80px;
+  z-index:2
+}
+
+.attr-value{
+  font-size: 18px;
+  padding-top: 15px;
+
+}
+.row{
+  border-bottom: solid 1px blue;
+}
 .image-1{
 height:350px;
 width:350px;
@@ -17,17 +61,17 @@ width:350px;
 
 .product{
 border: solid black;
+display:flex;
+justify-content: center;
 height:500px;
 margin: 0 auto;
-padding-top:100px;
 width:1000px;
 }
 
 
 .product_info{
 display: flex;
-margin: 0 auto;
-width:700px;
+flex-flow: column;
 }
 .product_name{
   font-family:Arial;
@@ -45,7 +89,23 @@ width:700px;
   border-radius: 4px;
   font-family:$font_serif1;
   height:100px;
-  padding-top:30px;
   margin-top:30px;
+  padding-top:30px;
+  text-align:center;
   width:260px;
+}
+
+table{
+  border-collapse: collapse;
+  margin-left:200px;
+}
+
+.table-title{
+  font-family:$font_sans1;
+  font-size:30px;
+}
+
+.table-value{
+  font-family: $font-serif1;
+  font-size:24px;
 }
