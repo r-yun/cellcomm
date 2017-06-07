@@ -1,0 +1,44 @@
+@import "variables";
+
+.address-info label{
+  font-family: $font_serif1;
+  font-size: 20px;
+}
+
+.address-info input[type ="text"]{
+border: solid 0.5px black;
+border-radius: 4px;
+height: 40px;
+width: 300px;
+margin-bottom: 20px;
+}
+
+.address-info input[type="submit"]{
+  background-color: $teal;
+  border: solid 0.5px black;
+  border-radius: 4px;
+  display: block;
+  font-family: $font_serif1;
+  font-size: 18px;
+  height: 50px;
+  width: 200px;
+
+}
+
+.checkout-title{
+  font-family: $font-sans1;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+hr{
+  border: 1px solid black;
+  width: 500px;
+}
+
+.personal-info{
+  font-family: $font_sans1;
+  font-size: 30px;
+  font-weight: bold;
+  margin-top: 30px;
+}

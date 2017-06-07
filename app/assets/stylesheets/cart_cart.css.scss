@@ -1,0 +1,124 @@
+@import "variables";
+
+.cart-info{
+  align-items: center;
+  border: 0.5px solid black;
+  border-radius: 4px;
+  display: flex;
+  flex-flow: column;
+  height: 400px;
+  width:600px;
+
+}
+
+
+.cart-info div{
+  font-family: $font_sans1;
+  font-size: 30px;
+  margin-bottom:20px;
+}
+.checkout-button{
+  background-color: $teal;
+  border: solid 0.5px black;
+  border-radius:4px;
+  font-family: $font_serif1;
+  font-size: 20px;
+  height: 50px;
+  width: 150px;
+
+}
+
+.delivery-date{
+font-family: $font_serif1;
+font-size: 18px;
+margin-top: 10px;
+
+}
+
+.order-info{
+  display:flex;
+  margin-top: 20px;
+}
+
+.order-info-attributes{
+  display: flex;
+  flex-flow: column;
+}
+
+
+.order-info-headings{
+margin-right: 40px;
+
+
+}
+.order-info-title{
+  font-family: $font_sans1;
+  font-size: 23px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.phone{
+  font-family: $font_serif1;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.phone-image{
+  height:200px;
+  width:200px;
+}
+
+.phone-info{
+  display: flex;
+  flex-flow: column;
+  padding-top: 40px;
+}
+
+
+.phone-order{
+  justify-content: center;
+  display:flex;
+  padding-top: 20px;
+  width:400px;
+}
+
+
+.phone-order-container{
+  align-items: center;
+  border:solid 0.5px black;
+  border-radius: 4px;
+  display: flex;
+  flex-flow: column;
+  height: 290px;
+  margin-left: 80px;
+  margin-bottom: 20px;
+  position: relative;
+  width:600px;
+
+}
+
+.price{
+  font-family: $font_serif1;
+  font-size: 18px;
+}
+
+.quantity{
+  font-family: $font_serif1;
+  font-size: 18px;
+  margin-top:20px;
+  margin-bottom: 20px;
+}
+
+.remove-button{
+  background-color:orange;
+  border: solid 0.5px black;
+  border-radius: 4px;
+  font-family: $font_sans1;
+  font-size: 14px;
+  height:40px;
+  position: absolute;
+  top:0px;
+  right: 0px;
+  width:80px;
+}

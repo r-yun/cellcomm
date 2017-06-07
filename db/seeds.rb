@@ -13,11 +13,11 @@ Phone.create([
 
 {:phone_name => "Classic", :brand_name => "Blackberry", :ram => "2 GB", :screen => '3.5"', :os => "BB10",
 :battery => "2515 mAH", :front_camera => "2 MP", :back_camera => "8 MP",
-:storage => "16 GB", :release_date =>"17/12/2014" , :price => 499.99, :price_category => "1", :image_1 => "phones/classic.png", :quantity => 7},
+:storage => "16 GB", :release_date =>"17/12/2014" , :price => 499.99, :price_category => "1", :image_1 => "phones/classic.png", :quantity => 0},
 
 {:phone_name => "Priv", :brand_name => "Blackberry", :ram => "3 GB", :screen => '5.4"', :os => "Android",
 :battery => "3410 mAH", :front_camera => "2 MP", :back_camera => "18 MP",
-:storage => "32 GB", :release_date =>"16/11/2015" , :price => 799.99, :price_category => "3", :image_1 => "phones/priv.png", :quantity => 0},
+:storage => "32 GB", :release_date =>"16/11/2015" , :price => 799.99, :price_category => "3", :image_1 => "phones/priv.png", :quantity => 8},
 
 {:phone_name => "DTEK50", :brand_name => "Blackberry", :ram => "3 GB", :screen => '5.2"', :os => "BB10",
 :battery => "2610 mAH", :front_camera => "8 MP", :back_camera => "13 MP",

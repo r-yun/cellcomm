@@ -1,0 +1,16 @@
+<% if flash[:notice].present? %>
+<div class = "notice">
+<%= flash[:notice] %>
+</div>
+<%end%>
+<% @user.errors.full_messages.each do |msg| %>
+<%= msg %>
+<%end%>
+<%= @user.first_name %>
+<%= @user.last_name %>
+<%= @user.email %>
+<%= @user.address.address %>
+<%= @user.address.city %>
+<%= @user.address.province%>
+<%= @user.address.country %>
+<%= @user.address.postal_code %>

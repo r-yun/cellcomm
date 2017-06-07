@@ -1,0 +1,72 @@
+@import "variables";
+
+
+hr{
+  border: 1px solid black;
+  margin-top: 6px;
+  margin-bottom: 20px;
+  width:370px;
+}
+
+.signup-form{
+  border: solid 0.5px black;
+  display:flex;
+  flex-flow: column;
+  align-items:center;
+  height:700px;
+  width:500px;
+  position:relative;
+  left: 50%;
+  top: 50px;
+  transform: translateX(-50%)
+}
+
+.signup-form label{
+  font-family: $font_serif1;
+  font-size: 23px;
+  margin-top: 20px;
+  position: relative;
+  left: -135px;
+}
+
+.signup-form label:last-of-type{
+  left: -155px;
+}
+
+.signup-form input[type="text"], .signup-form input[type="password"]{
+  border: solid 0.5px black;
+  border-radius: 4px;
+  font-family: $font_serif1;
+  font-size:18px;
+  padding-left:10px;
+  height: 40px;
+  width: 360px;
+}
+
+.signup-form input[type="submit"]{
+  background-color: $teal;
+  border: solid 0.5px black;
+  border-radius: 4px;
+  display: block;
+  font-family: $font_serif1;
+  font-size: 25px;
+  height: 60px;
+  margin-top: 50px;
+  width: 230px;
+}
+
+.signup-form form {
+  display:flex;
+  flex-flow: column;
+  align-items:center;
+}
+.signup-title{
+  font-family: $font_sans1;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.signup-title-container{
+  padding-top:14px;
+  position: relative;
+}

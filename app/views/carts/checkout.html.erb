@@ -1,0 +1,66 @@
+<%= stylesheet_link_tag("cart_checkout", :media => "all") %>
+<%= stylesheet_link_tag("cart_cart", :media => "all") %>
+
+<% if @user.cart.cart_items.empty? %>
+Cart is empty
+<%else %>
+<% if @user.address && @user.address.errors.size > 0 %>
+<% @new_user.errors.full_messages.each do |msg| %>
+<%= msg %>
+
+<% end%>
+<% end %>
+<div class = "checkout-title">
+Checkout
+</div>
+
+<hr>
+<div class = "personal-info">
+Personal Info
+</div>
+
+<div class = "address-info">
+<%= form_for(@address, :url => update_address_path, :method => "post", :remote => true) do |f| %>
+<%= f.label(:address) %>
+<%= f.text_field(:address) %>
+<%= f.label(:city) %>
+<%= f.text_field(:city) %>
+<%= f.label(:province) %>
+<%= f.text_field(:province) %>
+<%= f.label(:country) %>
+<%= f.text_field(:country) %>
+<%= f.label(:postal_code) %>
+<%= f.text_field(:postal_code) %>
+<%= f.submit("Submit") %>
+<% end %>
+</div>
+
+
+<div id = "address">
+<%= render :partial => "user_address" %>
+</div>
+
+<%= form_tag(order_submit_path, :method => "post") do %>
+<% @user.cart.cart_items.each do |item| %>
+<%= hidden_field_tag(item.phone.id, item.quantity_sold) %>
+<%= hidden_field_tag("phones", item.phone.id)%>
+<% end %>
+<%= submit_tag("Submit Order")%>
+<% end %>
+
+
+<div id = "phone-orders">
+
+<%= render :partial => "cart_item.html.erb"%>
+</div>
+
+<%= render :partial => "cart_info.html.erb" %>
+
+
+<%end %>
+
+
+
+two problems: getting params to db
+
+*NOTE solution just use sessions in controller to update quantity with user.cart.phones with phone.id

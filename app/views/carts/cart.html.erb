@@ -1,13 +1,37 @@
-<div>
+<!-- Need to re-render entire partial _cart.html.erb in case @user.cart is empty  -->
 
-<%= User.find(session[:user_id]).first_name %>'s cart page
+<%=stylesheet_link_tag("cart_cart", :media => "all") %>
+<script>
+// function sendParams(phone_id){
+//   console.log("this is phone" + phone_id);
+//   $.ajax({
+//     url: "/carts/remove_item",
+//     type: "post",
+//     data: {"phone_id": phone_id},
+//   });
+// }
+//
+// $(function(){
+//   $(".remove-button").click(function(){
+//     var phone_id = $(this).attr("phone");
+//     sendParams(phone_id);
+//   // console.log("This is" +phone_id)
+//   });
+// });
+</script>
+<%= @user.first_name %>'s cart page
+<% if @user.cart.cart_items.empty? %>
+ Your cart is empty.
+<% else %>
+<div id = "phone-orders">
+<%= render :partial => "cart_item.html.erb" %>
+<%= render :partial => "cart_info.html.erb" %>
+
 </div>
 
 
+<% end %>
 <div>
-<% @user.cart.phones.each do |phone|%>
-<%= phone.phone_name %>
-<% end%>
- -->
+
 
 </div>

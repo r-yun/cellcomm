@@ -10,18 +10,57 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170514054652) do
+ActiveRecord::Schema.define(version: 20170531033001) do
+
+  create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "address"
+    t.string   "city"
+    t.string   "country"
+    t.string   "postal_code"
+    t.string   "province"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "cart_items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "cart_id"
+    t.integer  "phone_id"
+    t.integer  "quantity_sold"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
 
   create_table "carts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  create_table "carts_phones", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "cart_id"
+    t.integer "phone_id"
+    t.index ["cart_id", "phone_id"], name: "index_carts_phones_on_cart_id_and_phone_id", using: :btree
+  end
+
+  create_table "order_items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "order_id"
+    t.integer  "phone_id"
+    t.integer  "quantity_sold"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  create_table "orders", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.datetime "delivery_date"
+    t.string   "order_number"
+    t.integer  "user_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
   create_table "phones", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "battery"
     t.string   "back_camera"
     t.string   "brand_name"
-    t.integer  "cart_id"
     t.string   "front_camera"
     t.string   "image_1"
     t.string   "os"
@@ -33,7 +72,6 @@ ActiveRecord::Schema.define(version: 20170514054652) do
     t.datetime "release_date"
     t.string   "screen"
     t.string   "storage"
-    t.string   "weight"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.index ["brand_name"], name: "index_phones_on_brand_name", using: :btree
@@ -43,11 +81,12 @@ ActiveRecord::Schema.define(version: 20170514054652) do
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "cart_id"
-    t.string   "username"
+    t.integer  "address_id"
+    t.string   "email"
     t.string   "first_name"
     t.string   "last_name"
-    t.string   "email"
     t.string   "password_digest"
+    t.string   "username"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end

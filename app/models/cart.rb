@@ -1,5 +1,5 @@
 class Cart < ApplicationRecord
-  has_many :phones
-  accepts_nested_attributes_for :phones
+  has_and_belongs_to_many :phones
   has_one :user
+  has_many :cart_items
 end

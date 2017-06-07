@@ -4,7 +4,6 @@ class CreatePhones < ActiveRecord::Migration[5.0]
       t.string "battery"
       t.string "back_camera"
       t.string "brand_name"
-      t.integer "cart_id"
       t.string "front_camera"
       t.string "image_1"
       t.string "os"
@@ -16,7 +15,6 @@ class CreatePhones < ActiveRecord::Migration[5.0]
       t.datetime "release_date"
       t.string "screen"
       t.string "storage"
-      t.string "weight"
       t.timestamps
     end
     add_index("phones", "brand_name")

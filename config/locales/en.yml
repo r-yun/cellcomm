@@ -20,4 +20,21 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  activerecord:
+      attributes:
+        user/address:
+          address:
+            one: "Address"
+            other: "Addresses"
+          postal_code:
+            one: "Postal code"
+            other: "Postal codes"
+          city:
+            one: "City"
+            other: "Cities"
+          country:
+            one: "Country"
+            other: "Countries"
+          province:
+            one: "Province"
+            other: "Provinces"  

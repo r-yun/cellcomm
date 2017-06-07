@@ -7,4 +7,5 @@ def logged_in?
     redirect_to(login_page_path)
   end
 end
+
 end

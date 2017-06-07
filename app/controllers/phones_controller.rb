@@ -1,6 +1,5 @@
 class PhonesController < ApplicationController
 
-
   def index
     @brand_names = Phone.select(:brand_name).distinct.order(:brand_name)
     @operating_systems = Phone.select(:os).distinct
@@ -30,11 +29,10 @@ class PhonesController < ApplicationController
 unless params[:executing_action] == "index"
   redirect_to(phones_path(:search_field => params[:search_field]))
 end
-
+puts params[:executing_action]
   end
 
   def show
-    @cart = Cart.new
     @phone = Phone.find(params[:id])
   end
 

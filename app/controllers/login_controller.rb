@@ -18,7 +18,7 @@ class LoginController < ApplicationController
       redirect_to(phones_path)
     else
       flash[:notice] = "Invalid username/password combination."
-         redirect_to(login_page_path)
+       redirect_to(login_page_path)
       end
 
 
@@ -35,10 +35,10 @@ class LoginController < ApplicationController
   end
 
 def logout
-session[:user_id] = nil
-session[:username] = nil
-flash[:notice] = "You have been successfully logged out"
-redirect_to(phones_path)
+  session[:user_id] = nil
+  session[:username] = nil
+  flash[:notice] = "You have been successfully logged out"
+  redirect_to(phones_path)
 end
   def register
   end

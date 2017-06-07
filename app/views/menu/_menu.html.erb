@@ -13,8 +13,9 @@
   <%= link_to(image_tag("menu/account.png", :class => "icon"), login_page_path, :class => "account") %>
   <div id="dropdown">
     <%if session[:username] %>
-    You have been logged in as: <%=session[:username] %>
+    You have been logged in as: <%=session[:username] %> (make separate fonts for each and put space after username)
    <% end %>
+     <%=link_to("User Page", user_page_path) %>
     <%= link_to("Login", login_page_path, :class => "dropdown-link") %>
     <%= link_to("Register", new_user_path, :class => "dropdown-link") %>
    <%= link_to("Logout", logout_path, :class => "dropdown-link") %>
@@ -23,10 +24,20 @@
 
   </div>
 
-<%= link_to(image_tag("menu/emptycart.png", :class => "icon"), cart_page_path) %>
-
-
-
+<%if @user %>
+<% if @user.cart.cart_items.empty? %>
+<%= link_to(image_tag("menu/empty_cart.png", :class => "icon"), cart_page_path) %>
+<% elsif @user.cart.cart_items == 1 %>
+<%= link_to(image_tag("menu/cart1.png", :class => "icon"), cart_page_path) %>
+<% elsif @user.cart.cart_items.length == 2 %>
+<%= link_to(image_tag("menu/cart2.png", :class => "icon"), cart_page_path) %>
+<% else  %>
+<%= link_to(image_tag("menu/cart3.png", :class => "icon"), cart_page_path) %>
+<% end%>
+<% else %>
+<%= link_to(image_tag("menu/empty_cart.png", :class => "icon"), cart_page_path) %>
+else
+<% end %>
 </div>
 </nav>
 <div id = "placeholder">
