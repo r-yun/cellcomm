@@ -1,0 +1,8 @@
+<div class="error-container">
+  <div class = "error-intro">Please check the information entered for the following errors:</div>
+  <div class="errors">
+    <% @user.address.errors.full_messages.each do |msg| %>
+    <li> <%= msg %> </li>
+    <% end%>
+  </div>
+</div>

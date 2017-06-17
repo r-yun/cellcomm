@@ -1,0 +1,106 @@
+@import "variables";
+
+#account-form label{
+  font-family: $font_serif1;
+  font-size:20px;
+}
+
+#account-form input[type = "text"]{
+  border: solid 0.5px black;
+  border-radius: 4px;
+  font-family: $font_sans1;
+  font-size: 18px;
+  height:40px;
+  padding-left: 8px;
+  width:300px;
+  margin-bottom:12px;
+}
+
+#account-form input[type = "submit"]{
+  background-color:$teal;
+  border:solid 0.5px black;
+  border-radius: 4px;
+  font-family: $font_serif1;
+  font-size: 20px;
+  display: block;
+  height:50px;
+  width:150px;
+}
+
+.flash-notice{
+  width:575px;
+}
+hr{
+  border: solid 1px black;
+  margin-top:5px;
+  width:600px;
+}
+
+.image-1{
+  height:290px;
+  width:180px;
+  margin-right: 50px;
+}
+.order{
+  border: solid 0.5px black;
+  border-radius:4px;
+  display: flex;
+  height:300px;
+  margin-bottom: 20px;
+  position: relative;
+  width:600px;
+}
+
+.order-info{
+  padding-top:20px;
+}
+.order-number{
+  font-family: $font_serif1;
+  font-size:30px;
+  margin-bottom:10px;
+  margin-top:30px;
+  text-decoration:underline;
+
+}
+
+.order-info div{
+  font-family: $font_serif1;
+  font-size:24px;
+  margin-bottom: 20px;
+}
+
+.orders-title{
+  font-family: $font_sans1;
+  font-size: 38px;
+  font-weight: bold;
+  margin-top:30px;
+}
+#phone{
+  font-family: $font_serif1;
+  font-size:33px;
+  font-weight: bold;
+  margin-bottom: 45px;
+}
+.user-address-title{
+  font-family: $font_serif1;
+  font-size:22px;
+  margin-bottom: 10px;
+  margin-top:20px;
+
+}
+.user-page{
+  padding-left: 20px;
+  padding-top: 20px;
+}
+
+.user-page-title{
+  font-family: $font_sans1;
+  font-size:35px;
+  font-weight: bold;
+}
+
+.user-info{
+  font-family: $font_serif1;
+  font-size: 18px;
+  margin-bottom: 20px;
+}

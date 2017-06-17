@@ -1,19 +1,19 @@
 <%=stylesheet_link_tag("login_login_page", :media => "all") %>
 
-
-<% if flash[:notice].present? %>
-<div class = "notice">
-<%= flash[:notice] %>
-</div>
-<%end%>
-<div class = "login">
-<%= form_tag(authentication_path, :method => "post", :class => "user-form") do %>
-<%= label_tag("username")%>
-<%= text_field_tag(:username) %>
-<%= label_tag("password") %>
-<%= password_field_tag(:password) %>
-<%= submit_tag("Submit")%>
-<% end %>
-<%= link_to("New? Register here.", new_user_path, :class => "register-link") %>
-
+<div class="login-container">
+  <% if flash[:notice].present? %>
+    <div class = "flash-notice">
+      <%= flash[:notice] %>
+    </div>
+  <% end %>
+  <div class = "login">
+    <%= form_tag(authentication_path, :method => "post", :class => "user-form") do %>
+      <%= label_tag("username")%>
+      <%= text_field_tag(:username) %>
+      <%= label_tag("password") %>
+      <%= password_field_tag(:password) %>
+      <%= submit_tag("Submit")%>
+    <% end %>
+    <%= link_to("New? Register here.", new_user_path, :class => "register-link") %>
+  </div>
 </div>

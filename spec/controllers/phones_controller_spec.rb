@@ -42,8 +42,8 @@ RSpec.describe PhonesController, type: :controller do
       expect(assigns(:phones)).to eq(@test)
     end
 
-    it "returns the params[:search] method" do
-      post :search_results, params: {"search" => "blackberry"}
+    it "returns the params[:search_field] method" do
+      post :search_results, params: {"search_field" => "blackberry"}
       @test = Phone.search_algorithm("blackberry")
       expect(assigns(:phones)).to eq(@test)
     end

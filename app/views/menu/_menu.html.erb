@@ -1,44 +1,53 @@
 <nav>
-<%= link_to(image_tag("menu/logo.png", :id => "logo"), phones_path) %>
-<%= form_tag(search_results_path, :remote => true, :id => "search_form") do %>
-<%= text_field_tag(:search_field, params[:search], :placeholder => "Apple, iPhone 7") %>
-<%= hidden_field_tag :executing_action, params[:action] %>
+  <%= link_to(image_tag("menu/logo.png", :id => "logo"), phones_path) %>
+  <%= form_tag(search_results_path, :remote => true, :id => "search_form") do %>
+  <%= text_field_tag(:search_field, params[:search], :placeholder => "Example: Apple, Galaxy, etc.") %>
+  <%= hidden_field_tag :executing_action, params[:action] %>
+  <%= image_submit_tag("menu/search_button.png", :id => "search_button") %>
+  <% end %>
 
-<%= image_submit_tag("menu/search_button.png", :id => "search_button") %>
-<% end %>
+  <div class = "user_info">
+    <% if session[:username] %>
+      <div class = "icon-container logout">
+        <%= link_to(logout_path, :class => "account") do%>
+        <%= image_tag("menu/logout.png", :class => "icon logout-image") %>
+        <div class = "icon-logout">Logout</div>
+        <% end %>
+      </div>
+      <%end %>
+      <% unless session[:username] %>
+      <div class = "icon-container">
+        <%= link_to(login_page_path, :class => "account") do%>
+        <%= image_tag("menu/account.png", :class => "icon") %>
+        <div class="icon-signin">Sign in</div>
+        <% end %>
+      </div>
+      <% end %>
+      <%if session[:username] %>
+      <div class = "icon-container">
+        <%= link_to(user_page_path, :class => "account") do%>
+        <%= image_tag("menu/account.png", :class => "icon") %>
+        <div class="icon-account">Account</div>
+        <% end %>
+      </div>
+      <% end %>
 
 
-<div class = "user_info">
-  <div id="account">
-  <%= link_to(image_tag("menu/account.png", :class => "icon"), login_page_path, :class => "account") %>
-  <div id="dropdown">
-    <%if session[:username] %>
-    You have been logged in as: <%=session[:username] %> (make separate fonts for each and put space after username)
-   <% end %>
-     <%=link_to("User Page", user_page_path) %>
-    <%= link_to("Login", login_page_path, :class => "dropdown-link") %>
-    <%= link_to("Register", new_user_path, :class => "dropdown-link") %>
-   <%= link_to("Logout", logout_path, :class => "dropdown-link") %>
-
-  </div>
-
-  </div>
-
-<%if @user %>
-<% if @user.cart.cart_items.empty? %>
-<%= link_to(image_tag("menu/empty_cart.png", :class => "icon"), cart_page_path) %>
-<% elsif @user.cart.cart_items == 1 %>
-<%= link_to(image_tag("menu/cart1.png", :class => "icon"), cart_page_path) %>
-<% elsif @user.cart.cart_items.length == 2 %>
-<%= link_to(image_tag("menu/cart2.png", :class => "icon"), cart_page_path) %>
-<% else  %>
-<%= link_to(image_tag("menu/cart3.png", :class => "icon"), cart_page_path) %>
-<% end%>
-<% else %>
-<%= link_to(image_tag("menu/empty_cart.png", :class => "icon"), cart_page_path) %>
-else
-<% end %>
-</div>
+    <%if @user %>
+      <% if @user.cart.cart_items.empty? %>
+        <%= link_to(image_tag("menu/empty_cart.png", :class => "icon-cart"), cart_page_path) %>
+      <% elsif @user.cart.cart_items.length == 1 %>
+        <%= link_to(image_tag("menu/cart1.png", :class => "icon-cart"), cart_page_path) %>
+      <% elsif @user.cart.cart_items.length == 2 %>
+        <%= link_to(image_tag("menu/cart2.png", :class => "icon-cart"), cart_page_path) %>
+      <% else %>
+        <%= link_to(image_tag("menu/cart3.png", :class => "icon-cart"), cart_page_path) %>
+      <% end %>
+      <% else %>
+        <%= link_to(image_tag("menu/empty_cart.png", :class => "icon-cart"), cart_page_path) %>
+    <% end %>
+  </div> <!-- .user-info -->
 </nav>
+<!-- Div used to fill up space because the menu has position:fixed (occupies no space) -->
 <div id = "placeholder">
 </div>

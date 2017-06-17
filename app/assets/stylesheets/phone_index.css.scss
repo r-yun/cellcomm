@@ -12,7 +12,7 @@
   border-radius:4px;
   font-family: $font_serif1;
   height: 65px;
-  margin-right:60px;
+  margin-right:50px;
   text-align:center;
   width: 70px;
 }
@@ -22,7 +22,7 @@
    height:100px;
    justify-content: center;
    margin-top:35px;
-   margin-left: -22px;
+   margin-left: -24px;
    width:400px;
  }
 .attr-title{
@@ -76,20 +76,26 @@ body, html{
 .filter-container{
   border: solid 1px black;
   position: fixed;
-  top:108px;
-  width: 350px;
+  top:128px;
+  width: 300px;
 }
 
 .first{
 top:-50px;
 
 }
+
+.flash-notice{
+  width:618px;
+  margin-top: 0px;
+}
 .image-1{
   height:260px;
-  left:-30px;
-  position: relative;
+  margin-top:10px;
+  margin-left: 10px;
+  margin-right:60px;
   top: 10px;
-  width:250px;
+  width:180px;
 }
 
 input[type="checkbox"]{
@@ -97,7 +103,8 @@ input[type="checkbox"]{
   margin-left: 5px;
   margin-right: 5px;
   position: relative;
-  transform: scale(1.2);
+  height:15px;
+  width:15px;
 }
 
 label{
@@ -108,6 +115,7 @@ label{
 .page-container {
   display: flex;
   flex-flow: row wrap;
+  padding-left:10px;
   width: 100%;
 }
 
@@ -116,7 +124,7 @@ label{
   border-radius: 4px;
   height: 290px;
   margin-top:20px;
-  width: 650px;
+  width: 610px;
 }
 
 .phone-container:first-of-type{
@@ -124,10 +132,9 @@ label{
 }
 
 .phones-container{
-  height: 100%;
-  margin-left: 450px;
+  position: relative;
+  left: 30%;
   margin-top:30px;
-  width: 800px;
 }
 
 .price{
@@ -178,8 +185,6 @@ label{
 }
 
 
-
-
 .title-container{
   border-top: solid 1px black;
   border-bottom: solid 1px black;
@@ -195,4 +200,10 @@ label{
 
 .title-search{
   border-top: none;
+}
+
+@media (min-width:0px) and (max-width:1200px){
+  .phones-container{
+    left: 350px;
+  }
 }

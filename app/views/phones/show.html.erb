@@ -1,10 +1,7 @@
-
-
 <%= stylesheet_link_tag("phone_show", :media => "all") %>
 
 <script>
-<%= render(:partial => "index.js.erb") %>
-
+  <%= render(:partial => "index.js.erb") %>
 </script>
 
 <div class = "product_name"><%= @phone.brand_name %> <%= @phone.phone_name %></div>
@@ -13,76 +10,51 @@
   <%= image_tag(@phone.image_1, :class => "image-1") %>
   <div class="product_info">
     <div class="rounded-rectangle">
-    <div class = "price"> Price: <%= "$" + @phone.price.to_s %></div>
-    <div class = "quantity">Quantity: <%= @phone.quantity == 0 ? "Sold out" : @phone.quantity %></div>
+      <div class = "price"> Price: <%= "$" + @phone.price.to_s %></div>
+      <div class = "quantity">Quantity: <%= @phone.quantity == 0 ? "Sold out" :
+      @phone.quantity %></div>
     </div>
 
 
     <%= form_tag(create_cart_path(:phone_id => @phone.id), :method => "post") do |f| %>
-      <%= label_tag("quantity") %>
-      <%= select_tag("quantity", options_for_select(1..@phone.quantity), :class => "quantity-select") %>
+      <%= label_tag("quantity:", nil, :class => "quantity-available") %>
+      <%= select_tag("quantity", options_for_select(1..@phone.quantity),
+      :class => "quantity-select") %>
       <%= hidden_field_tag(@phone_id, params[:id]) %>
+      <% if @phone.quantity == 0 %>
+      <%= submit_tag("Add To Cart", :class => "button-cart", :disabled => true)%>
+      <% else %>
       <%= submit_tag("Add To Cart", :class => "button-cart")%>
+      <% end %>
     <% end %>
 
 
-        <div class="attr-container">
-          <div class="attr-box">
-            <div class = "attr-title-box">
-              <div class = "attr-title">OS</div>
-            </div>
-            <div class = "attr-value">
-                <%= @phone.os %>
-            </div>
-          </div>
-
-          <div class="attr-box">
-            <div class = "attr-title-box">
-              <div class = "attr-title">Screen</div>
-            </div>
-            <div class = "attr-value"> <%= @phone.screen %> </div>
-          </div>
-
-          <div class="attr-box">
-            <div class = "attr-title-box">
-              <div class = "attr-title">RAM</div>
-            </div>
-            <div class = "attr-value"> <%= @phone.ram %> </div>
-          </div>
+    <div class="attr-container">
+      <div class="attr-box">
+        <div class = "attr-title-box">
+          <div class = "attr-title">OS</div>
         </div>
-    </div>
+        <div class = "attr-value">
+          <%= @phone.os %>
+        </div>
+      </div>
 
+      <div class="attr-box">
+        <div class = "attr-title-box">
+          <div class = "attr-title">Screen</div>
+        </div>
+        <div class = "attr-value"> <%= @phone.screen %> </div>
+      </div>
+
+      <div class="attr-box">
+        <div class = "attr-title-box">
+          <div class = "attr-title">RAM</div>
+        </div>
+        <div class = "attr-value"> <%= @phone.ram %> </div>
+      </div>
+    </div>
   </div>
 
+</div>
 
-<table>
-  <tr class = "row">
-    <th class = "table-title"> SPECS <th>
-    <th> </th>
-  </tr>
-
-    <tr class = "row">
-      <td class = "table-value"> <div class = "table-attr">Screen Size</div> <div class = "table-attr-value"><%= @phone.screen%></div></td>
-    </tr>
-    <tr class = "row">
-      <td class = "table-value"> <div class = "table-attr">OS</div> <div class = "table-attr-value"><%= @phone.os%></div></td>
-    </tr>
-    <tr class = "row">
-      <td class = "table-value"> <div class = "table-attr">RAM </div> <div class = "table-attr-value"><%= @phone.ram%></div></td>
-    </tr>
-    <tr class = "row">
-      <td class = "table-value"> <div class = "table-attr">Front Camera</div> <div class = "table-attr-value"><%= @phone.front_camera%></div></td>
-    </tr>
-    <tr class = "row">
-      <td class = "table-value"> <div class = "table-attr">Back Camera</div> <div class = "table-attr-value"><%= @phone.back_camera%></div></td>
-    </tr>
-    <tr class = "row">
-      <td class = "table-value"> <div class = "table-attr">Battery</div> <div class = "table-attr-value"><%= @phone.battery%></div></td>
-       </td>
-    </tr>
-    <tr class = "row">
-      <td class = "table-value"> <div class = "table-attr">Storage</div> <div class = "table-attr-value"><%= @phone.storage%></div></td>
-    </tr>
-      <td>
-    </tr>
-</table>
+<%= render :partial => "show_table.html.erb" %>

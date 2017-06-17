@@ -1,4 +1,4 @@
-
+@import "variables";
 *{
   margin:0;
   padding: 0;
@@ -10,52 +10,100 @@ a{
 }
 
 
-#account:hover>#dropdown{
-  display:block;
-  position:absolute;
-  top:100px;
-  width:200px;
+.error-container{
+  background-color: $teal;
+  border: solid 0.5px black;
+  border-radius: 4px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  min-height:50px;
+  padding-bottom: 15px;
+  padding-left: 20px;
+  padding-top: 15px;
+  width:600px;
 }
 
-#account{
-  display:flex;
-  flex-flow: column;
-
+.error-intro{
+  font-family: $font_sans1;
+  font-size:18px;
+  font-weight:bold;
+  margin-bottom: 15px;
 }
 
-#dropdown{
-  border:solid black;
-  display:none;
-  height:200px;
-  width:200px;
+.errors{
+  font-family: $font_serif1;
+  font-size: 16px;
 }
 
-.dropdown-link{
-  display:block;
+.flash-notice{
+  background-color: $teal;
+  border: 0.5px solid black;
+  border-radius: 4px;
+  font-family: $font_serif1;
+  font-size: 16px;
+  margin-top:20px;
+  padding: 15px;
 }
 
 .icon{
-  height:90px;
+  display: block;
+  height:70px;
   margin-right:30px;
-  width:90px;
+  width:80px;
 }
+.icon-account{
+  position:relative;
+  left:5px;
+}
+.icon-cart{
+  height:100px;
+  position:relative;
+  top: -5px;
+  width:100px;
+
+}
+
+.icon-signin{
+  position: relative;
+  left:8px;
+}
+
+.icon-container{
+  font-family: $font_sans1;
+  font-size:18px;
+  font-weight: bold;
+
+}
+
 
 label{
   display:block;
 }
 
+
 #logo{
   height: 90px;
+  margin-top:5px;
   width: 90px;
 }
 
+.logout{
+  padding-top:6px;
+}
+.logout-image{
+  height:60px;
+  margin-bottom:5px;
+}
+.mobile-menu{
+  display:flex;
+  height:100px;
+}
 nav{
-  background-color: #cfe4ea;
+  background-color: #f4f6f7;
   border: solid 0.5px black;
   display:flex;
   height:100px;
   padding-left: 20px;
-  padding-top: 8px;
   position: fixed;
   width:100%;
   z-index:1;
@@ -69,33 +117,41 @@ nav{
 
 }
 #search_form{
-  margin-left:-10px;
-  margin-right:20px;
-  padding-top:10px;
+  padding-left:50px;
+  padding-top:30px;
+  position: relative;
+
+
 }
 
 #search_button{
-  height:47.5px;
-  position: relative;
-  top:19px;
-  left: -5px;
+  display:inline-block;
+  height:47px;
+  left: -4px;
+  position:relative;
+  top:-3px;
   width:50px;
 }
 
 #search_field{
   border: solid 0.5px black;
   border-radius:4px;
+  font-family: $font_sans1;
+  font-size: 18px;
   height: 25px;
-  margin-left:50px;
   padding-bottom: 10px;
-  padding-left: 3px;
+  padding-left: 8px;
   padding-top: 10px;
-  width: 450px;
+  position: relative;
+  top:-20px;
+
+  width: 350px;
 }
+
 
 
 .user_info{
   display:flex;
-  margin-left:auto;
+  margin-left: auto;
   margin-right:30px;
 }

@@ -1,7 +1,21 @@
-User Address:
+<% if @user.address && @user.address.errors.size > 0 %>
+  <%= render :partial => "application/error.html.erb" %>
+<%elsif flash[:notice].present? %>
+  <div class = "flash-notice">
+    <%= flash[:notice] %>
+  </div>
+<%end%>
 
-<%= @user.address.address %>
-<%= @user.address.city %>
-<%= @user.address.province %>
-<%= @user.address.country %>
-<%= @user.address.postal_code %>
+
+<div class="user-address">
+
+  <div>User Address:</div>
+
+  <div><%= @user.address.address %></div>
+
+  <div>
+    <%= @user.address.city %>, <%= @user.address.province %>,
+    <%= @user.address.country %> &nbsp; <%= @user.address.postal_code %>
+  </div>
+  
+</div>

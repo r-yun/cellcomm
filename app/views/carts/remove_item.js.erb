@@ -1,4 +1,6 @@
 var phone_orders = document.getElementById("phone-orders");
+var phone_cart = document.getElementById("phone-cart")
 var menu = document.getElementById("menu");
-phone_orders.innerHTML = "<%= j render :partial => 'cart_item.html.erb', :layout => false%>"
-menu.innerHTML = "<%= j render :partial => 'menu/menu.html.erb', :layout => false%>"
+phone_cart.innerHTML = "<%= j render :partial => 'cart_info.html.erb', :layout => false %>";
+phone_orders.innerHTML = "<%= j render :partial => 'cart_item.html.erb', :layout => false %>";
+menu.innerHTML = "<%= j render :partial => 'menu/menu.html.erb', :layout => false %>";

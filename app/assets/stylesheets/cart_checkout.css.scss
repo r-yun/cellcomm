@@ -6,11 +6,15 @@
 }
 
 .address-info input[type ="text"]{
-border: solid 0.5px black;
-border-radius: 4px;
-height: 40px;
-width: 300px;
-margin-bottom: 20px;
+  border: solid 0.5px black;
+  border-radius: 4px;
+  font-family: $font_sans1;
+  font-size: 18px;
+  height: 40px;
+  margin-bottom: 20px;
+  padding-left: 8px;
+  width: 300px;
+
 }
 
 .address-info input[type="submit"]{
@@ -21,24 +25,70 @@ margin-bottom: 20px;
   font-family: $font_serif1;
   font-size: 18px;
   height: 50px;
+  margin-left: 50px;
+  margin-top: 10px;
   width: 200px;
 
 }
+.cart-info{
+  margin-top: 20px;
+}
 
+.checkout-container{
+  padding-left:30px;
+  padding-top:30px;
+}
 .checkout-title{
   font-family: $font-sans1;
   font-size: 40px;
   font-weight: bold;
 }
 
-hr{
-  border: 1px solid black;
-  width: 500px;
+.error-container{
+  background-color: $teal;
+  border: solid 0.5px black;
+  border-radius: 4px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  min-height:50px;
+  padding-bottom: 15px;
+  padding-left: 20px;
+  padding-top: 15px;
+  width:580px;
 }
 
-.personal-info{
+.error-intro{
   font-family: $font_sans1;
-  font-size: 30px;
-  font-weight: bold;
-  margin-top: 30px;
+  font-size:18px;
+  font-weight:bold;
+  margin-bottom: 15px;
+}
+
+.errors{
+  font-family: $font_serif1;
+  font-size: 16px;
+}
+
+.flash-notice{
+  width:600px;
+  margin-bottom: 20px;
+}
+
+hr{
+  border: 1px solid black;
+  width: 630px;
+}
+
+
+.user-address div{
+  font-family: $font_serif1;
+  font-size: 20px;
+}
+.user-address div:first-of-type{
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.user-address div:last-of-type{
+  margin-bottom: 30px;
 }

@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag("menu", :media => "all") %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -10,8 +13,8 @@
 
   <body>
     <div id ="menu">
-    <%= render :partial => "menu/menu.html.erb" %>
-  </div>
+      <%= render :partial => "menu/menu.html.erb" %>
+    </div>
     <%= yield %>
   </body>
 </html>

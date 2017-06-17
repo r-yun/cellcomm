@@ -52,11 +52,15 @@
   font-family: $font_serif1;
   font-size: 20px;
   height:50px;
+  position: relative;
+  top: -15px;
   width:150px;
 }
 .image-1{
-  height:450px;
-  width:450px;
+  margin-top: 10px;
+  margin-right:80px;
+  height:350px;
+  width:220px;
 }
 
 .price{
@@ -89,10 +93,19 @@ flex-flow: column;
   font-size:26px;
 }
 
-.quantity-select{
-  appearance: none;
-  font-size: 14px;
+.quantity-available{
+  font-family: $font_serif1;
+  font-size:22px;
+  margin-top:15px;
+  margin-bottom: -8px;
 }
+
+.quantity-select{
+  font-size: 20px;
+  margin-left:20px;
+  margin-right:60px;
+}
+
 
 .remove-button{
   width:200px;

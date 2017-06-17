@@ -1,6 +1,13 @@
 @import "variables";
 
 
+.error-container{
+  left: 50%;
+  margin-bottom: 0px;
+  position: relative;
+  transform: translateX(-50%);
+}
+
 hr{
   border: 1px solid black;
   margin-top: 6px;
@@ -8,36 +15,37 @@ hr{
   width:370px;
 }
 
+
 .signup-form{
+  align-items:center;
   border: solid 0.5px black;
   display:flex;
   flex-flow: column;
-  align-items:center;
   height:700px;
-  width:500px;
-  position:relative;
   left: 50%;
-  top: 50px;
-  transform: translateX(-50%)
+  position:relative;
+  top: 30px;
+  transform: translateX(-50%);
+  width:500px;
 }
 
 .signup-form label{
   font-family: $font_serif1;
   font-size: 23px;
+  left: -135px;
   margin-top: 20px;
   position: relative;
-  left: -135px;
 }
 
-.signup-form label:last-of-type{
+.signup-form label[for="user_email"]{
   left: -155px;
 }
 
 .signup-form input[type="text"], .signup-form input[type="password"]{
   border: solid 0.5px black;
   border-radius: 4px;
-  font-family: $font_serif1;
-  font-size:18px;
+  font-family: $font_sans1;
+  font-size:22px;
   padding-left:10px;
   height: 40px;
   width: 360px;

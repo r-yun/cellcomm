@@ -1,5 +1,5 @@
 class PhonesController < ApplicationController
-
+  before_action :user
   def index
     @brand_names = Phone.select(:brand_name).distinct.order(:brand_name)
     @operating_systems = Phone.select(:os).distinct
@@ -16,20 +16,19 @@ class PhonesController < ApplicationController
   def search_results
     if params[:all].present?
       @phones = Phone.all.order(:brand_name)
-    #If any checkbox besides all got checked.
+      #If any checkbox besides all got checked.
     elsif params[:brand_name].present?|| params[:os].present? || params[:price_category].present?
       @phones = Phone.checkbox_search(request.POST)
-    #If searchbox form submitted.
-  elsif params[:search_field].present?
+      #If searchbox form submitted.
+    elsif params[:search_field].present?
       @phones = Phone.search_algorithm(params[:search_field])
     end
     #if already on controller action index, redirect_to else, nothing?
     #If the all checkbox checked.
 
-unless params[:executing_action] == "index"
-  redirect_to(phones_path(:search_field => params[:search_field]))
-end
-puts params[:executing_action]
+    unless params[:executing_action] == "index"
+      redirect_to(phones_path(:search_field => params[:search_field]))
+    end
   end
 
   def show
@@ -56,11 +55,6 @@ puts params[:executing_action]
   #
   # end
 
-
-
-def test
-
-end
 
 
 end

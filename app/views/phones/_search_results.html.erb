@@ -1,47 +1,47 @@
 <% if @phones.present? %>
 
-  <% @phones.each do |phone| %>
-    <div class = "phone-container">
-    <%= link_to(image_tag(phone.image_1, :class => "image-1"), phone_path(phone)) %>
+<% @phones.each do |phone| %>
+<div class = "phone-container">
+  <%= link_to(image_tag(phone.image_1, :class => "image-1"), phone_path(phone)) %>
 
-      <div class="phone-info">
-      <div class = "phone-title"> <%= link_to(phone.brand_name + " " + phone.phone_name, phone_path(phone)) %>
-         <!-- <%=  phone.brand_name + " " + phone.phone_name %>  --></div>
-      <div class = "pq-box">
-        <div class = "price"> Price: <%= "$" + phone.price.to_s %> </div>
-        <div class = "quantity"> Quantity: <%= phone.quantity == 0 ? "Sold out" : phone.quantity %> </div>
-      </div>
-
-      <div class="attr-container">
-        <div class="attr-box">
-          <div class = "attr-title-box">
-            <div class = "attr-title">OS</div>
-          </div>
-          <div class = "attr-value">
-              <%= phone.os %>
-          </div>
-        </div>
-
-        <div class="attr-box">
-          <div class = "attr-title-box">
-            <div class = "attr-title">Screen</div>
-          </div>
-          <div class = "attr-value"> <%= phone.screen %> </div>
-        </div>
-
-        <div class="attr-box">
-          <div class = "attr-title-box">
-            <div class = "attr-title">RAM</div>
-          </div>
-          <div class = "attr-value"> <%= phone.ram %> </div>
-        </div>
-      </div>
-</div>
-
+  <div class="phone-info">
+    <div class = "phone-title">
+      <%= link_to(phone.brand_name + " " + phone.phone_name, phone_path(phone)) %>
     </div>
 
+    <div class = "pq-box">
+      <div class = "price"> Price: <%= "$" + phone.price.to_s %> </div>
+      <div class = "quantity"> Quantity: <%= phone.quantity == 0 ? "Sold out" : phone.quantity %> </div>
+    </div>
 
-  <% end %>
+    <div class="attr-container">
+      <div class="attr-box">
+        <div class = "attr-title-box">
+          <div class = "attr-title">OS</div>
+        </div>
+        <div class = "attr-value">
+          <%= phone.os %>
+        </div>
+      </div>
+
+      <div class="attr-box">
+        <div class = "attr-title-box">
+          <div class = "attr-title">Screen</div>
+        </div>
+        <div class = "attr-value"> <%= phone.screen %> </div>
+      </div>
+
+      <div class="attr-box">
+        <div class = "attr-title-box">
+          <div class = "attr-title">RAM</div>
+        </div>
+        <div class = "attr-value"> <%= phone.ram %> </div>
+      </div> <!-- .attr-box -->
+    </div> <!-- .attr-container -->
+  </div> <!-- .phone-info -->
+</div> <!-- .phone-container -->
+
+<% end %>
 <% else %>
 
 <div id = "nothing-found">

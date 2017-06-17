@@ -1,0 +1,31 @@
+
+<% if @user.address.valid? %>
+  <%= form_tag(order_submit_path, :method => "post") do %>
+    <% @user.cart.cart_items.each do |item|%>
+    <div class = "phone-order-container">
+      <div class = "phone-order">
+        <%= image_tag(item.phone.image_1, :class => "phone-image") %>
+        <div class = "phone-info">
+          <%= link_to "<button class = 'remove-button'>Remove</button>".html_safe, remove_item_path(:phone_id => item.phone.id), :method => "post", :phone_id => item.phone.id, :remote => true%>
+          <div class = "phone"><%= item.phone.brand_name + " " + item.phone.phone_name %></div>
+          <div class="quantity">  Quantity :<%= select_tag(item.phone.id.to_s,
+          options_for_select(1..item.phone.quantity, item.quantity_sold),
+          :class => "quantity-select") %>
+        </div>
+
+        <div class = "price">
+          Price: $<%= item.phone.price%>
+        </div>
+      </div>
+
+    </div>
+    <div class = "delivery-date">
+      <% t = Time.now + 7.days %>
+      Estimated Delivery Date: <%= t.strftime("%B %d, %Y") %>
+    </div>
+    </div>
+  <% end %>
+
+    <%= submit_tag("Purchase", :class => "checkout-button") %>
+  <% end %> <!-- form_tag -->
+<% end %> <!-- @user.address.valid? -->

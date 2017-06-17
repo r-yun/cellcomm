@@ -1,5 +1,13 @@
 @import "variables";
-
+.back{
+  font-family: $font-sans1;
+  font-size: 24px;
+  text-decoration: underline
+}
+.cart-container{
+  padding-left: 40px;
+  padding-top: 20px;
+}
 .cart-info{
   align-items: center;
   border: 0.5px solid black;
@@ -7,34 +15,52 @@
   display: flex;
   flex-flow: column;
   height: 400px;
-  width:600px;
-
+  margin-bottom:50px;
+  position: relative;
+  width:650px;
 }
-
 
 .cart-info div{
   font-family: $font_sans1;
   font-size: 30px;
   margin-bottom:20px;
 }
+
 .checkout-button{
   background-color: $teal;
   border: solid 0.5px black;
   border-radius:4px;
   font-family: $font_serif1;
-  font-size: 20px;
-  height: 50px;
-  width: 150px;
-
+  font-size: 28px;
+  height: 65px;
+  left: 220px;
+  position: absolute;
+  top: 310px;
+  width: 220px;
 }
 
 .delivery-date{
 font-family: $font_serif1;
 font-size: 18px;
+font-style: italic;
 margin-top: 10px;
 
 }
 
+.empty-cart{
+  font-family: $font-sans1;
+  font-size: 30px;
+  font-weight: bold;
+  margin-top: 40px;
+  margin-bottom:5px;
+}
+hr{
+  border: solid 1px black;
+  width:650px;
+  margin-top: 5px;
+  margin-bottom: 20px;
+
+}
 .order-info{
   display:flex;
   margin-top: 20px;
@@ -60,27 +86,33 @@ margin-right: 40px;
 
 .phone{
   font-family: $font_serif1;
-  font-size: 28px;
+  font-size: 32px;
   font-weight: bold;
 }
 
 .phone-image{
-  height:200px;
-  width:200px;
+  height:250px;
+  width:150px;
 }
 
 .phone-info{
   display: flex;
   flex-flow: column;
-  padding-top: 40px;
+  margin-left: 50px;
+  padding-top: 60px;
+  width: 400px;
+
 }
 
 
 .phone-order{
   justify-content: center;
   display:flex;
-  padding-top: 20px;
-  width:400px;
+  width:600px;
+}
+
+#phone-orders-container{
+  position:relative;
 }
 
 
@@ -91,34 +123,43 @@ margin-right: 40px;
   display: flex;
   flex-flow: column;
   height: 290px;
-  margin-left: 80px;
   margin-bottom: 20px;
   position: relative;
-  width:600px;
+  width:650px;
 
 }
 
 .price{
   font-family: $font_serif1;
-  font-size: 18px;
+  font-size: 22px;
 }
 
 .quantity{
   font-family: $font_serif1;
-  font-size: 18px;
-  margin-top:20px;
-  margin-bottom: 20px;
+  font-size: 22px;
+  margin-top: 25px;
+  margin-bottom: 25px;
 }
 
+.quantity-select{
+  font-size: 20px;
+  margin-left:8px;
+}
 .remove-button{
-  background-color:orange;
+  background-color:#ffb263;
   border: solid 0.5px black;
   border-radius: 4px;
   font-family: $font_sans1;
   font-size: 14px;
   height:40px;
   position: absolute;
-  top:0px;
-  right: 0px;
+  top:5px;
+  right: 7px;
   width:80px;
+}
+
+.shopping-cart{
+  font-family: $font_sans1;
+  font-size: 45px;
+  font-weight:bold;
 }

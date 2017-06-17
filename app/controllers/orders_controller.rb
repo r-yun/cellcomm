@@ -1,4 +1,6 @@
 class OrdersController < ApplicationController
+  before_action :user
+
   def index
   end
 
@@ -17,10 +19,7 @@ class OrdersController < ApplicationController
         order_item.order = order
         order_item.save
     end
-
-
     order.update_attributes(:delivery_date => delivery_date, :order_number =>
     order_number, :user_id => @user)
-
-end
+  end
 end

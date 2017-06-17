@@ -1,16 +1,38 @@
 <% if flash[:notice].present? %>
-<div class = "notice">
-<%= flash[:notice] %>
+  <div class = "flash-notice">
+    <%= flash[:notice] %>
+  </div>
+<%end%>
+
+<% if @user && @user.errors.size > 0 %>
+  <div class="error-container">
+    <div class = "error-intro">Please check the information entered for the following errors:</div>
+    <div class="errors">
+      <% @user.errors.full_messages.each do |msg| %>
+      <li> <%= msg %> </li>
+      <% end%>
+    </div>
+  </div>
+<% end %>
+
+
+<div class="user-address-title">
+  Address:
 </div>
-<%end%>
-<% @user.errors.full_messages.each do |msg| %>
-<%= msg %>
-<%end%>
-<%= @user.first_name %>
-<%= @user.last_name %>
-<%= @user.email %>
-<%= @user.address.address %>
-<%= @user.address.city %>
-<%= @user.address.province%>
-<%= @user.address.country %>
-<%= @user.address.postal_code %>
+<div class="user-info">
+  <div class = "user-name">
+    <%= @user.first_name %> <%= @user.last_name %>
+  </div>
+  <div class="user-email">
+    <%= @user.email %>
+  </div>
+
+  <div class="user-address">
+    <%= @user.address.address %>
+  </div>
+
+  <div class="user-location">
+    <%= @user.address.city %> <%= @user.address.province%>
+    <%= @user.address.country %> <%= @user.address.postal_code %>
+  </div>
+</div>
