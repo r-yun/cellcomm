@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe PhonesController, type: :controller do
-  describe "GET index" do
+  describe "index (GET)" do
     before(:example) { get :index }
     context "index testing" do
       it "returns an http status of ok" do
@@ -28,22 +28,22 @@ RSpec.describe PhonesController, type: :controller do
   end # describe
 
 
-  describe "POST search_results" do
+  describe "search_results (POST)" do
 
     it "returns the params[:all] method" do
-      post :search_results, params: {"all" => "true"}
+      post :search_results, :params => {"all" => "true"}
       @test = Phone.all.order(:brand_name)
       expect(assigns(:phones)).to eq(@test)
     end
 
     it "returns the params[:brand_name] method" do
-      post :search_results, params: {"brand_name" => "Samsung"}
+      post :search_results, :params => {"brand_name" => "Samsung"}
       @test = Phone.checkbox_search("brand_name" => "Samsung")
       expect(assigns(:phones)).to eq(@test)
     end
 
     it "returns the params[:search_field] method" do
-      post :search_results, params: {"search_field" => "blackberry"}
+      post :search_results, :params => {"search_field" => "blackberry"}
       @test = Phone.search_algorithm("blackberry")
       expect(assigns(:phones)).to eq(@test)
     end

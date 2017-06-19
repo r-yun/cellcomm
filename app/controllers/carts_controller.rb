@@ -24,7 +24,7 @@ class CartsController < ApplicationController
   end #create_cart
 
   def cart
-    total
+    calculate_totals
   end
 
   def update_address
@@ -40,17 +40,17 @@ class CartsController < ApplicationController
 
   def cart_process
     @phones = Phone.all
-    params_hash = params.slice(*[*"1"..@phones.length.to_s])
-    params_hash.each do |k,v|
-      cart_item = @user.cart.cart_items.where(:phone_id => k).first
-      cart_item.update_attributes(:phone_id => k, :quantity_sold => v, :cart => @user.cart)
+    @params_hash = params.slice(*[*"1"..@phones.length.to_s])
+    @params_hash.each do |k,v|
+      @cart_item = @user.cart.cart_items.where(:phone_id => k).first
+      @cart_item.update_attributes(:phone_id => k, :quantity_sold => v, :cart => @user.cart)
     end
     redirect_to(checkout_path)
   end
 
   def checkout
     @address = @user.address
-    total
+    calculate_totals
   end
 
   def order_submit
@@ -67,21 +67,20 @@ class CartsController < ApplicationController
       order_item.order = order
       order_item.save
     end
-
     order.update_attributes(:delivery_date => delivery_date, :order_number =>
     order_number, :user_id => session[:user_id])
-
     @user.cart.cart_items.destroy_all
     redirect_to(user_page_path)
   end
 
   def remove_item
     @delete_phone = Phone.find(params[:phone_id])
-    @user.cart.cart_items.where(:phone_id => params[:phone_id]).destroy_all
-    total
+    @cart_items = @user.cart.cart_items.where(:phone_id => params[:phone_id])
+    @cart_items.destroy_all
+    calculate_totals
   end
 
-  def total
+  def calculate_totals
     phones_array = []
     @user = User.find(session[:user_id])
     if @user.cart.cart_items.present?
@@ -101,9 +100,6 @@ class CartsController < ApplicationController
     params.require(:address).permit(:address, :postal_code, :province, :country, :city)
   end
 
-  def carts_params
-    params.require(:cart)
-  end
 
 
 end

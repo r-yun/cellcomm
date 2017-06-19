@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   post "carts/create_cart", :as => "create_cart"
   post "carts/order_submit", :as => "order_submit"
   post "carts/cart_process", :as => "cart_process"
+  post "carts/calculate_totals", :as => "calculate_totals"
   post "/login/authentication", :as => "authentication"
   post "/phones/search_results", :to => "phones#search_results", :as => "search_results"
   post "/phones/search_button", :as => "search_button"
