@@ -1,6 +1,21 @@
 class UsersController < ApplicationController
   before_action :user
 
+  def create
+    @new_user = User.new(new_user_params)
+    if @new_user.save
+      flash[:notice] = "You have successfully registered."
+      @cart = Cart.create
+      @address = Address.new
+      @address.save(:validate => false)
+      @new_user.update_attributes(:cart_id => @cart.id, :address_id => @address.id)
+      redirect_to(phones_path)
+    else
+      flash.now[:notice] = "You have not successfully registered."
+      render("new")
+    end
+  end
+
   def new
     @new_user = User.new
   end
@@ -16,26 +31,7 @@ class UsersController < ApplicationController
 
   def user_page
     @user = User.find(session[:user_id])
-    @address =  @user.address || @user.build_address
-  end
-
-
-  def create
-    @new_user = User.new(new_user_params)
-    if @new_user.save
-      flash[:notice] = "You have successfully registered."
-      @cart = Cart.create
-      @address = Address.new
-      @address.save(:validate => false)
-      #cart_id.save in cart.create
-      @new_user.update_attributes(:cart_id => @cart.id, :address_id => @address.id)
-
-      #need to add to session[:username] so do not have to signi in again
-      redirect_to(phones_path)
-    else
-      flash.now[:notice] = "You have not successfully registered."
-      render("new")
-    end
+    @address =  @user.address || @user.create_address
   end
 
   private

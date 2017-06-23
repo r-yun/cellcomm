@@ -1,60 +1,61 @@
 require 'rails_helper'
 
 RSpec.describe Phone, type: :model do
-  describe "search box algorithm" do
+
+  before(:context){load("db/seeds.rb")}
+
+  after(:context){ Phone.destroy_all}
+  describe "Search box algorithm (search_algorithm)"  do
     context "Search query is 2 characters or less" do
 
-      it "does not return any objects" do
-       Phone.create([{:brand_name => "Blackberry"}, {:brand_name => "Google"}])
-        @test = Phone.search_algorithm("bl")
-        #why does return nil?
-        expect(@test.nil?).to eq(true)
+      it "does not return any search results if the search query is 2 characters or less" do
+        @search_results = Phone.search_algorithm("bl")
+        expect(@search_results.nil?).to eq(true)
       end
     end
 
     context "search query is 1 word (more than 2 characters)" do
 
-      it "returns brand name of query" do
-        Phone.create([{:brand_name => "Blackberry"}, {:brand_name => "Google"}])
-        @test = Phone.search_algorithm("Blackberry")
-        expect(@test.count).to eq(1)
-        expect(@test.first).to have_attributes(:brand_name => "Blackberry")
+      it "returns the appropriate search results when the query has a brand in it" do
+        @search_results = Phone.search_algorithm("Blackberry")
+        expect(@search_results.all?{|phone| phone.brand_name == "Blackberry"}).to eq(true)
       end
     end
 
 
     context "search query is 2 words (combined more than 2 characters)" do
-
-      it "returns two separate brands when the query is two brands" do
-        Phone.create([{:brand_name => "Blackberry"}, {:brand_name => "Google"}])
-        @test = Phone.search_algorithm("Blackberry Google")
-        expect(@test.count).to eq(2)
-        expect(@test.find_by_brand_name(:Blackberry)).to have_attributes(:brand_name => "Blackberry")
-        expect(@test.find_by_brand_name(:Google)).to have_attributes(:brand_name => "Google")
+      it "returns the appropriate search results when the query has two brands in it" do
+        @search_results = Phone.search_algorithm("Blackberry Google")
+        expect(@search_results.all?{|phone| phone.brand_name == "Blackberry" || phone.brand_name == "Google"}).
+        to eq(true)
       end
 
-      it "returns a phone and a brand when the query has a phone and a brand in it" do
-        Phone.create([{:brand_name => "Blackberry", :phone_name => "Priv"}, {:brand_name => "Google", :phone_name => "Pixel"}])
-        @test = Phone.search_algorithm("Blackberry Pixel")
-        expect(@test.count).to eq(2)
-        expect(@test.find_by_brand_name(:Blackberry)).to have_attributes(:brand_name => "Blackberry")
-        expect(@test.find_by_brand_name(:Google)).to have_attributes(:phone_name => "Pixel")
+      it "returns the appropriate search results when the query has both a phone and a brand in it" do
+        @search_results = Phone.search_algorithm("Google DTEK50")
+        expect(@search_results.all?{|phone| phone.brand_name == "Google" || phone.phone_name == "DTEK50"}).
+        to eq(true)
       end # it
     end # context
   end # describe
 
-  describe "checkbox search algorithm" do
+  describe "Checkbox search algorithm (checkbox_search)" do
+    it "returns the appropriate search results when one checkbox (brand) is selected" do
+      params_hash = {"brand_name" => "Samsung"}
+      @search_results = Phone.checkbox_search(params_hash)
+      expect(@search_results.all?{|phone| phone.brand_name == "Samsung"}).to eq(true)
+    end
 
-    it "returns back appropriate object from params hash" do
-      Phone.create(
-      [{:brand_name => "Blackberry", :phone_name => "Classic", :os => "Blackberry", :price_category => 1},
-      {:brand_name => "Blackberry", :phone_name => "Priv", :os => "Blackberry", :price_category => 3},
-      {:brand_name => "Google", :phone_name => "Pixel", :os => "Android", :price_category => 3}])
-      params_hash = {"brand_name" => "Blackberry", "os" => "Blackberry", "price_category" => 1}
-      @test = Phone.checkbox_search(params_hash)
-      expect(@test.count).to eq(1)
-      expect(@test.find_by_brand_name(:Blackberry)).to have_attributes(
-      :brand_name => "Blackberry", :phone_name => "Classic")
+    it "returns the appropriate search results when two checkboxes are selected (operating system and brand)" do
+      params_hash = {"brand_name" => "Samsung", "os" => "Android"}
+      @search_results = Phone.checkbox_search(params_hash)
+      expect(@search_results.all?{|phone| phone.brand_name == "Samsung" && phone.os == "Android"}).to eq(true)
+    end
+    it "returns the appropriate search results when all checkboxes are selected" do
+      params_hash = {"brand_name" => "Samsung", "os" => "Android", "price_category" => "2"}
+      @search_results = Phone.checkbox_search(params_hash)
+      expect(@search_results.all?{|phone| phone.brand_name == "Samsung" && phone.os == "Android" && phone.price_category == "2"}).
+      to eq(true)
+
     end # it
   end # describe
 end # Rspec.describe
