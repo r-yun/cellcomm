@@ -1,10 +1,5 @@
 @import "variables";
 
-.address-info label{
-  font-family: $font_serif1;
-  font-size: 20px;
-}
-
 .address-info input[type ="text"]{
   border: solid 0.5px black;
   border-radius: 4px;
@@ -14,7 +9,6 @@
   margin-bottom: 20px;
   padding-left: 8px;
   width: 300px;
-
 }
 
 .address-info input[type="submit"]{
@@ -28,8 +22,12 @@
   margin-left: 50px;
   margin-top: 10px;
   width: 200px;
-
 }
+.address-info label{
+  font-family: $font_serif1;
+  font-size: 20px;
+}
+
 .cart-info{
   margin-top: 20px;
 }
@@ -78,7 +76,6 @@ hr{
   border: 1px solid black;
   width: 630px;
 }
-
 
 .user-address div{
   font-family: $font_serif1;

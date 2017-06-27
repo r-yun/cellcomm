@@ -15,7 +15,6 @@ RSpec.describe Phone, type: :model do
     end
 
     context "search query is 1 word (more than 2 characters)" do
-
       it "returns the appropriate search results when the query has a brand in it" do
         @search_results = Phone.search_algorithm("Blackberry")
         expect(@search_results.all?{|phone| phone.brand_name == "Blackberry"}).to eq(true)

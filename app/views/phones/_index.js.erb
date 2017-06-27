@@ -1,7 +1,5 @@
 $(function() {
   var checkbox = document.querySelectorAll(".checkbox");
-  var phone_containers = document.querySelectorAll(".phone-container");
-  // Add an event listener to each of the checkboxes from the class checkbox
   for (var i = 0; i < checkbox.length; i++) {
     checkbox[i].addEventListener("click", allToggle);
     checkbox[i].addEventListener("click", atleastOneChecked);
@@ -13,9 +11,8 @@ function formSubmit(){
   $(this).submit();
 }
 
-
 function allToggle(){
-  if(this.checked){
+  if (this.checked){
     var class_name = this.classList[0];
     if(class_name == "all"){
       var brand = document.getElementsByClassName("single");
@@ -25,7 +22,7 @@ function allToggle(){
     } // if(class_name == all)
 
     else {
-      var all = document.querySelectorAll(".all")
+      var all = document.querySelectorAll(".all");
       for (var i = 0; i < all.length; i++){
         all[i].checked = "";
       } // for
@@ -42,7 +39,8 @@ function atleastOneChecked(){
       break;
     }
   }
-  if (checkboxChecked == false ){
+
+  if (checkboxChecked == false){
     var all = document.querySelectorAll(".all");
     for (var i = 0; i < all.length; i++){
       all[i].checked = true;

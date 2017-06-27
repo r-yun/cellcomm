@@ -2,6 +2,8 @@ class CartsController < ApplicationController
 
   before_action :logged_in?, :only => [:cart, :create_cart]
   before_action :user
+  before_action :highest_id, :only => [:cart_process, :order_submit]
+
   def calculate_totals
     phones_array = []
     @user = User.find(session[:user_id])
@@ -22,11 +24,6 @@ class CartsController < ApplicationController
 
 
   def cart_process
-    @phones = Phone.all
-    phone_id_array = @phones.map do |x|
-      x.id
-    end
-    highest_id = phone_id_array.max.to_s
     params_hash = params.slice(*[*"1"..highest_id])
     params_hash.each do |k,v|
       cart_item = @user.cart.cart_items.where(:phone_id => k).first
@@ -49,37 +46,25 @@ class CartsController < ApplicationController
           if x.phone_id == params[:phone_id].to_i
             x.update_attributes(:quantity_sold => params[:quantity].to_i)
             break
-          end #if
-        end #user_items.each
+          end # if
+        end # user_items.each
       else
-        @new_item = CartItem.new(:phone_id => params[:phone_id].to_i, :quantity_sold => params[:quantity].to_i)
+        @new_item = CartItem.new(:phone_id => params[:phone_id].to_i, :quantity_sold => params[:quantity].to_i, :cart => @user.cart)
         user_items << @new_item
         @new_item.save
-      end #if
+      end # if
       redirect_to(cart_page_path)
-    end #unless
-  end #create_cart
+    end # unless
+  end # create_cart
 
   def order_submit
-    @phones = Phone.all
-    phone_id_array = @phones.map do |x|
-      x.id
-    end
-    @highest_id = phone_id_array.max.to_s
-
-
-
     delivery_date = Time.now + 7.days
     order_number = (0..8).map{[*0..9, *"A".."Z"].sample}.join
-
     order = Order.create(:delivery_date => delivery_date, :order_number =>
     order_number, :user_id => @user)
-
-    params_hash = params.slice(*[*"1"..@highest_id])
+    params_hash = params.slice(*[*"1"..highest_id])
     params_hash.each do |k,v|
-      order_item = OrderItem.create(:phone_id => k, :quantity_sold => v)
-      order_item.order = order
-      order_item.save
+      order_item = OrderItem.create(:phone_id => k, :quantity_sold => v, :order => order)
     end
     order.update_attributes(:delivery_date => delivery_date, :order_number =>
     order_number, :user_id => session[:user_id])
@@ -98,8 +83,19 @@ class CartsController < ApplicationController
     @address = @user.address || @user.create_address
     if @address.update_attributes(address_params)
       flash.now[:notice] = "Address successfully saved"
-    else
     end
+    calculate_totals
+  end
+
+  def update_price
+     params_hash = params.slice("phone-quantity")
+     params_hash.each do |k,v|
+       cart_items = @user.cart.cart_items
+       @found_item = cart_items.find_by(:phone_id => v[0])
+       @found_item.update_attributes(:quantity_sold => v[1])
+     end
+     calculate_totals
+     render :partial => "cart_info.html.erb", :layout => false
   end
 
   private
@@ -108,6 +104,11 @@ class CartsController < ApplicationController
     params.require(:address).permit(:address, :postal_code, :province, :country, :city)
   end
 
-
-
+  def highest_id
+    @phones = Phone.all
+    phone_id_array = @phones.map do |phone|
+      phone.id
+    end
+    highest_id = phone_id_array.max.to_s
+  end
 end

@@ -1,22 +1,23 @@
 <%= stylesheet_link_tag("user_new", :media => "all") %>
 
 <% if @new_user && @new_user.errors.size > 0 %>
-<div class="error-container">
-  <div class = "error-intro">Please check the information entered for the following errors:</div>
-  <div class="errors">
-    <% @new_user.errors.full_messages.each do |msg| %>
-    <li> <%= msg %> </li>
-    <% end%>
+  <div class="error-container">
+    <div class = "error-intro">
+      Please check the information entered for the following errors:
+    </div>
+    <div class="errors">
+      <% @new_user.errors.full_messages.each do |msg| %>
+      <li> <%= msg %> </li>
+      <% end%>
+    </div>
   </div>
-</div>
-
 <% end %>
+
 <div class = "signup-form">
   <div class = "signup-title-container">
     <span class = "signup-title"> Signup </span>
     <hr>
   </div>
-
   <%= form_for(@new_user) do |f|%>
     <%= f.label(:username) %>
     <%= f.text_field(:username) %>

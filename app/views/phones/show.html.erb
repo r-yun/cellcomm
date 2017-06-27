@@ -16,15 +16,14 @@
     </div>
 
 
-    <%= form_tag(create_cart_path(:phone_id => @phone.id), :method => "post") do |f| %>
+    <%= form_tag(create_cart_path(:phone_id => @phone), :method => "post") do |f| %>
       <%= label_tag("quantity:", nil, :class => "quantity-available") %>
       <%= select_tag("quantity", options_for_select(1..@phone.quantity),
       :class => "quantity-select") %>
-      <%= hidden_field_tag(@phone_id, params[:id]) %>
       <% if @phone.quantity == 0 %>
-      <%= submit_tag("Add To Cart", :class => "button-cart", :disabled => true)%>
+        <%= submit_tag("Add To Cart", :class => "button-cart", :disabled => true)%>
       <% else %>
-      <%= submit_tag("Add To Cart", :class => "button-cart")%>
+        <%= submit_tag("Add To Cart", :class => "button-cart")%>
       <% end %>
     <% end %>
 

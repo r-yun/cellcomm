@@ -2,7 +2,7 @@
   <div class = "flash-notice">
     <%= flash[:notice] %>
   </div>
-<%end%>
+<% end %>
 
 <% if @user && @user.errors.size > 0 %>
   <div class="error-container">
@@ -10,7 +10,7 @@
     <div class="errors">
       <% @user.errors.full_messages.each do |msg| %>
       <li> <%= msg %> </li>
-      <% end%>
+      <% end %>
     </div>
   </div>
 <% end %>
@@ -19,6 +19,7 @@
 <div class="user-address-title">
   Address:
 </div>
+
 <div class="user-info">
   <div class = "user-name">
     <%= @user.first_name %> <%= @user.last_name %>
@@ -32,7 +33,7 @@
   </div>
 
   <div class="user-location">
-    <%= @user.address.city %>,  <%= @user.address.province%>,
+    <%= @user.address.city %>,  <%= @user.address.province %>,
     <%= @user.address.country %> &nbsp; <%= @user.address.postal_code %>
   </div>
 </div>

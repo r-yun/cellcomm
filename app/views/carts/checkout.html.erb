@@ -1,6 +1,5 @@
 <%= stylesheet_link_tag("cart_cart", :media => "all") %>
 <%= stylesheet_link_tag("cart_checkout", :media => "all") %>
-
 <% if @user.cart.cart_items.empty? %>
   <div class="empty-cart">Your cart is empty.</div>
   <div class = "back"> <%= link_to("View more cellphones.", phones_path) %></div>
@@ -17,7 +16,8 @@
     </div>
 
     <div class = "address-info">
-      <%= form_for(@address, :url => update_address_path, :method => "post", :remote => true) do |f| %>
+      <%= form_for(@address, :url => update_address_path, :method => "post",
+      :remote => true) do |f| %>
         <%= f.label(:address) %>
         <%= f.text_field(:address) %>
         <%= f.label(:city) %>
@@ -35,12 +35,13 @@
 
     <div id="phone-orders-container">
       <div id = "phone-cart">
-        <%= render :partial => "cart_info.html.erb" %>
+        <% if @user.address.valid? %>
+           <%= render :partial => "cart_info.html.erb" %>
+        <% end %>
       </div>
       <div id = "phone-orders">
         <%= render :partial => "checkout_item.html.erb" %>
       </div>
     </div>
-
   </div>
 <% end %>

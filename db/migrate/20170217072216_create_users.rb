@@ -8,8 +8,6 @@ class CreateUsers < ActiveRecord::Migration[5.0]
       t.string "last_name"
       t.string "password_digest"
       t.string "username"
-
-
       t.timestamps
     end
   end

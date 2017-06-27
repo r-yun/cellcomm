@@ -1,10 +1,10 @@
 <% if @user.address && @user.address.errors.size > 0 %>
   <%= render :partial => "application/error.html.erb" %>
-<%elsif flash[:notice].present? %>
+<% elsif flash[:notice].present? %>
   <div class = "flash-notice">
     <%= flash[:notice] %>
   </div>
-<%end%>
+<% end %>
 
 
 <div class="user-address">
@@ -17,5 +17,5 @@
     <%= @user.address.city %>, <%= @user.address.province %>,
     <%= @user.address.country %> &nbsp; <%= @user.address.postal_code %>
   </div>
-  
+
 </div>

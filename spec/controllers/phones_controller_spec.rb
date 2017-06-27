@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe PhonesController, type: :controller do
   describe "search_results (POST)" do
-    before(:context){load("db/seeds.rb")}
+    before(:context){ load("db/seeds.rb") }
     after(:context){ Phone.destroy_all}
 
     it "returns the appropriate search results if the 'all' checkbox is selected" do

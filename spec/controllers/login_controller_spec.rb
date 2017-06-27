@@ -10,14 +10,13 @@ RSpec.describe LoginController, type: :controller do
 
     it "successfully authenticates the user" do
       controller.instance_variable_set(:@user, @created_user)
-      post :authentication, :params => {"username" => "test123", "password" => "test123"}
-      expect(assigns(:user).authenticate("pass123")).to eq(assigns(:user))
+      post :authentication, :params => {"username" => "test123", "password" => "pass123"}
+      expect(assigns(:authenticated_user)).to eq(assigns(:user))
     end
 
     it "successfully rejects failed login attempt" do
-      post :authentication, :params => {"username" => "test123", "password" => "test123"}
-      @found_user = User.find_by("username" => "test123")
-      expect(@found_user.authenticate("pass124")).to eq(false)
+      post :authentication, :params => {"username" => "test123", "password" => "pass124"}
+      expect(assigns(:authenticated_user)).to eq(false)
     end
   end
 end

@@ -1,10 +1,5 @@
 @import "variables";
 
-#account-form label{
-  font-family: $font_serif1;
-  font-size:20px;
-}
-
 #account-form input[type = "text"]{
   border: solid 0.5px black;
   border-radius: 4px;
@@ -24,12 +19,21 @@
   font-size: 20px;
   display: block;
   height:50px;
+  position: relative;
+  margin-top:10px;
+  left: 70px;
   width:150px;
+}
+
+#account-form label{
+  font-family: $font_serif1;
+  font-size:20px;
 }
 
 .flash-notice{
   width:575px;
 }
+
 hr{
   border: solid 1px black;
   margin-top:5px;
@@ -75,12 +79,14 @@ hr{
   font-weight: bold;
   margin-top:30px;
 }
+
 #phone{
   font-family: $font_serif1;
   font-size:33px;
   font-weight: bold;
   margin-bottom: 45px;
 }
+
 .user-address-title{
   font-family: $font_serif1;
   font-size:22px;
@@ -88,6 +94,13 @@ hr{
   margin-top:20px;
 
 }
+
+.user-info{
+  font-family: $font_serif1;
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
 .user-page{
   padding-left: 20px;
   padding-top: 20px;
@@ -97,10 +110,4 @@ hr{
   font-family: $font_sans1;
   font-size:35px;
   font-weight: bold;
-}
-
-.user-info{
-  font-family: $font_serif1;
-  font-size: 18px;
-  margin-bottom: 20px;
 }

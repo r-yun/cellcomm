@@ -35,12 +35,6 @@ ActiveRecord::Schema.define(version: 20170531033001) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "carts_phones", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer "cart_id"
-    t.integer "phone_id"
-    t.index ["cart_id", "phone_id"], name: "index_carts_phones_on_cart_id_and_phone_id", using: :btree
-  end
-
   create_table "order_items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "order_id"
     t.integer  "phone_id"

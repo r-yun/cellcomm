@@ -1,7 +1,8 @@
 <nav>
   <%= link_to(image_tag("menu/logo.png", :id => "logo"), phones_path) %>
   <%= form_tag(search_results_path, :remote => true, :id => "search_form") do %>
-  <%= text_field_tag(:search_field, params[:search], :placeholder => "Example: Apple, Galaxy, etc.") %>
+  <%= text_field_tag(:search_field, params[:search],
+  :placeholder => "Example: Apple, Galaxy, etc.") %>
   <%= hidden_field_tag :executing_action, params[:action] %>
   <%= image_submit_tag("menu/search_button.png", :id => "search_button") %>
   <% end %>
@@ -23,7 +24,7 @@
         <% end %>
       </div>
       <% end %>
-      <%if session[:username] %>
+      <% if session[:username] %>
       <div class = "icon-container">
         <%= link_to(user_page_path, :class => "account") do%>
         <%= image_tag("menu/account.png", :class => "icon") %>
@@ -33,21 +34,27 @@
       <% end %>
 
 
-    <%if @user %>
+    <% if @user %>
       <% if @user.cart.cart_items.empty? %>
-        <%= link_to(image_tag("menu/empty_cart.png", :class => "icon-cart"), cart_page_path) %>
+        <%= link_to(image_tag("menu/empty_cart.png", :class => "icon-cart"),
+        cart_page_path) %>
       <% elsif @user.cart.cart_items.length == 1 %>
-        <%= link_to(image_tag("menu/cart1.png", :class => "icon-cart"), cart_page_path) %>
+        <%= link_to(image_tag("menu/cart1.png", :class => "icon-cart"),
+        cart_page_path) %>
       <% elsif @user.cart.cart_items.length == 2 %>
-        <%= link_to(image_tag("menu/cart2.png", :class => "icon-cart"), cart_page_path) %>
+        <%= link_to(image_tag("menu/cart2.png", :class => "icon-cart"),
+        cart_page_path) %>
       <% else %>
-        <%= link_to(image_tag("menu/cart3.png", :class => "icon-cart"), cart_page_path) %>
+        <%= link_to(image_tag("menu/cart3.png", :class => "icon-cart"),
+        cart_page_path) %>
       <% end %>
       <% else %>
-        <%= link_to(image_tag("menu/empty_cart.png", :class => "icon-cart"), cart_page_path) %>
+        <%= link_to(image_tag("menu/empty_cart.png", :class => "icon-cart"),
+         cart_page_path) %>
     <% end %>
   </div> <!-- .user-info -->
 </nav>
-<!-- Div used to fill up space because the menu has position:fixed (occupies no space) -->
+<!-- Div used to fill up space because the menu has position:fixed
+(occupies no space) -->
 <div id = "placeholder">
 </div>

@@ -5,18 +5,16 @@
 </script>
 
 <div class = "page-container">
-
-
   <div class = "filter-container">
     <%= render :partial => "checkbox_form.html.erb" %>
-  </div> <!--  .filter-container  -->
+  </div>
 
   <div class = "phones-container">
     <% if flash[:notice].present? %>
-    <div class = "flash-notice">
-      <%= flash[:notice] %>
-    </div>
-    <%end%>
+      <div class = "flash-notice">
+        <%= flash[:notice].html_safe %>
+      </div>
+    <% end %>
     <%= render :partial => "search_results.html.erb"%>
   </div> <!-- .phones-container -->
 </div> <!--  .page-container  -->

@@ -1,0 +1,18 @@
+$(function(){
+  var select = document.getElementsByClassName("quantity-select");
+  for(var i = 0; i < select.length; i++){
+    select[i].addEventListener("change", updatePrice);
+  }
+});
+
+function updatePrice(){
+  $.ajax({
+    type: "POST",
+    url: "/carts/update_price",
+    data: {"phone-quantity" : [this.id, this.options[this.selectedIndex].value]},
+    success: function(html){
+      var phone_cart = document.getElementById("phone-cart");
+      phone_cart.innerHTML = html;
+    } // success
+  }); //ajax
+} // updatePrice();

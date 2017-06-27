@@ -44,7 +44,7 @@ RSpec.describe CartsController, type: :controller do
       post :cart_process, :params => {@phone.id => "2"}
       @user_items = assigns(:user).cart.cart_items
       expect(@user_items.length).to eq(1)
-      expect(@user_items.first.phone.phone_name).to eq(@phone.phone_name)
+      expect(@user_items.first.phone.id).to eq(@phone.id)
       expect(@user_items.first.quantity_sold).to eq(2)
     end
   end
@@ -132,4 +132,20 @@ RSpec.describe CartsController, type: :controller do
     end
   end
 
+describe "update_price (POST)" do
+  before(:example){
+    controller.instance_variable_set(:@user, @created_user)
+    session[:user_id] = @created_user.id
+    session[:username] = @created_user.username
+  }
+
+  it "updates total based on the price and quantity of the phone" do
+    assigns(:user).cart.cart_items.create("quantity_sold" => 2, "phone" => @phone)
+    post :update_price, :params => {"phone-quantity" => [@phone.id, 3]}
+    expect(assigns(:subtotal)).to eq(3 * @phone.price)
+    expect(assigns(:tax_total)).to eq(3 * @phone.price * 0.13)
+    expect(assigns(:total)).to eq(assigns(:subtotal) + assigns(:tax_total))
+  end
+
+end
 end #RSpec.describe

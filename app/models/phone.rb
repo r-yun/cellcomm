@@ -1,6 +1,6 @@
 class Phone < ApplicationRecord
-  has_many :cart_items
   has_one :order_item
+  has_many :cart_items
 
   def self.search_algorithm(search)
     unless search.length <= 2

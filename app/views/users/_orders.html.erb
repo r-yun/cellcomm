@@ -2,29 +2,31 @@
   <div class="orders-title">Orders</div>
   <hr>
   <% @user.orders.each do |order| %>
-  <div class="order-number">
-    Order Number - <%= order.order_number %>:
-  </div>
-  <% order.order_items.each do |item| %>
-  <div class = "order">
-    <%= image_tag(item.phone.image_1, :class => "image-1") %>
-
-    <div class="order-info">
-      <div id ="phone">
-        <%= item.phone.phone_name %>
-      </div>
-      <div class="quantity">
-        Quantity Ordered: <%= item.quantity_sold %>
-      </div>
-      <div class="price">
-        Price: $<%= item.phone.price%>
-      </div>
-
-      <div class "delivery-date">
-        Delivery Date: <%= order.delivery_date.strftime("%B %d, %Y") %>
-      </div>
+    <div class="order-number">
+      Order Number - <%= order.order_number %>:
     </div>
-  </div>
-  <% end %>
+    <% order.order_items.each do |item| %>
+      <div class = "order">
+        <%= image_tag(item.phone.image_1, :class => "image-1") %>
+        <div class="order-info">
+
+          <div id ="phone">
+            <%= item.phone.phone_name %>
+          </div>
+
+          <div class="quantity">
+            Quantity Ordered: <%= item.quantity_sold %>
+          </div>
+
+          <div class="price">
+            Price: $<%= item.phone.price%>
+          </div>
+
+          <div class "delivery-date">
+            Delivery Date: <%= order.delivery_date.strftime("%B %d, %Y") %>
+          </div>
+        </div>
+      </div>
+    <% end %>
   <% end %>
 </div>

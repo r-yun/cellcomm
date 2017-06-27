@@ -1,6 +1,5 @@
 class LoginController < ApplicationController
-  before_action :user, :except => "authentication"
-
+  before_action :user, :except => :authentication
   def authentication
     if params[:username].present? && params[:password].present?
       @user = User.find_by(:username => params[:username])

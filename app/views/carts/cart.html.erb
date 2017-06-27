@@ -1,4 +1,3 @@
-
 <%=stylesheet_link_tag("cart_cart", :media => "all") %>
 
 <div class = "cart-container">
@@ -8,8 +7,7 @@
     <div class="empty-cart">Your cart is empty.</div>
     <div class = "back"> <%= link_to("View more cellphones.", phones_path) %></div>
   <% else %>
-
-    <div id="phone-orders-container">
+    <div id = "phone-orders-container">
       <div id = "phone-cart">
         <%= render :partial => "cart_info.html.erb" %>
       </div>
@@ -17,5 +15,5 @@
         <%= render :partial => "cart_item.html.erb" %>
       </div>
     </div>
-
   <% end %>
+</div>

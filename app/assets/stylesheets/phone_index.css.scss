@@ -1,12 +1,5 @@
 @import "variables";
 
-
-
-//CSS reset
-*{
-  margin:0;
-  padding: 0;
-}
 .attr-box{
   border: solid 1px black;
   border-radius:4px;
@@ -42,14 +35,11 @@
 .attr-value{
   font-size: 16px;
   padding-top: 15px;
-
 }
-
 
 body, html{
   height: 100%;
 }
-
 
 .checkbox{
   height: 10px;
@@ -81,13 +71,17 @@ body, html{
 }
 
 .first{
-top:-50px;
-
+  top:-50px;
 }
 
 .flash-notice{
-  width:618px;
+  width:583px;
   margin-top: 0px;
+}
+
+.here{
+  font-weight: bold;
+  text-decoration: underline;
 }
 .image-1{
   height:260px;
@@ -183,7 +177,6 @@ label{
   font-weight: bold;
   font-size:26px;
 }
-
 
 .title-container{
   border-top: solid 1px black;
