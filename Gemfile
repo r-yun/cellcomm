@@ -29,12 +29,7 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
-group :development, :test do
-  gem 'mysql2', '>= 0.3.18', '< 0.5'
-end
-group :production do
-  gem 'pg'
-end
+gem 'mysql2', '>= 0.3.18', '< 0.5'
 
 
 group :development, :test do
