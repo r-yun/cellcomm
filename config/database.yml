@@ -44,11 +44,12 @@ test:
 #
 # You can use this database configuration with:
 #
-#   production:
-#     url: <%= ENV['DATABASE_URL'] %>
-#
+#indentation important in yml, must be furthest from left.
 production:
-  <<: *default
-  database: cellcomm_production
-  username: cellcomm
-  password: <%= ENV['CELLCOMM_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
+#
+# production:
+#   <<: *default
+#   database: cellcomm_production
+#   username: cellcomm
+#   password: <%= ENV['CELLCOMM_DATABASE_PASSWORD'] %>
