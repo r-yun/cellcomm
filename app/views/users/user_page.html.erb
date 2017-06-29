@@ -30,7 +30,9 @@
     <%= f.submit("Submit") %>
     <% end %> <!-- form_for -->
   </div>
-
-  <%= render :partial => "orders.html.erb" %>
+  
+  <% if @user.orders.present? %>
+    <%= render :partial => "orders.html.erb" %>
+  <% end %>
 
 </div>
