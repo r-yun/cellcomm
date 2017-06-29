@@ -4,8 +4,6 @@ var phone_cart = document.getElementById("phone-cart");
 address.innerHTML = "<%= j render :partial => 'user_address.html.erb', :layout => false %>";
 phone_orders.innerHTML = "<%= j render :partial => 'checkout_item.html.erb', :layout => false %>";
 phone_cart.innerHTML = "<%= j render :partial => 'cart_info.html.erb', :layout => false %>";
-
-
 $(function(){
   var select = document.getElementsByClassName("quantity-select");
   for(var i = 0; i < select.length; i++){

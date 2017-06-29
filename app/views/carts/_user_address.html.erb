@@ -1,5 +1,12 @@
-<% if @user.address && @user.address.errors.size > 0 %>
-  <%= render :partial => "application/error.html.erb" %>
+<% if @address && @address.errors.size > 0 %>
+  <div class="error-container">
+    <div class = "error-intro">Please check the information entered for the following errors:</div>
+    <div class="errors">
+      <% @address.errors.full_messages.each do |msg| %>
+      <li> <%= msg %> </li>
+      <% end%>
+    </div>
+  </div>
 <% elsif flash[:notice].present? %>
   <div class = "flash-notice">
     <%= flash[:notice] %>

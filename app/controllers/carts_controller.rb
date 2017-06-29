@@ -82,9 +82,13 @@ class CartsController < ApplicationController
   def update_address
     @address = @user.address || @user.create_address
     if @address.update_attributes(address_params)
+      calculate_totals
       flash.now[:notice] = "Address successfully saved"
+    else
+      respond_to do |format|
+        format.js { render :partial => "address_only.js.erb" }
+      end
     end
-    calculate_totals
   end
 
   def update_price

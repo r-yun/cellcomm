@@ -2,7 +2,7 @@
 <%= stylesheet_link_tag("cart_checkout", :media => "all") %>
 
 <script>
-<%= render :partial => "update_price.js.erb"%>
+  <%= render :partial => "update_price.js.erb"%>
 </script>
 
 <% if @user.cart.cart_items.empty? %>
@@ -15,7 +15,20 @@
     </div>
 
     <hr>
-
+    <% if @address && @address.errors.size > 0 %>
+    <div class="error-container">
+      <div class = "error-intro">Please check the information entered for the following errors:</div>
+      <div class="errors">
+        <% @address.errors.full_messages.each do |msg| %>
+        <li> <%= msg %> </li>
+        <% end%>
+      </div>
+    </div>
+    <% elsif flash[:notice].present? %>
+      <div class = "flash-notice">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
     <div id = "address">
       <%= render :partial => "user_address" %>
     </div>
