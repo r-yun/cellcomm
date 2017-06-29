@@ -44,7 +44,6 @@ test:
 #
 # You can use this database configuration with:
 #
-#indentation important in yml, must be furthest from left.
 production:
   url: <%= ENV['DATABASE_URL'] %>
 #
