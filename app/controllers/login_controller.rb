@@ -11,7 +11,7 @@ class LoginController < ApplicationController
     if @authenticated_user
       session[:user_id] = @user.id
       session[:username] = @user.username
-      flash[:notice] = "You have successfully logged in as #{user.username}"
+      flash[:notice] = "You have successfully logged in as #{user.username}."
       redirect_to(phones_path)
     else
       flash[:notice] = "Invalid username/password combination."
@@ -22,7 +22,7 @@ class LoginController < ApplicationController
   def logout
     session[:user_id] = nil
     session[:username] = nil
-    flash[:notice] = "You have been successfully logged out"
+    flash[:notice] = "You have been successfully logged out."
     redirect_to(phones_path)
   end
 

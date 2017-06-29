@@ -9,7 +9,7 @@ class UsersController < ApplicationController
       @cart = Cart.create
       @new_user.update_attributes(:cart_id => @cart.id, :address_id => @address.id)
       flash[:notice] = "You have successfully registered. Please login
-      #{view_context.link_to("here", login_page_path, :class => 'here')}".html_safe
+      #{view_context.link_to("here.", login_page_path, :class => 'here')}".html_safe
       redirect_to(phones_path)
     else
       flash.now[:notice] = "You have not successfully registered."
@@ -26,7 +26,7 @@ class UsersController < ApplicationController
     @user.skip_user_validation = true
     @user.skip_password_validation = true
     if @user.update_attributes(updated_params)
-      flash.now[:notice] = "Personal information saved"
+      flash.now[:notice] = "Personal information saved."
     end
   end
 

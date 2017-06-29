@@ -1,7 +1,3 @@
-<script>
-<%= render :partial => "update_price.js.erb"%>
-</script>
-
 <% if @user.cart.cart_items.present? %>
   <%= form_tag(cart_process_path, :method => "post") do %>
     <% @user.cart.cart_items.each do |item|%>

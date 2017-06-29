@@ -1,5 +1,10 @@
 <%= stylesheet_link_tag("cart_cart", :media => "all") %>
 <%= stylesheet_link_tag("cart_checkout", :media => "all") %>
+
+<script>
+<%= render :partial => "update_price.js.erb"%>
+</script>
+
 <% if @user.cart.cart_items.empty? %>
   <div class="empty-cart">Your cart is empty.</div>
   <div class = "back"> <%= link_to("View more cellphones.", phones_path) %></div>
