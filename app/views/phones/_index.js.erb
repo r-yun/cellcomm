@@ -1,5 +1,5 @@
 $(function() {
-  var checkbox = document.querySelectorAll(".checkbox");
+  var checkbox = document.getElementsByClassName("checkbox");
   for (var i = 0; i < checkbox.length; i++) {
     checkbox[i].addEventListener("click", allToggle);
     checkbox[i].addEventListener("click", atleastOneChecked);
@@ -8,21 +8,21 @@ $(function() {
 });
 
 function formSubmit(){
-  $(this).submit();
+  $("#filter_form").submit();
 }
 
 function allToggle(){
   if (this.checked){
     var class_name = this.classList[0];
-    if(class_name == "all"){
-      var brand = document.getElementsByClassName("single");
+    if (class_name == "all"){
+      var single = document.getElementsByClassName("single");
       for (var i = 0; i < brand.length; i++) {
-        brand[i].checked = "";
+        single[i].checked = "";
       } // for
     } // if(class_name == all)
 
     else {
-      var all = document.querySelectorAll(".all");
+      var all = document.getElementsByClassName("all");
       for (var i = 0; i < all.length; i++){
         all[i].checked = "";
       } // for
@@ -41,7 +41,7 @@ function atleastOneChecked(){
   }
 
   if (checkboxChecked == false){
-    var all = document.querySelectorAll(".all");
+    var all = document.getElementsByClassName("all");
     for (var i = 0; i < all.length; i++){
       all[i].checked = true;
     } // for

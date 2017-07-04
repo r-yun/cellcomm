@@ -7,7 +7,6 @@ RSpec.describe Phone, type: :model do
   after(:context){ Phone.destroy_all}
   describe "Search box algorithm (search_algorithm)"  do
     context "Search query is 2 characters or less" do
-
       it "does not return any search results if the search query is 2 characters or less" do
         @search_results = Phone.search_algorithm("bl")
         expect(@search_results.nil?).to eq(true)
@@ -20,7 +19,6 @@ RSpec.describe Phone, type: :model do
         expect(@search_results.all?{|phone| phone.brand_name == "Blackberry"}).to eq(true)
       end
     end
-
 
     context "search query is 2 words (combined more than 2 characters)" do
       it "returns the appropriate search results when the query has two brands in it" do
@@ -49,12 +47,12 @@ RSpec.describe Phone, type: :model do
       @search_results = Phone.checkbox_search(params_hash)
       expect(@search_results.all?{|phone| phone.brand_name == "Samsung" && phone.os == "Android"}).to eq(true)
     end
+
     it "returns the appropriate search results when all checkboxes are selected" do
       params_hash = {"brand_name" => "Samsung", "os" => "Android", "price_category" => "2"}
       @search_results = Phone.checkbox_search(params_hash)
       expect(@search_results.all?{|phone| phone.brand_name == "Samsung" && phone.os == "Android" && phone.price_category == "2"}).
       to eq(true)
-
     end # it
   end # describe
 end # Rspec.describe

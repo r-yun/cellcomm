@@ -2,18 +2,17 @@ require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
   describe "create (POST)" do
-
     it "creates new user with a cart and address associated with it" do
-      post :create, :params => {"user"=>{"username" => "test123", "password" => "pass123",
-        "first_name" => "John", "last_name" => "Smith", "email" => "jsmith@hotmail.com"}}
+    post :create, :params => {"user"=>{"username" => "test123", "password" => "pass123",
+    "first_name" => "John", "last_name" => "Smith", "email" => "jsmith@hotmail.com"}}
 
-        expect(assigns(:new_user)).to have_attributes("username" => "test123", "password" => "pass123",
-        "first_name" => "John", "last_name" => "Smith", "email" => "jsmith@hotmail.com")
-        
-        expect(assigns(:new_user).cart).to be_truthy
-        expect(assigns(:new_user).address).to be_truthy
-      end
+    expect(assigns(:new_user)).to have_attributes("username" => "test123", "password" => "pass123",
+    "first_name" => "John", "last_name" => "Smith", "email" => "jsmith@hotmail.com")
+
+    expect(assigns(:new_user).cart).to be_truthy
+    expect(assigns(:new_user).address).to be_truthy
     end
+  end
 
     describe "user_edit (POST)" do
       before(:example){

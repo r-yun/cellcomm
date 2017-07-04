@@ -22,5 +22,5 @@ RSpec.describe PhonesController, type: :controller do
       @search_results = Phone.search_algorithm("blackberry")
       expect(assigns(:phones)).to eq(@search_results)
     end
-  end # describe
-end # Rspec.describe
+  end 
+end

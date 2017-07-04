@@ -132,20 +132,19 @@ RSpec.describe CartsController, type: :controller do
     end
   end
 
-describe "update_price (POST)" do
-  before(:example){
-    controller.instance_variable_set(:@user, @created_user)
-    session[:user_id] = @created_user.id
-    session[:username] = @created_user.username
-  }
+  describe "update_price (POST)" do
+    before(:example){
+      controller.instance_variable_set(:@user, @created_user)
+      session[:user_id] = @created_user.id
+      session[:username] = @created_user.username
+    }
 
-  it "updates total based on the price and quantity of the phone" do
-    assigns(:user).cart.cart_items.create("quantity_sold" => 2, "phone" => @phone)
-    post :update_price, :params => {"phone-quantity" => [@phone.id, 3]}
-    expect(assigns(:subtotal)).to eq(3 * @phone.price)
-    expect(assigns(:tax_total)).to eq(3 * @phone.price * 0.13)
-    expect(assigns(:total)).to eq(assigns(:subtotal) + assigns(:tax_total))
+    it "updates total based on the price and quantity of the phone" do
+      assigns(:user).cart.cart_items.create("quantity_sold" => 2, "phone" => @phone)
+      post :update_price, :params => {"phone-quantity" => [@phone.id, 3]}
+      expect(assigns(:subtotal)).to eq(3 * @phone.price)
+      expect(assigns(:tax_total)).to eq(3 * @phone.price * 0.13)
+      expect(assigns(:total)).to eq(assigns(:subtotal) + assigns(:tax_total))
+    end
   end
-
-end
 end #RSpec.describe
