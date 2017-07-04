@@ -5,6 +5,7 @@ RSpec.describe Phone, type: :model do
   before(:context){load("db/seeds.rb")}
 
   after(:context){ Phone.destroy_all}
+
   describe "Search box algorithm (search_algorithm)"  do
     context "Search query is 2 characters or less" do
       it "does not return any search results if the search query is 2 characters or less" do

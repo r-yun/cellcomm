@@ -14,26 +14,26 @@ RSpec.describe UsersController, type: :controller do
     end
   end
 
-    describe "user_edit (POST)" do
-      before(:example){
-        @created_user = User.create("username" => "test123", "password" => "pass123",
-        "first_name" => "John", "last_name" => "Smith", "email" => "jsmith@hotmail.com")
-        @created_user.create_cart
-        controller.instance_variable_set(:@user, @created_user)
-        session[:user_id] = @created_user.id
-        session[:username] = @created_user.username
-      }
+  describe "user_edit (POST)" do
+    before(:example){
+      @created_user = User.create("username" => "test123", "password" => "pass123",
+      "first_name" => "John", "last_name" => "Smith", "email" => "jsmith@hotmail.com")
+      @created_user.create_cart
+      controller.instance_variable_set(:@user, @created_user)
+      session[:user_id] = @created_user.id
+      session[:username] = @created_user.username
+    }
 
-      it "edits a user's information through form fields" do
-        post :user_edit, :format => "js", :params => {"user"=>{"first_name"=>"John", "last_name"=>"Smith",
-        "email"=>"jsmith@hotmail.com", "address_attributes"=>{"address"=>"123 Leaf Street", "city"=>"Toronto",
-        "province"=>"Ontario", "country"=>"Canada", "postal_code"=>"m1m1m1"}}}
+    it "edits a user's information through form fields" do
+      post :user_edit, :format => "js", :params => {"user"=>{"first_name"=>"John", "last_name"=>"Smith",
+      "email"=>"jsmith@hotmail.com", "address_attributes"=>{"address"=>"123 Leaf Street", "city"=>"Toronto",
+      "province"=>"Ontario", "country"=>"Canada", "postal_code"=>"m1m1m1"}}}
 
-        expect(assigns(:user)).to have_attributes("first_name"=>"John", "last_name"=>"Smith",
-        "email"=>"jsmith@hotmail.com")
+      expect(assigns(:user)).to have_attributes("first_name"=>"John", "last_name"=>"Smith",
+      "email"=>"jsmith@hotmail.com")
 
-        expect(assigns(:user).address).to have_attributes("address"=>"123 Leaf Street", "city"=>"Toronto",
-        "province"=>"Ontario", "country"=>"Canada", "postal_code"=>"m1m1m1")
-      end
-   end
+      expect(assigns(:user).address).to have_attributes("address"=>"123 Leaf Street", "city"=>"Toronto",
+      "province"=>"Ontario", "country"=>"Canada", "postal_code"=>"m1m1m1")
+    end
+  end
 end
