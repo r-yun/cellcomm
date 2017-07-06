@@ -44,7 +44,8 @@ class UsersController < ApplicationController
 
   def updated_params
     params.require(:user).permit(:first_name,
-    :last_name, :email, :address_attributes => [:address, :city, :province, :country, :postal_code])
+    :last_name, :email, :address_attributes => [:address, :city, :province,
+    :country, :postal_code])
   end
 
 end

@@ -6,7 +6,6 @@ class CartsController < ApplicationController
 
   def calculate_totals
     phones_array = []
-    @user = User.find(session[:user_id])
     if @user.cart.cart_items.present?
       @user.cart.cart_items.each do |item|
         phone_total = item.phone.price * item.quantity_sold
@@ -27,7 +26,8 @@ class CartsController < ApplicationController
     params_hash = params.slice(*[*"1"..highest_id])
     params_hash.each do |k,v|
       cart_item = @user.cart.cart_items.where(:phone_id => k).first
-      cart_item.update_attributes(:phone_id => k, :quantity_sold => v, :cart => @user.cart)
+      cart_item.update_attributes(:phone_id => k, :quantity_sold => v,
+      :cart => @user.cart)
     end
     redirect_to(checkout_path)
   end
@@ -49,7 +49,8 @@ class CartsController < ApplicationController
           end # if
         end # user_items.each
       else
-        @new_item = CartItem.new(:phone_id => params[:phone_id].to_i, :quantity_sold => params[:quantity].to_i, :cart => @user.cart)
+        @new_item = CartItem.new(:phone_id => params[:phone_id].to_i,
+        :quantity_sold => params[:quantity].to_i, :cart => @user.cart)
         user_items << @new_item
         @new_item.save
       end # if
@@ -64,7 +65,8 @@ class CartsController < ApplicationController
     order_number, :user_id => @user)
     params_hash = params.slice(*[*"1"..highest_id])
     params_hash.each do |k,v|
-      order_item = OrderItem.create(:phone_id => k, :quantity_sold => v, :order => order)
+      order_item = OrderItem.create(:phone_id => k, :quantity_sold => v,
+      :order => order)
     end
     order.update_attributes(:delivery_date => delivery_date, :order_number =>
     order_number, :user_id => session[:user_id])
@@ -105,7 +107,8 @@ class CartsController < ApplicationController
   private
 
   def address_params
-    params.require(:address).permit(:address, :postal_code, :province, :country, :city)
+    params.require(:address).permit(:address, :postal_code, :province, :country,
+    :city)
   end
 
   def highest_id

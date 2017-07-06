@@ -3,7 +3,8 @@ class PhonesController < ApplicationController
   def index
     @brand_names = Phone.select(:brand_name).distinct.order(:brand_name)
     @operating_systems = Phone.select(:os).distinct
-    @price_categories = Phone.select(:price_category).distinct.order(:price_category => :asc)
+    @price_categories = Phone.select(:price_category).distinct
+    .order(:price_category => :asc)
     if params[:search_field]
       @phones = Phone.search_algorithm(params[:search_field])
     elsif
@@ -15,7 +16,8 @@ class PhonesController < ApplicationController
   def search_results
     if params[:all].present?
       @phones = Phone.all.order(:brand_name)
-    elsif params[:brand_name].present?|| params[:os].present? || params[:price_category].present?
+    elsif params[:brand_name].present?|| params[:os].present? ||
+    params[:price_category].present?
       @phones = Phone.checkbox_search(request.POST)
     elsif params[:search_field].present?
       @phones = Phone.search_algorithm(params[:search_field])
