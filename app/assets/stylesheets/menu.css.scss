@@ -10,7 +10,6 @@ a{
   text-decoration:none;
 }
 
-
 .error-container{
   background-color: $teal;
   border: solid 0.5px black;
@@ -52,10 +51,12 @@ a{
   margin-right:30px;
   width:80px;
 }
+
 .icon-account{
   position:relative;
   left:5px;
 }
+
 .icon-cart{
   height:100px;
   width:100px;
@@ -87,14 +88,17 @@ label{
 .logout{
   padding-top:6px;
 }
+
 .logout-image{
   height:60px;
   margin-bottom:5px;
 }
+
 .mobile-menu{
   display:flex;
   height:100px;
 }
+
 nav{
   background-color: #f4f6f7;
   border: solid 0.5px black;
