@@ -6,15 +6,15 @@
           <%= image_tag(item.phone.image_1, :class => "phone-image") %>
           <div class = "phone-info">
             <%= link_to "<button class = 'remove-button'>Remove</button>".html_safe,
-            remove_item_path(:phone_id => item.phone.id), :method => "post",
-            :phone_id => item.phone.id, :remote => true %>
+              remove_item_path(:phone_id => item.phone), :method => "post",
+              :phone_id => item.phone, :remote => true %>
             <div class = "phone">
               <%= item.phone.brand_name + " " + item.phone.phone_name %>
             </div>
             <div class="quantity">
-              Quantity :<%= select_tag(item.phone.id,
-              options_for_select(1..item.phone.quantity, item.quantity_sold),
-              :class => "quantity-select") %>
+              Quantity :<%= select_tag("selection[#{item.phone.id}]",
+                options_for_select(1..item.phone.quantity, item.quantity_sold),
+                :class => "quantity-select",:id => item.phone.id ) %>
             </div>
             <div class = "price">
               Price: $<%= item.phone.price %>

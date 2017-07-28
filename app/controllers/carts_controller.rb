@@ -2,7 +2,6 @@ class CartsController < ApplicationController
 
   before_action :logged_in?, :only => [:cart, :create_cart]
   before_action :user
-  before_action :highest_id, :only => [:cart_process, :order_submit]
 
   def calculate_totals
     phones_array = []
@@ -23,11 +22,14 @@ class CartsController < ApplicationController
 
 
   def cart_process
-    params_hash = params.slice(*[*"1"..highest_id])
+    params_hash = params.slice("selection")
+    puts "This is params_hash: #{params_hash.inspect}"
     params_hash.each do |k,v|
-      cart_item = @user.cart.cart_items.where(:phone_id => k).first
-      cart_item.update_attributes(:phone_id => k, :quantity_sold => v,
-        :cart => @user.cart)
+      v.each do |k, v|
+        cart_item = @user.cart.cart_items.where(:phone_id => k).first
+        cart_item.update_attributes(:phone_id => k, :quantity_sold => v,
+          :cart => @user.cart)
+      end
     end
     redirect_to(checkout_path)
   end
@@ -66,11 +68,12 @@ class CartsController < ApplicationController
     order = Order.create(:delivery_date => delivery_date, :order_number =>
       order_number, :user_id => @user)
     #grab only values you need from subhashes
-    params_hash = params.slice(*[*"1"..highest_id])
-
+    params_hash = params.slice("selection")
     params_hash.each do |k,v|
+      v.each do |k, v|
       order_item = OrderItem.create(:phone_id => k, :quantity_sold => v,
         :order => order)
+      end
     end
     order.update_attributes(:delivery_date => delivery_date, :order_number =>
       order_number, :user_id => session[:user_id])
@@ -80,7 +83,6 @@ class CartsController < ApplicationController
 
 
   def remove_item
-    #local variable / instance variable change
     cart_items = @user.cart.cart_items.where(:phone_id => params[:phone_id])
     cart_items.destroy_all
     calculate_totals
@@ -100,6 +102,7 @@ class CartsController < ApplicationController
 
   def update_price
      params_hash = params.slice("phone-quantity")
+     #if only one key just lsice via x[:x]
      params_hash.each do |k,v|
        cart_items = @user.cart.cart_items
        found_item = cart_items.find_by(:phone_id => v[0])
@@ -116,7 +119,5 @@ class CartsController < ApplicationController
     :city)
   end
 
-  def highest_id
-    Phone.pluck(:id).max.to_s
-  end
+
 end

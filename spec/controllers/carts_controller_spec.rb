@@ -41,7 +41,7 @@ RSpec.describe CartsController, type: :controller do
 
     it "updates the quantity sold for a particular phone" do
       @new_item =  assigns(:user).cart.cart_items.create(:quantity_sold => 4, :phone_id => @phone.id)
-      post :cart_process, :params => {@phone.id => "2"}
+      post :cart_process, :params => {"selection" => {@phone.id => "2"}}
       @user_items = assigns(:user).cart.cart_items
       expect(@user_items.length).to eq(1)
       expect(@user_items.first.phone).to eq(@phone)
@@ -81,7 +81,7 @@ RSpec.describe CartsController, type: :controller do
       controller.instance_variable_set(:@user, @created_user)
       session[:user_id] = @created_user.id
       session[:username] = @created_user.username
-      post :order_submit, :params => {@phone.id => "4"}
+      post :order_submit, :params => {"selection" => {@phone.id => "4"}}
     }
 
     it "creates a single order and a single associated order item" do
