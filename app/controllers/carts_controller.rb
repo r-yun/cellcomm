@@ -22,14 +22,10 @@ class CartsController < ApplicationController
 
 
   def cart_process
-    params_hash = params.slice("selection")
-    puts "This is params_hash: #{params_hash.inspect}"
-    params_hash.each do |k,v|
-      v.each do |k, v|
-        cart_item = @user.cart.cart_items.where(:phone_id => k).first
-        cart_item.update_attributes(:phone_id => k, :quantity_sold => v,
-          :cart => @user.cart)
-      end
+    params[:selection].each do |k, v|
+      cart_item = @user.cart.cart_items.where(:phone_id => k).first
+      cart_item.update_attributes(:phone_id => k, :quantity_sold => v,
+        :cart => @user.cart)
     end
     redirect_to(checkout_path)
   end
@@ -41,7 +37,6 @@ class CartsController < ApplicationController
 
   def create_cart
     @phone = Phone.find(params[:phone_id])
-
     return if @phone.quantity == 0
       user_items = @user.cart.cart_items
       found_item = user_items.find{|x| x.phone_id == params[:phone_id].to_i}
@@ -49,7 +44,6 @@ class CartsController < ApplicationController
       if found_item
         found_item.update_attributes(:quantity_sold => params[:quantity])
       else
-        #change instance variables to local variables
         new_item = CartItem.new(:phone_id => params[:phone_id],
           :quantity_sold => params[:quantity], :cart => @user.cart)
         user_items << new_item
@@ -67,14 +61,12 @@ class CartsController < ApplicationController
 
     order = Order.create(:delivery_date => delivery_date, :order_number =>
       order_number, :user_id => @user)
-    #grab only values you need from subhashes
-    params_hash = params.slice("selection")
-    params_hash.each do |k,v|
-      v.each do |k, v|
+
+    params[:selection].each do |k, v|
       order_item = OrderItem.create(:phone_id => k, :quantity_sold => v,
         :order => order)
-      end
     end
+
     order.update_attributes(:delivery_date => delivery_date, :order_number =>
       order_number, :user_id => session[:user_id])
     @user.cart.cart_items.destroy_all
@@ -101,13 +93,9 @@ class CartsController < ApplicationController
   end
 
   def update_price
-     params_hash = params.slice("phone-quantity")
-     #if only one key just lsice via x[:x]
-     params_hash.each do |k,v|
-       cart_items = @user.cart.cart_items
-       found_item = cart_items.find_by(:phone_id => v[0])
-       found_item.update_attributes(:quantity_sold => v[1])
-     end
+     cart_items = @user.cart.cart_items
+     found_item = cart_items.find_by(:phone_id => params["phone-quantity"][0])
+     found_item.update_attributes(:quantity_sold => params["phone-quantity"][1])
      calculate_totals
      render :partial => "cart_info.html.erb", :layout => false
   end
@@ -116,8 +104,7 @@ class CartsController < ApplicationController
 
   def address_params
     params.require(:address).permit(:address, :postal_code, :province, :country,
-    :city)
+      :city)
   end
-
 
 end
