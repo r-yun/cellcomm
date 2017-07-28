@@ -5,7 +5,7 @@ RSpec.describe LoginController, type: :controller do
   describe "authentication (POST)" do
     before(:example) {
       @created_user = User.create("username" => "test123", "password" => "pass123",
-      "first_name" => "John", "last_name" => "Smith", "email" => "jsmith@hotmail.com")
+        "first_name" => "John", "last_name" => "Smith", "email" => "jsmith@hotmail.com")
     }
 
     it "successfully authenticates the user" do

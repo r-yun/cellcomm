@@ -7,7 +7,8 @@ RSpec.describe PhonesController, type: :controller do
 
     it "returns the appropriate search results if the 'all' checkbox is selected" do
       post :search_results, :params => {"all" => "true"}
-      @search_results = Phone.all.order(:brand_name)
+      #all not needed
+      @search_results = Phone.order(:brand_name)
       expect(assigns(:phones)).to eq(@search_results)
     end
 
@@ -22,5 +23,5 @@ RSpec.describe PhonesController, type: :controller do
       @search_results = Phone.search_algorithm("blackberry")
       expect(assigns(:phones)).to eq(@search_results)
     end
-  end 
+  end
 end

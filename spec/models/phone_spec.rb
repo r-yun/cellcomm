@@ -37,23 +37,46 @@ RSpec.describe Phone, type: :model do
   end # describe
 
   describe "Checkbox search algorithm (checkbox_search)" do
-    it "returns the appropriate search results when one checkbox (brand) is selected" do
-      params_hash = {"brand_name" => "Samsung"}
-      @search_results = Phone.checkbox_search(params_hash)
-      expect(@search_results.all?{|phone| phone.brand_name == "Samsung"}).to eq(true)
+    context "One checkbox category checked" do
+      it "expects all search reuslts to have a brand name of Samsung" do
+        params_hash = {"brand_name" => "Samsung"}
+        @search_results = Phone.checkbox_search(params_hash)
+        expect(@search_results.all?{|phone| phone.brand_name == "Samsung"}).to eq(true)
+      end
     end
 
-    it "returns the appropriate search results when two checkboxes are selected (operating system and brand)" do
-      params_hash = {"brand_name" => "Samsung", "os" => "Android"}
-      @search_results = Phone.checkbox_search(params_hash)
-      expect(@search_results.all?{|phone| phone.brand_name == "Samsung" && phone.os == "Android"}).to eq(true)
+    context "Two checkbox categories checked" do
+      before(:example) do
+        params_hash = {"brand_name" => "Samsung", "os" => "Android"}
+        @search_results = Phone.checkbox_search(params_hash)
+      end
+
+      it "expects all search results to have a brand name of Samsung" do
+        expect(@search_results.all?{|phone| phone.brand_name == "Samsung"}).to eq(true)
+      end
+
+      it "expects all search results to have an OS of Android" do
+        expect(@search_results.all?{|phone| phone.os == "Android"}).to eq(true)
+      end
     end
 
-    it "returns the appropriate search results when all checkboxes are selected" do
-      params_hash = {"brand_name" => "Samsung", "os" => "Android", "price_category" => "2"}
-      @search_results = Phone.checkbox_search(params_hash)
-      expect(@search_results.all?{|phone| phone.brand_name == "Samsung" && phone.os == "Android" && phone.price_category == "2"}).
-      to eq(true)
-    end # it
+    context "Three checkbox categories checked" do
+      before(:example) do
+        params_hash = {"brand_name" => "Samsung", "os" => "Android", "price_category" => "2"}
+        @search_results = Phone.checkbox_search(params_hash)
+      end
+
+      it "expects all search results to have a brand name of Samsung" do
+        expect(@search_results.all?{|phone| phone.brand_name == "Samsung"}).to eq(true)
+      end # it
+
+      it "expects all search results to have an OS of Android" do
+        expect(@search_results.all?{|phone| phone.os == "Android"}).to eq(true)
+      end # it
+
+      it "expects all search results to have a price category between $501 and $750" do
+        expect(@search_results.all?{|phone| phone.price_category == "2"}).to eq(true)
+      end # it
+    end # context
   end # describe
 end # Rspec.describe

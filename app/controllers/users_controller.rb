@@ -4,12 +4,10 @@ class UsersController < ApplicationController
   def create
     @new_user = User.new(new_user_params)
     if @new_user.save
-      @address = Address.new
-      @address.save(:validate => false)
       @cart = Cart.create
-      @new_user.update_attributes(:cart_id => @cart.id, :address_id => @address.id)
-      flash[:notice] = "You have successfully registered. Please login
-      #{view_context.link_to("here.", login_page_path, :class => 'here')}".html_safe
+      @new_user.update_attributes(:cart => @cart, :address => @address)
+      link = view_context.link_to("here.", login_page_path, :class => 'here')
+      flash[:notice] = "You have successfully registered. Please login #{link}".html_safe
       redirect_to(phones_path)
     else
       flash.now[:notice] = "You have not successfully registered."
@@ -44,8 +42,8 @@ class UsersController < ApplicationController
 
   def updated_params
     params.require(:user).permit(:first_name,
-    :last_name, :email, :address_attributes => [:address, :city, :province,
-    :country, :postal_code])
+      :last_name, :email, :address_attributes => [:address, :city, :province,
+      :country, :postal_code])
   end
 
 end

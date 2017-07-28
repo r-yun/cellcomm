@@ -3,9 +3,9 @@ require 'rails_helper'
 RSpec.describe CartsController, type: :controller do
   before(:context){
     @created_user = User.create("username" => "test123", "password" => "pass123",
-    "first_name" => "John", "last_name" => "Smith", "email" => "jsmith@hotmail.com")
+      "first_name" => "John", "last_name" => "Smith", "email" => "jsmith@hotmail.com")
     @phone = Phone.create("phone_name" => "iPhone 7 Plus", "brand_name" => "Apple",
-    "price" => 1074.99, "quantity" => 4)
+      "price" => 1074.99, "quantity" => 4)
     @created_user.create_cart
   }
 
@@ -17,11 +17,11 @@ RSpec.describe CartsController, type: :controller do
   }
 
   describe "calculate_totals (POST)" do
-    before(:example){
+    before(:example) do
       controller.instance_variable_set(:@user, @created_user)
       session[:user_id] = @created_user.id
       session[:username] = @created_user.username
-    }
+    end
 
     it "updates total based on the price and quantity of the phone" do
       assigns(:user).cart.cart_items.create("quantity_sold" => 2, "phone" => @phone)
@@ -44,7 +44,7 @@ RSpec.describe CartsController, type: :controller do
       post :cart_process, :params => {@phone.id => "2"}
       @user_items = assigns(:user).cart.cart_items
       expect(@user_items.length).to eq(1)
-      expect(@user_items.first.phone.id).to eq(@phone.id)
+      expect(@user_items.first.phone).to eq(@phone)
       expect(@user_items.first.quantity_sold).to eq(2)
     end
   end
@@ -123,12 +123,12 @@ RSpec.describe CartsController, type: :controller do
 
     it "updates the address of user in reponse to form fields" do
       post :update_address, :format => "js", :params => {"address"=>{"address"=>"333 Leaf Street",
-      "city"=>"North York", "province"=>"Ontario", "country"=>"Canada",
-      "postal_code"=>"l1l1l1"}}
+        "city"=>"North York", "province"=>"Ontario", "country"=>"Canada",
+        "postal_code"=>"l1l1l1"}}
 
       expect(assigns(:address)).to have_attributes("address"=>"333 Leaf Street",
-      "city"=>"North York", "province"=>"Ontario", "country"=>"Canada",
-      "postal_code"=>"l1l1l1")
+        "city"=>"North York", "province"=>"Ontario", "country"=>"Canada",
+        "postal_code"=>"l1l1l1")
     end
   end
 
