@@ -11,8 +11,9 @@
   <div class="product_info">
     <div class="rounded-rectangle">
       <div class = "price"> Price: <%= "$" + @phone.price.to_s %></div>
-      <div class = "quantity">Quantity: <%= @phone.quantity == 0 ? "Sold out" :
-      @phone.quantity %></div>
+      <div class = "quantity">
+        Quantity: <%= @phone.quantity == 0 ? "Sold out" : @phone.quantity %>
+      </div>
     </div>
 
 

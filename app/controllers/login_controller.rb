@@ -1,12 +1,8 @@
 class LoginController < ApplicationController
   before_action :user, :except => :authentication
   def authentication
-    if params[:username].present? && params[:password].present?
-      @user = User.find_by(:username => params[:username])
-      if @user
-        @authenticated_user = @user.authenticate(params[:password])
-      end
-    end
+    @user = User.find_by(:username => params[:username]) if params[:username].present? && params[:password].present?
+    @authenticated_user = @user.authenticate(params[:password]) if @user
 
     if @authenticated_user
       session[:user_id] = @user.id

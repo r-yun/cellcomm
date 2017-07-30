@@ -9,11 +9,12 @@ class CartsController < ApplicationController
       @user.cart.cart_items.each do |item|
         phone_total = item.phone.price * item.quantity_sold
         phones_array << phone_total
-      end
+    end
       @subtotal = phones_array.inject{|memo,n| memo + n}
       @tax_total = @subtotal * 0.13
       @total = @subtotal + @tax_total
     end
+
   end
 
   def cart
@@ -31,26 +32,25 @@ class CartsController < ApplicationController
   end
 
   def checkout
-    @address = @user.address || @user.create_address
+    @address = @user.address || @user.build_address
     calculate_totals
   end
 
   def create_cart
     @phone = Phone.find(params[:phone_id])
-    return if @phone.quantity == 0
+    unless @phone.quantity == 0
       user_items = @user.cart.cart_items
       found_item = user_items.find{|x| x.phone_id == params[:phone_id].to_i}
-
       if found_item
         found_item.update_attributes(:quantity_sold => params[:quantity])
       else
-        new_item = CartItem.new(:phone_id => params[:phone_id],
+        @new_item = CartItem.create(:phone_id => params[:phone_id],
           :quantity_sold => params[:quantity], :cart => @user.cart)
-        user_items << new_item
-        new_item.save
+        user_items << @new_item
       end # if
-      redirect_to(cart_page_path)
-  end # create_cart
+    end
+    redirect_to(cart_page_path)
+  end
 
   def order_submit
     delivery_date = Time.now + 7.days
@@ -60,15 +60,12 @@ class CartsController < ApplicationController
     end until Order.where(order_number: order_number).none?
 
     order = Order.create(:delivery_date => delivery_date, :order_number =>
-      order_number, :user_id => @user)
+      order_number, :user => @user)
 
     params[:selection].each do |k, v|
       order_item = OrderItem.create(:phone_id => k, :quantity_sold => v,
         :order => order)
     end
-
-    order.update_attributes(:delivery_date => delivery_date, :order_number =>
-      order_number, :user_id => session[:user_id])
     @user.cart.cart_items.destroy_all
     redirect_to(user_page_path)
   end
@@ -81,16 +78,20 @@ class CartsController < ApplicationController
   end
 
   def update_address
-    @address = @user.address || @user.create_address
+
+    @address = @user.address || @user.create_address(address_params)
+    puts @user.address.inspect
+
     if @address.update_attributes(address_params)
-      calculate_totals
-      flash.now[:notice] = "Address successfully saved"
+        @user.update_attributes(:address => @address)
+        calculate_totals
+        flash.now[:notice] = "Address successfully saved"
     else
       respond_to do |format|
         format.js { render :partial => "address_only.js.erb" }
       end
     end
-  end
+   end
 
   def update_price
      cart_items = @user.cart.cart_items
@@ -104,7 +105,7 @@ class CartsController < ApplicationController
 
   def address_params
     params.require(:address).permit(:address, :postal_code, :province, :country,
-      :city)
+      :city, :user)
   end
 
 end
