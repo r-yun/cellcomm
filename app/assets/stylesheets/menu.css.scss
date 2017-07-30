@@ -110,20 +110,11 @@ nav{
   z-index:1;
 }
 
-
-
 #placeholder{
   height:110px;
   width:100%;
-
 }
-#search_form{
-  padding-left:50px;
-  padding-top:30px;
-  position: relative;
 
-
-}
 
 #search_button{
   display:inline-block;
@@ -145,14 +136,23 @@ nav{
   padding-top: 10px;
   position: relative;
   top:-20px;
-
   width: 350px;
 }
 
-
+#search_form{
+  padding-left:50px;
+  padding-top:30px;
+  position: relative;
+}
 
 .user_info{
   display:flex;
   margin-left: auto;
   margin-right:30px;
+}
+
+@media (max-width:950px){
+  nav{
+    width:950px;
+  }
 }

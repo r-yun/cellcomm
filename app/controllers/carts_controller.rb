@@ -80,8 +80,6 @@ class CartsController < ApplicationController
   def update_address
 
     @address = @user.address || @user.create_address(address_params)
-    puts @user.address.inspect
-
     if @address.update_attributes(address_params)
         @user.update_attributes(:address => @address)
         calculate_totals

@@ -13,8 +13,8 @@ function formSubmit(){
 
 function allToggle(){
   if (this.checked){
-    var class_name = this.classList[0];
-    if (class_name == "all"){
+    var id = this.id
+    if (id == "all"){
       var single = document.getElementsByClassName("single");
       for (var i = 0; i < brand.length; i++) {
         single[i].checked = "";

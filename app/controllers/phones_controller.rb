@@ -22,6 +22,7 @@ class PhonesController < ApplicationController
     elsif params[:search_field].present?
       @phones = Phone.search_algorithm(params[:search_field])
     end
+    
     redirect_to(phones_path(:search_field => params[:search_field])) unless params[:executing_action] == "index"
   end
 
