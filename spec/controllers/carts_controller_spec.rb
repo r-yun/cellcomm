@@ -68,7 +68,6 @@ RSpec.describe CartsController, type: :controller do
     it "adds a phone to the user's cart if the phone does not already exist in it" do
       post :create_cart, :params => {"quantity" => "3", "phone_id" => @phone.id}
       @user_items = assigns(:user).cart.cart_items
-      puts assigns(:user).cart.cart_items.inspect.to_yaml
       expect(@user_items.length).to eq(1)
       expect(@user_items.first.phone.id).to eq(@phone.id)
       expect(@user_items.first.quantity_sold).to eq(3)

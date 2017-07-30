@@ -22,10 +22,8 @@ function allToggle(){
     } // if(class_name == all)
 
     else {
-      var all = document.getElementsByClassName("all");
-      for (var i = 0; i < all.length; i++){
-        all[i].checked = "";
-      } // for
+      var all = document.getElementById("all");
+      all.checked = "";
     } // else
   } // if(this.checked)
 } // allToggle()
@@ -41,9 +39,7 @@ function atleastOneChecked(){
   }
 
   if (checkboxChecked == false){
-    var all = document.getElementsByClassName("all");
-    for (var i = 0; i < all.length; i++){
-      all[i].checked = true;
-    } // for
+    var all = document.getElementById("all");
+    all.checked = true;
   } // if
 } // atleastOneChecked()
