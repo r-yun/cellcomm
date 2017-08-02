@@ -8,29 +8,27 @@
     <%= render :partial => "user_info.html.erb"%>
   </div>
   <div id = "account-form">
-    <%= form_for(@user, :url => user_edit_path, :method => "post", :remote => true) do |f| %>
+    <%= form_for(@user_edit, :url => user_edit_path, :method => "post", :remote => true) do |f| %>
       <%= f.label(:first_name) %>
       <%= f.text_field(:first_name) %>
       <%= f.label(:last_name) %>
       <%= f.text_field(:last_name) %>
       <%= f.label(:email) %>
       <%= f.text_field(:email) %>
-      <%= f.fields_for(:address, @address) do |a| %>
-        <%= a.label(:address) %>
-        <%= a.text_field(:address) %>
-        <%= a.label(:city) %>
-        <%= a.text_field(:city) %>
-        <%= a.label(:province) %>
-        <%= a.text_field(:province) %>
-        <%= a.label(:country) %>
-        <%= a.text_field(:country) %>
-        <%= a.label(:postal_code) %>
-        <%= a.text_field(:postal_code) %>
-      <% end %> <!-- f.fields_for -->
+      <%= f.label(:address) %>
+      <%= f.text_field(:address) %>
+      <%= f.label(:city) %>
+      <%= f.text_field(:city) %>
+      <%= f.label(:province) %>
+      <%= f.text_field(:province) %>
+      <%= f.label(:country) %>
+      <%= f.text_field(:country) %>
+      <%= f.label(:postal_code) %>
+      <%= f.text_field(:postal_code) %>
     <%= f.submit("Submit") %>
     <% end %> <!-- form_for -->
   </div>
-  
+
   <% if @user.orders.present? %>
     <%= render :partial => "orders.html.erb" %>
   <% end %>

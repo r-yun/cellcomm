@@ -4,7 +4,7 @@ class PhonesController < ApplicationController
     @brand_names = Phone.select(:brand_name).distinct.order(:brand_name)
     @operating_systems = Phone.select(:os).distinct
     @price_categories = Phone.select(:price_category).distinct
-      .order(:price_category => :asc)
+      .order(price_category: :asc)
     if params[:search_field]
       @phones = Phone.search_algorithm(params[:search_field])
     elsif
@@ -22,12 +22,11 @@ class PhonesController < ApplicationController
     elsif params[:search_field].present?
       @phones = Phone.search_algorithm(params[:search_field])
     end
-    
-    redirect_to(phones_path(:search_field => params[:search_field])) unless params[:executing_action] == "index"
+
+    redirect_to(phones_path(search_field: params[:search_field])) unless params[:executing_action] == "index"
   end
 
   def show
     @phone = Phone.find(params[:id])
-  end
-
+    end
 end

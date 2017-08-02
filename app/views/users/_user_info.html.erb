@@ -4,11 +4,11 @@
   </div>
 <% end %>
 
-<% if @user && @user.errors.size > 0 %>
+<% if @user_edit && @user_edit.errors.size > 0%>
   <div class="error-container">
     <div class = "error-intro">Please check the information entered for the following errors:</div>
     <div class="errors">
-      <% @user.errors.full_messages.each do |msg| %>
+      <% @user_edit.errors.full_messages.each do |msg| %>
       <li> <%= msg %> </li>
       <% end %>
     </div>
@@ -16,10 +16,12 @@
 <% end %>
 
 
+
+
+
 <div class="user-address-title">
   Address:
 </div>
-
 <div class="user-info">
   <div class = "user-name">
     <%= @user.first_name %> <%= @user.last_name %>

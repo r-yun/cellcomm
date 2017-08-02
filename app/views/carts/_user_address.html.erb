@@ -1,8 +1,8 @@
-<% if @address && @address.errors.size > 0 %>
+<% if @address_form && @address_form.errors.size > 0 %>
   <div class="error-container">
     <div class = "error-intro">Please check the information entered for the following errors:</div>
     <div class="errors">
-      <% @address.errors.full_messages.each do |msg| %>
+      <% @address_form.errors.full_messages.each do |msg| %>
       <li> <%= msg %> </li>
       <% end%>
     </div>

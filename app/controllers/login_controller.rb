@@ -1,12 +1,12 @@
 class LoginController < ApplicationController
   before_action :user, :except => :authentication
   def authentication
-    @user = User.find_by(:username => params[:username]) if params[:username].present? && params[:password].present?
-    @authenticated_user = @user.authenticate(params[:password]) if @user
+    user = User.find_by(:username => params[:username]) if params[:username].present? && params[:password].present?
+    authenticated_user = user.authenticate(params[:password]) if user
 
-    if @authenticated_user
-      session[:user_id] = @user.id
-      session[:username] = @user.username
+    if authenticated_user
+      session[:user_id] = user.id
+      session[:username] = user.username
       flash[:notice] = "You have successfully logged in as #{user.username}."
       redirect_to(phones_path)
     else

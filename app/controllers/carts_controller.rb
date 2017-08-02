@@ -33,6 +33,7 @@ class CartsController < ApplicationController
 
   def checkout
     @address = @user.address || @user.build_address
+    @address_form = AddressForm.new(@address)
     calculate_totals
   end
 
@@ -78,9 +79,11 @@ class CartsController < ApplicationController
   end
 
   def update_address
-
-    @address = @user.address || @user.create_address(address_params)
-    if @address.update_attributes(address_params)
+    @address = @user.address || @user.build_address
+    @address_form = AddressForm.new(@address)
+    puts address_params.inspect
+    if @address_form.assign_params(address_params) && @address_form.submit
+        puts "hi"
         @user.update_attributes(:address => @address)
         calculate_totals
         flash.now[:notice] = "Address successfully saved"
@@ -102,7 +105,7 @@ class CartsController < ApplicationController
   private
 
   def address_params
-    params.require(:address).permit(:address, :postal_code, :province, :country,
+    params.require(:address_form).permit(:address, :postal_code, :province, :country,
       :city, :user)
   end
 

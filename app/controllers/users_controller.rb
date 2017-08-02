@@ -20,14 +20,12 @@ class UsersController < ApplicationController
   end
 
   def user_edit
-    @user = User.find(session[:user_id])
-    @user.skip_user_validation = true
-    @user.skip_password_validation = true
-    flash.now[:notice] = "Personal information saved." if @user.update_attributes(updated_params)
-
+    @user_edit = UserEdit.new(@user)
+    flash.now[:notice] = "Personal information saved." if @user_edit.assign_params(params) && @user_edit.submit
   end
 
   def user_page
+    @user_edit = UserEdit.new(@user)
     @user = User.find(session[:user_id])
     @address =  @user.address || @user.build_address
   end
@@ -40,9 +38,9 @@ class UsersController < ApplicationController
   end
 
   def updated_params
-    params.require(:user).permit(:first_name,
-      :last_name, :email, :address_attributes => [:address, :city, :province,
-      :country, :postal_code])
+    params.require(:user_edit).permit(:first_name,
+      :last_name, :email, :address, :city, :province,
+      :country, :postal_code)
   end
 
 end
