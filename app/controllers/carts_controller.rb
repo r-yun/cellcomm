@@ -81,9 +81,7 @@ class CartsController < ApplicationController
   def update_address
     @address = @user.address || @user.build_address
     @address_form = AddressForm.new(@address)
-    puts address_params.inspect
     if @address_form.assign_params(address_params) && @address_form.submit
-        puts "hi"
         @user.update_attributes(:address => @address)
         calculate_totals
         flash.now[:notice] = "Address successfully saved"

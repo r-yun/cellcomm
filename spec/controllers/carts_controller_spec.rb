@@ -122,7 +122,7 @@ RSpec.describe CartsController, type: :controller do
     }
 
     it "updates the address of user in reponse to form fields" do
-      post :update_address, :format => "js", :params => {"address"=>{"address"=>"333 Leaf Street",
+      post :update_address, :format => "js", :params => {"address_form"=>{"address"=>"333 Leaf Street",
         "city"=>"North York", "province"=>"Ontario", "country"=>"Canada",
         "postal_code"=>"l1l1l1"}}
 
