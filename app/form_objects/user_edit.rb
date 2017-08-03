@@ -31,8 +31,8 @@ class UserEdit
 
   def assign_params(params)
     params.permit!
-    @user_params = params[:user_edit].slice(:first_name, :last_name, :email)
-    @address_params = params[:user_edit].slice(:address, :city, :province, :country, :postal_code)
+    @user_params = params.slice(:first_name, :last_name, :email)
+    @address_params = params.slice(:address, :city, :province, :country, :postal_code)
   end
 
   def submit

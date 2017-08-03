@@ -21,7 +21,7 @@ class UsersController < ApplicationController
 
   def user_edit
     @user_edit = UserEdit.new(@user)
-    flash.now[:notice] = "Personal information saved." if @user_edit.assign_params(params) && @user_edit.submit
+    flash.now[:notice] = "Personal information saved." if @user_edit.assign_params(updated_params) && @user_edit.submit
   end
 
   def user_page
