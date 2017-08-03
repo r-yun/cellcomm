@@ -43,6 +43,7 @@ class UserEdit
     if valid?
       @user.save
       @user.address.save
+      true
     else
       @user.attributes = prev_user
       @user.address.attributes = prev_address

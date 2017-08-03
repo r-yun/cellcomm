@@ -14,7 +14,6 @@ class CartsController < ApplicationController
       @tax_total = @subtotal * 0.13
       @total = @subtotal + @tax_total
     end
-
   end
 
   def cart

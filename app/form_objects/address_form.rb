@@ -34,6 +34,7 @@ class AddressForm
     @address.attributes = @address_params
     if valid?
       @address.save
+      true
     else
       @address.attributes = prev_address
       false

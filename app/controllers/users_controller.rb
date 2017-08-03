@@ -26,6 +26,7 @@ class UsersController < ApplicationController
 
   def user_page
     @user_edit = UserEdit.new(@user)
+    @orders = @user.orders.includes(:order_items)
     @user = User.find(session[:user_id])
     @address =  @user.address || @user.build_address
   end
