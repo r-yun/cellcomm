@@ -3,10 +3,11 @@ require 'rails_helper'
 RSpec.describe LoginController, type: :controller do
 
   describe "authentication (POST)" do
-    before(:example) {
+    before(:example) do
+      #register first
       @created_user = User.create("username" => "test123", "password" => "pass123",
         "first_name" => "John", "last_name" => "Smith", "email" => "jsmith@hotmail.com")
-    }
+    end
 
     it "successfully authenticates the user" do
       controller.instance_variable_set(:@user, @created_user)

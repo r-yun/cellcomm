@@ -40,9 +40,8 @@ class CartsController < ApplicationController
     @phone = Phone.find(params[:phone_id])
     unless @phone.quantity == 0
       user_items = @user.cart.cart_items
-      found_item = user_items.find{|x| x.phone_id == params[:phone_id].to_i}
-      if found_item
-        found_item.update_attributes(:quantity_sold => params[:quantity])
+      if existing_item = user_items.find_by(:phone_id => params[:phone_id].to_i)
+        existing_item.update_attributes(:quantity_sold => params[:quantity])
       else
         @new_item = CartItem.create(:phone_id => params[:phone_id],
           :quantity_sold => params[:quantity], :cart => @user.cart)
@@ -80,7 +79,7 @@ class CartsController < ApplicationController
   def update_address
     @address = @user.address || @user.build_address
     @address_form = AddressForm.new(@address)
-    if @address_form.assign_params(address_params) && @address_form.submit
+    if @address_form.submit(address_params)
         @user.update_attributes(:address => @address)
         calculate_totals
         flash.now[:notice] = "Address successfully saved"
@@ -93,6 +92,7 @@ class CartsController < ApplicationController
 
   def update_price
      cart_items = @user.cart.cart_items
+     # combine into one method?
      found_item = cart_items.find_by(:phone_id => params["phone-quantity"][0])
      found_item.update_attributes(:quantity_sold => params["phone-quantity"][1])
      calculate_totals

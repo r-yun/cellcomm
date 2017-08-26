@@ -1,4 +1,8 @@
 @import "variables";
+*{
+  margin:0;
+  padding:0;
+}
 
 .attr-box{
   border: solid 1px black;
@@ -85,7 +89,15 @@ body, html{
   text-decoration: underline;
 }
 
+#hover-image{
+  height: 300px;
+  position: absolute;
+  width: 300px;
+  z-index: 2;
+}
+
 .image-1{
+  cursor: pointer;
   height:260px;
   margin-top:10px;
   margin-left: 10px;
@@ -108,6 +120,39 @@ label{
   margin-top:10px;
 }
 
+#modal{
+  align-items: center;
+  background-color: rgba(165 ,165,165,0.8);
+  border: solid 0.5px black;
+  display: flex;
+  height: 800px;
+  justify-content: center;
+  left: 50%;
+  top: 100px;
+  position: fixed;
+  transform: translateX(-50%);
+  width: 100%;
+  z-index: 2;
+}
+
+#modal-border{
+  align-items: center;
+  background-color: rgba(255,255,255,0.8);
+  border: solid 0.5px black;
+  display:flex;
+  height: 600px;
+  justify-content: center;
+  opacity: 10;
+  width: 350px;
+  z-index:3;
+}
+
+#modal-image{
+  height: 600px;
+  opacity: 10;
+  width: 300px;
+}
+
 .page-container {
   display: flex;
   flex-flow: row wrap;
@@ -120,6 +165,7 @@ label{
   border-radius: 4px;
   height: 290px;
   margin-top:20px;
+  position: relative;
   width: 610px;
 }
 
@@ -141,7 +187,7 @@ label{
 }
 
 .quantity {
-  font-family : $font_serif1;
+  font-family: $font_serif1;
   font-size: 18px;
   padding-top:5px;
   text-align: center;

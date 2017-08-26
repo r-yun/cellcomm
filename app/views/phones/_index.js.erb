@@ -1,10 +1,17 @@
 $(function() {
   var checkbox = document.getElementsByClassName("checkbox");
+  var images = document.getElementsByClassName("image-1");
+  var form = document.getElementById("filter_form");
+  var phones_container = document.getElementsByClassName("phones-container")[0];
+
+
   for (var i = 0; i < checkbox.length; i++) {
     checkbox[i].addEventListener("click", allToggle);
     checkbox[i].addEventListener("click", atleastOneChecked);
     checkbox[i].addEventListener("click", formSubmit);
   }
+
+  phones_container.addEventListener("click", createModal);
 });
 
 function formSubmit(){
@@ -12,21 +19,21 @@ function formSubmit(){
 }
 
 function allToggle(){
-  if (this.checked){
+   if (this.checked){
     var id = this.id
-    if (id == "all"){
-      var single = document.getElementsByClassName("single");
-      for (var i = 0; i < brand.length; i++) {
-        single[i].checked = "";
-      } // for
-    } // if(class_name == all)
+     if (id == "all"){
+       var single = document.getElementsByClassName("single");
+       for (var i = 0; i < brand.length; i++) {
+         single[i].checked = "";
+    } // for
+  } // if(class_name == all)
 
-    else {
-      var all = document.getElementById("all");
-      all.checked = "";
-    } // else
-  } // if(this.checked)
-} // allToggle()
+  else {
+    var all = document.getElementById("all");
+    all.checked = "";
+  } // else
+} // if(this.checked)} // allToggle()
+}
 
 function atleastOneChecked(){
   var checkboxes = document.getElementsByClassName("checkbox");
@@ -43,3 +50,26 @@ function atleastOneChecked(){
     all.checked = true;
   } // if
 } // atleastOneChecked()
+
+
+function createModal(e){
+  if (e.target.tagName == "IMG"){
+    var outerDiv = document.createElement("div");
+    var innerDiv = document.createElement("div");
+    var pageContainer = document.getElementsByClassName("page-container")[0]
+    var phonesContainer = document.getElementsByClassName("phones-container")[0]
+    outerDiv.id = "modal";
+    innerDiv.id = "modal-border";
+    innerDiv.innerHTML = "<img id = 'modal-image' src = " + e.target.src + ">";
+    outerDiv.appendChild(innerDiv);
+    pageContainer.insertBefore(outerDiv, phonesContainer);
+    outerDiv.addEventListener("click", deleteModal);
+  }
+}
+
+function deleteModal(e){
+  if (e.target.id == "modal"){
+    var outerDiv = document.getElementById("modal");
+    outerDiv.parentNode.removeChild(outerDiv);
+     }
+}

@@ -1,7 +1,7 @@
 <% if @phones.present? %>
   <% @phones.each do |phone| %>
     <div class = "phone-container">
-      <%= link_to(image_tag(phone.image_1, :class => "image-1"), phone_path(phone)) %>
+      <%= image_tag(phone.image_1, :class => "image-1") %>
 
       <div class="phone-info">
         <div class = "phone-title">

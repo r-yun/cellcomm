@@ -2,7 +2,6 @@ class UsersController < ApplicationController
   before_action :user
 
   def create
-    #@new_user may not need to be an instance vr
     @new_user = User.new(new_user_params)
     if @new_user.save
       cart = Cart.create(:user => @new_user)
@@ -20,15 +19,16 @@ class UsersController < ApplicationController
   end
 
   def user_edit
+    puts @user.inspect
     @user_edit = UserEdit.new(@user)
-    flash.now[:notice] = "Personal information saved." if @user_edit.assign_params(updated_params) && @user_edit.submit
+    flash.now[:notice] = "Personal information saved." if @user_edit.submit(updated_params)
   end
 
   def user_page
+    puts @user.inspect
+    @address =  @user.address || @user.build_address
     @user_edit = UserEdit.new(@user)
     @orders = @user.orders.includes(:order_items)
-    @user = User.find(session[:user_id])
-    @address =  @user.address || @user.build_address
   end
 
   private

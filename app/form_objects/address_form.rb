@@ -25,11 +25,11 @@ class AddressForm
 
 
   def assign_params(params)
-    params.permit!
     @address_params = params.slice(:address, :city, :postal_code, :province, :country)
   end
 
-  def submit
+  def submit(params)
+    assign_params(params)
     prev_address = @address.attributes
     @address.attributes = @address_params
     if valid?

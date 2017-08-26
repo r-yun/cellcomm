@@ -1,0 +1,29 @@
+function hoverImage(e){
+e.stopPropagation();
+if (document.getElementById("hover-image")) {
+  var hover_image = document.getElementById("hover-image");
+  hover_image.style.left = e.offsetX +  10 + "px";
+  hover_image.style.top = e.offsetY +  10 + "px";
+  // expands content in Safari.. not sure why
+  console.log("exists")
+  }
+
+else{
+  var new_image = this.cloneNode();
+  new_image.id = "hover-image";
+  console.log("new")
+  new_image.style.left = e.offsetX +  10 + "px";
+  new_image.style.top = e.offsetY +  10 + "px";
+  // if style.left and style.top deleted --> does not work on Chrome
+  this.parentNode.appendChild(new_image);
+  }
+}
+
+function deleteImage(){
+  var hover_image = document.getElementById("hover-image");
+  this.parentNode.removeChild(hover_image);
+  console.log("delete")
+}
+
+images[i].addEventListener("mousemove", hoverImage);
+images[i].addEventListener("mouseout", deleteImage);

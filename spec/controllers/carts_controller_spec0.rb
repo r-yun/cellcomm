@@ -1,14 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe CartsController, type: :controller do
-  # need before can put outside have available in entire controlelr
   before(:context){
     @created_user = User.create("username" => "test123", "password" => "pass123",
       "first_name" => "John", "last_name" => "Smith", "email" => "jsmith@hotmail.com")
     @phone = Phone.create("phone_name" => "iPhone 7 Plus", "brand_name" => "Apple",
       "price" => 1074.99, "quantity" => 4)
     @created_user.create_cart
-
   }
 
   after(:context){
@@ -18,11 +16,9 @@ RSpec.describe CartsController, type: :controller do
     Phone.destroy_all
   }
 
-
   describe "calculate_totals (POST)" do
-
     before(:example) do
-      @user = @created_user
+      controller.instance_variable_set(:@user, @created_user)
       session[:user_id] = @created_user.id
       session[:username] = @created_user.username
     end
@@ -39,7 +35,7 @@ RSpec.describe CartsController, type: :controller do
 
   describe "cart_process (POST)" do
     before(:example){
-      @user = @created_user
+      controller.instance_variable_set(:@user, @created_user)
       session[:user_id] = @created_user.id
       session[:username] = @created_user.username
     }
@@ -87,8 +83,8 @@ RSpec.describe CartsController, type: :controller do
 
 
   describe "order_submit (POST)" do
-    let(:user) { @created_user}
     before(:example){
+      controller.instance_variable_set(:@user, @created_user)
       session[:user_id] = @created_user.id
       session[:username] = @created_user.username
       post :order_submit, :params => {"selection" => {@phone.id => "4"}}
@@ -132,7 +128,7 @@ RSpec.describe CartsController, type: :controller do
     }
 
     it "updates the address of user in reponse to form fields" do
-      post :update_address, :xhr => true, :params => {"address_form"=>{"address"=>"333 Leaf Street",
+      post :update_address, :format => "js", :params => {"address_form"=>{"address"=>"333 Leaf Street",
         "city"=>"North York", "province"=>"Ontario", "country"=>"Canada",
         "postal_code"=>"l1l1l1"}}
 
@@ -144,7 +140,7 @@ RSpec.describe CartsController, type: :controller do
 
   describe "update_price (POST)" do
     before(:example){
-      @user = @created_user
+      controller.instance_variable_set(:@user, @created_user)
       session[:user_id] = @created_user.id
       session[:username] = @created_user.username
     }
