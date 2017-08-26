@@ -1,5 +1,5 @@
 <% if @user.address.valid? %>
-  <%= form_tag(order_submit_path, :method => "post") do %>
+  <%= form_tag(order_submit_path) do %>
     <% @user.cart.cart_items.each do |item|%>
       <div class = "phone-order-container">
         <div class = "phone-order">

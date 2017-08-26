@@ -17,7 +17,7 @@
     </div>
 
 
-    <%= form_tag(create_cart_path(:phone_id => @phone), :method => "post") do |f| %>
+    <%= form_tag(create_cart_path(:phone_id => @phone)) do |f| %>
       <%= label_tag("quantity:", nil, :class => "quantity-available") %>
       <%= select_tag("quantity", options_for_select(1..@phone.quantity),
       :class => "quantity-select") %>

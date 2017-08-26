@@ -34,8 +34,7 @@
     </div>
 
     <div class = "address-info">
-      <%= form_for(@address_form, :url => update_address_path, :method => "post",
-      :remote => true) do |f| %>
+      <%= form_for(@address_form, :url => update_address_path,:remote => true) do |f| %>
         <%= f.label(:address) %>
         <%= f.text_field(:address) %>
         <%= f.label(:city) %>
