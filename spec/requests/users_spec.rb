@@ -1,28 +1,25 @@
 require 'rails_helper'
 
-RSpec.describe UsersController, type: :controller do
+RSpec.describe "Users", type: :request do
   describe "create (POST)" do
     it "creates new user with a cart" do
-    post :create, :params => {"user"=>{"username" => "test123", "password" => "pass123",
+    post users_path, :params => {"user"=>{"username" => "test123", "password" => "pass123",
       "first_name" => "John", "last_name" => "Smith", "email" => "jsmith@hotmail.com"}}
     expect(assigns(:new_user)).to have_attributes("username" => "test123", "password" => "pass123",
       "first_name" => "John", "last_name" => "Smith", "email" => "jsmith@hotmail.com")
-    expect(assigns(:new_user).cart).to be_truthy
+    expect(assigns(:new_user).cart.id).to be_truthy
     end
   end
 
   describe "user_edit (POST)" do
-    before(:example){
-      @created_user = User.create("username" => "test123", "password" => "pass123",
-        "first_name" => "John", "last_name" => "Smith", "email" => "jsmith@hotmail.com")
-      @created_user.create_address("address"=>"100 Leaf Street", "city"=>"Hamilton",
-      "province"=>"British Columbia", "country"=>"CA", "postal_code"=>"d1d1d1")
-      controller.instance_variable_set(:@user, @created_user)
-      session[:user_id] = @created_user.id
-      session[:username] = @created_user.username
-    }
+    before(:example) do
+      post users_path, :params => {"user"=>{"username"=>"test123", "password"=>"pass123",
+        "first_name" => "John", "last_name" => "Smith", "email" => "jsmith@hotmail.com"}}
+      post authentication_path, :params => {"username" => "test123", "password" => "pass123"}
+    end
+
     it "edits a user's information through form fields" do
-      post :user_edit, :format => "js", :params => {"user_edit"=>{"first_name"=>"John", "last_name"=>"Smith",
+      post user_edit_path, :xhr => true, :params => {"user_edit"=>{"first_name"=>"John", "last_name"=>"Smith",
         "email"=>"jsmith@hotmail.com", "address"=>"123 Leaf Street", "city"=>"Toronto",
         "province"=>"Ontario", "country"=>"Canada", "postal_code"=>"m1m1m1"}}
 

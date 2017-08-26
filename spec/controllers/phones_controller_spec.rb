@@ -7,7 +7,6 @@ RSpec.describe PhonesController, type: :controller do
 
     it "returns the appropriate search results if the 'all' checkbox is selected" do
       post :search_results, :params => {"all" => "true"}
-      #all not needed
       @search_results = Phone.order(:brand_name)
       expect(assigns(:phones)).to eq(@search_results)
     end
