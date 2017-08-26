@@ -20,14 +20,14 @@ class UsersController < ApplicationController
 
   def user_edit
     puts @user.inspect
-    @user_edit = UserEdit.new(@user)
-    flash.now[:notice] = "Personal information saved." if @user_edit.submit(updated_params)
+    @user_form = UserForm.new(@user)
+    flash.now[:notice] = "Personal information saved." if @user_form.submit(updated_params)
   end
 
   def user_page
     puts @user.inspect
     @address =  @user.address || @user.build_address
-    @user_edit = UserEdit.new(@user)
+    @user_form = UserForm.new(@user)
     @orders = @user.orders.includes(:order_items)
   end
 
@@ -39,7 +39,7 @@ class UsersController < ApplicationController
   end
 
   def updated_params
-    params.require(:user_edit).permit(:first_name,
+    params.require(:user_form).permit(:first_name,
       :last_name, :email, :address, :city, :province,
       :country, :postal_code)
   end

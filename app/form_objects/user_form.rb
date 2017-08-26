@@ -1,4 +1,4 @@
-class UserEdit
+class UserForm
 
   extend ActiveModel::Naming
   include ActiveModel::Model

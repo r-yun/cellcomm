@@ -4,11 +4,11 @@
   </div>
 <% end %>
 
-<% if @user_edit && @user_edit.errors.size > 0%>
+<% if @user_form && @user_form.errors.size > 0%>
   <div class="error-container">
     <div class = "error-intro">Please check the information entered for the following errors:</div>
     <div class="errors">
-      <% @user_edit.errors.full_messages.each do |msg| %>
+      <% @user_form.errors.full_messages.each do |msg| %>
       <li> <%= msg %> </li>
       <% end %>
     </div>

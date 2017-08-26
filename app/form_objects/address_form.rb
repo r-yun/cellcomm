@@ -26,7 +26,6 @@ class AddressForm
   def submit(params)
     prev_address = @address.attributes
     @address.attributes = params
-    #try @user.new().valid
     if valid?
       @address.save
       true

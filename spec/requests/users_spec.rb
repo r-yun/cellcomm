@@ -19,7 +19,7 @@ RSpec.describe "Users", type: :request do
     end
 
     it "edits a user's information through form fields" do
-      post user_edit_path, :xhr => true, :params => {"user_edit"=>{"first_name"=>"John", "last_name"=>"Smith",
+      post user_edit_path, :xhr => true, :params => {"user_form"=>{"first_name"=>"John", "last_name"=>"Smith",
         "email"=>"jsmith@hotmail.com", "address"=>"123 Leaf Street", "city"=>"Toronto",
         "province"=>"Ontario", "country"=>"Canada", "postal_code"=>"m1m1m1"}}
 
