@@ -1,6 +1,7 @@
 <% if @user.address.valid? %>
   <%= form_tag(order_submit_path) do %>
     <% @user.cart.cart_items.each do |item|%>
+      <% cache item do %>
       <div class = "phone-order-container">
         <div class = "phone-order">
           <%= image_tag(item.phone.image_1, :class => "phone-image") %>
@@ -27,6 +28,7 @@
         Estimated Delivery Date: <%= t.strftime("%B %d, %Y") %>
       </div>
       </div>
+      <% end %>
     <% end %> <!-- @user.cart.cart_items  -->
 
     <%= submit_tag("Purchase", :class => "checkout-button") %>

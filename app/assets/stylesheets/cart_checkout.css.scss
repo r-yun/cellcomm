@@ -1,7 +1,7 @@
 @import "variables";
 
 .address-info input[type ="text"]{
-  border: solid 0.5px black;
+  border: solid 1px black;
   border-radius: 4px;
   font-family: $font_sans1;
   font-size: 18px;
@@ -13,7 +13,7 @@
 
 .address-info input[type="submit"]{
   background-color: $teal;
-  border: solid 0.5px black;
+  border: solid 1px black;
   border-radius: 4px;
   display: block;
   font-family: $font_serif1;
@@ -46,7 +46,7 @@
 
 .error-container{
   background-color: $teal;
-  border: solid 0.5px black;
+  border: solid 1px black;
   border-radius: 4px;
   margin-top: 20px;
   margin-bottom: 20px;

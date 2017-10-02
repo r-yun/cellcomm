@@ -4,7 +4,8 @@ class UsersController < ApplicationController
   def create
     @new_user = User.new(new_user_params)
     if @new_user.save
-      cart = Cart.create(:user => @new_user)
+      # gets loaded?
+      Cart.create(:user => @new_user)
       link = view_context.link_to("here.", login_page_path, :class => 'here')
       flash[:notice] = "You have successfully registered. Please login #{link}".html_safe
       redirect_to(phones_path)
@@ -14,21 +15,28 @@ class UsersController < ApplicationController
     end
   end
 
+
+
   def new
     @new_user = User.new
   end
 
+
+  def test
+    @phone = Phone.all
+    render :layout => false
+  end
+
   def user_edit
-    puts @user.inspect
     @user_form = UserForm.new(@user)
     flash.now[:notice] = "Personal information saved." if @user_form.submit(updated_params)
   end
 
   def user_page
-    puts @user.inspect
     @address =  @user.address || @user.build_address
     @user_form = UserForm.new(@user)
-    @orders = @user.orders.includes(:order_items)
+    # use nested includes for phones see RailsGuide
+    @orders = @user.orders.includes(order_items: :phone)
   end
 
   private

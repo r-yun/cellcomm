@@ -12,7 +12,7 @@ a{
 
 .error-container{
   background-color: $teal;
-  border: solid 0.5px black;
+  border: solid 1px black;
   border-radius: 4px;
   margin-top: 20px;
   margin-bottom: 20px;
@@ -37,7 +37,7 @@ a{
 
 .flash-notice{
   background-color: $teal;
-  border: 0.5px solid black;
+  border: 1px solid black;
   border-radius: 4px;
   font-family: $font_serif1;
   font-size: 16px;
@@ -101,7 +101,7 @@ label{
 
 nav{
   background-color: #f4f6f7;
-  border: solid 0.5px black;
+  border: solid 1px black;
   display:flex;
   height:100px;
   padding-left: 20px;
@@ -126,7 +126,7 @@ nav{
 }
 
 #search_field{
-  border: solid 0.5px black;
+  border: solid 1px black;
   border-radius:4px;
   font-family: $font_sans1;
   font-size: 18px;

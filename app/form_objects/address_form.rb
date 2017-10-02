@@ -7,30 +7,27 @@ class AddressForm
 
   validates_presence_of :address
   validates_presence_of :city
-  validates :postal_code, :presence => true, :length => {:within => 6..7}
+  validates :postal_code, presence: true, :length => {:within => 6..7}
   validates_presence_of :province
   validates_presence_of :country
-
-
-
-  attr_reader :assign_params
 
   def initialize(address)
     @address = address
   end
-
+#same method and instance variable name
   def address_model
     @address
   end
 
   def submit(params)
-    prev_address = @address.attributes
     @address.attributes = params
     if valid?
+     # Add user save method here
       @address.save
+      @address.user.update_attributes(:address => @address)
       true
     else
-      @address.attributes = prev_address
+      @address.restore_attributes
       false
     end
   end

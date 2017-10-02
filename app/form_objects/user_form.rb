@@ -19,7 +19,7 @@ class UserForm
   delegate :address, :postal_code, :province, :country, :city, :to => :user_address
   delegate :first_name, :last_name, :email, :to => :user
 
-  attr_reader :user, :user_params, :address_params
+  attr_reader :user, :user_address, :user_params, :address_params
 
   def initialize(current_user)
     @user = current_user
@@ -36,20 +36,18 @@ class UserForm
 
   def submit(params)
     assign_params(params)
-    prev_user = @user.attributes
-    prev_address = user_address.attributes
     @user.attributes = @user_params
-    @user.address.attributes = @address_params
+    user_address.attributes = @address_params
     if valid?
-      @user.save
-      @user.address.save
+        @user.save
+        @user.address.save
+      end
       true
     else
-      @user.attributes = prev_user
-      @user.address.attributes = prev_address
+      @user.restore_attributes
+      @user.address.restore_attributes
       false
     end
-  end
 
 
 end

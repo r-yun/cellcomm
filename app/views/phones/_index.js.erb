@@ -1,8 +1,12 @@
+window.onload =  function(e){
+  var phones_container = document.getElementsByClassName("phones-container")[0];
+  phones_container.addEventListener("click", createModal);
+}
+
 $(function() {
   var checkbox = document.getElementsByClassName("checkbox");
   var images = document.getElementsByClassName("image-1");
   var form = document.getElementById("filter_form");
-  var phones_container = document.getElementsByClassName("phones-container")[0];
 
 
   for (var i = 0; i < checkbox.length; i++) {
@@ -11,7 +15,6 @@ $(function() {
     checkbox[i].addEventListener("click", formSubmit);
   }
 
-  phones_container.addEventListener("click", createModal);
 });
 
 function formSubmit(){
@@ -23,7 +26,7 @@ function allToggle(){
     var id = this.id
      if (id == "all"){
        var single = document.getElementsByClassName("single");
-       for (var i = 0; i < brand.length; i++) {
+       for (var i = 0; i < single.length; i++) {
          single[i].checked = "";
     } // for
   } // if(class_name == all)
@@ -34,6 +37,7 @@ function allToggle(){
   } // else
 } // if(this.checked)} // allToggle()
 }
+
 
 function atleastOneChecked(){
   var checkboxes = document.getElementsByClassName("checkbox");
@@ -71,5 +75,6 @@ function deleteModal(e){
   if (e.target.id == "modal"){
     var outerDiv = document.getElementById("modal");
     outerDiv.parentNode.removeChild(outerDiv);
+    outerDiv.removeEventListener("click", deleteModal)
      }
 }

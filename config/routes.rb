@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   post "carts/calculate_totals", :as => "calculate_totals"
   post "login/authentication", :as => "authentication"
   post "phones/search_results", :as => "search_results"
+  get "users/test", :as => "test"
   resources :carts, :only => [:create]
   resources :phones, :only => [:index, :show]
   resources :users, :only => [:new, :create]

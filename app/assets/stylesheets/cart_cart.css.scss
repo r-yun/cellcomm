@@ -13,7 +13,7 @@
 
 .cart-info{
   align-items: center;
-  border: 0.5px solid black;
+  border: 1px solid black;
   border-radius: 4px;
   display: flex;
   flex-flow: column;
@@ -31,7 +31,7 @@
 
 .checkout-button{
   background-color: $teal;
-  border: solid 0.5px black;
+  border: solid 1px black;
   border-radius:4px;
   font-family: $font_serif1;
   font-size: 28px;
@@ -117,7 +117,7 @@ margin-right: 40px;
 
 .phone-order-container{
   align-items: center;
-  border:solid 0.5px black;
+  border:solid 1px black;
   border-radius: 4px;
   display: flex;
   flex-flow: column;
@@ -146,7 +146,7 @@ margin-right: 40px;
 
 .remove-button{
   background-color:#ffb263;
-  border: solid 0.5px black;
+  border: solid 1px black;
   border-radius: 4px;
   font-family: $font_sans1;
   font-size: 14px;

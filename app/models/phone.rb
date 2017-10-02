@@ -3,11 +3,10 @@ class Phone < ApplicationRecord
   has_many :cart_items
 
   def self.search_algorithm(search)
-    unless search.length <= 2
-      query    = [(["phone_name LIKE ? OR brand_name LIKE ?"] * search.split.length).join(' OR ')]
-      keywords = search.split.flat_map{|x|["%" + x + "%"] * 2}
-      where(query + keywords)
-    end
+    return if search.length <= 2
+    query    = [(["phone_name LIKE ? OR brand_name LIKE ?"] * search.split.length).join(' OR ')]
+    keywords = search.split.flat_map{|x|["%" + x + "%"] * 2}
+    where(query + keywords)
   end
 
   def self.checkbox_search(params_hash)

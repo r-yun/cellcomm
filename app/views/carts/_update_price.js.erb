@@ -1,11 +1,16 @@
-$(function(){
+window.onload = function(){
   var select = document.getElementsByClassName("quantity-select");
   for(var i = 0; i < select.length; i++){
-    select[i].addEventListener("change", updatePrice);
+    select[i].addEventListener("change", updatePrice)
+    select[i].addEventListener("click", function(){
+      /// Need to attach to parent
+    })
   }
-});
+  console.log("window onload")
+}
 
 function updatePrice(){
+  console.log("update_price")
   $.ajax({
     type: "POST",
     url: "/carts/update_price",
