@@ -2,7 +2,6 @@ class PhonesController < ApplicationController
   before_action :user
 
   def index
-    # select multiple variables ith one multi-select + see if can pluck
     @brand_names = Phone.select(:brand_name).distinct.order(:brand_name)
     @operating_systems = Phone.select(:os).distinct
     @price_categories = Phone.select(:price_category).distinct

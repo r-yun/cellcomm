@@ -14,7 +14,6 @@ class AddressForm
   def initialize(address)
     @address = address
   end
-#same method and instance variable name
   def address_model
     @address
   end
@@ -22,7 +21,6 @@ class AddressForm
   def submit(params)
     @address.attributes = params
     if valid?
-     # Add user save method here
       @address.save
       @address.user.update_attributes(:address => @address)
       true

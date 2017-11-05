@@ -15,7 +15,6 @@ class UserForm
   validates_presence_of :province
   validates_presence_of :country
 
-  # delegating to set variables within the form
   delegate :address, :postal_code, :province, :country, :city, :to => :user_address
   delegate :first_name, :last_name, :email, :to => :user
 

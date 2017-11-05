@@ -4,7 +4,6 @@ class UsersController < ApplicationController
   def create
     @new_user = User.new(new_user_params)
     if @new_user.save
-      # gets loaded?
       Cart.create(:user => @new_user)
       link = view_context.link_to("here.", login_page_path, :class => 'here')
       flash[:notice] = "You have successfully registered. Please login #{link}".html_safe
@@ -35,7 +34,6 @@ class UsersController < ApplicationController
   def user_page
     @address =  @user.address || @user.build_address
     @user_form = UserForm.new(@user)
-    # use nested includes for phones see RailsGuide
     @orders = @user.orders.includes(order_items: :phone)
   end
 
